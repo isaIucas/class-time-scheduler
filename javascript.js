@@ -1,7 +1,15 @@
 let pomodoro=0;
 let minutes=0;
 let hours=0;
+let totalHrs=0;
+let totalMins=0;
+let arr=[]
+let arr2=[]
 
+let studyHrs=0;
+let playHrs=0;
+let researchHrs=0;
+let offlineHrs=0;
 
 const form= document.querySelector("form")
 const body= document.querySelector("body")
@@ -53,13 +61,14 @@ th1.textContent="Hours"
 th2.textContent="Minutes"
 th3.textContent="Study Time"
 th4.textContent="Play Time"
-th5.textContent="Research/Important"
-th6.textContent="Eating and walking"
+th5.textContent="Eating and walking"
+th6.textContent="Research/Important"
 th7.textContent="Offline or Linux"
 
 
 
 function appendTable(){
+
     body.appendChild(container)
         container.appendChild(table)
             table.appendChild(tr1)
@@ -91,8 +100,29 @@ function appendTable(){
                 tr7.appendChild(th7)
                 tr7.appendChild(td10)
                 tr7.appendChild(td11)
+           //console.log(document.querySelector("#container"))
+           let deleteThisFUCKER=document.querySelector("#container")
+            let fuckingSHIT= deleteThisFUCKER!=null
+            if(fuckingSHIT){
+                deleteThisFUCKER.removeChild(deleteThisFUCKER.firstChild)
+
+            }
+
+
+            
+            //console.log(document.querySelector("#container"))
+
         container.appendChild(chartContainer)
             chartContainer.appendChild(chart)
+            //console.log(document.querySelector("#container"))
+
+}
+
+function reset(){
+    totalHrs=0;
+    totalMins=0;
+    arr=[]
+    arr2=[]
 }
 
 const discord=document.createElement("div")
@@ -110,20 +140,16 @@ const offline=document.createElement("div")
 
 
 form.addEventListener("submit", function(e) {
+    
     e.preventDefault();
     var data = new FormData(form);
     for (const [name,value] of data) {
         pomodoro = value
-        console.log(name,value)
+        //console.log(name,value)
     }
     minutes = pomodoro * 30;
     hours = minutes / 60;
     appendTable();
-    
-    console.log(col1)
-    console.log(col2)
-    console.log(col3)
-
 
     body.appendChild(discord)
     discord.appendChild(underline)
@@ -134,47 +160,101 @@ form.addEventListener("submit", function(e) {
     wrapper.appendChild(eatnwalk)
     wrapper.appendChild(offline)
 
-    td2.textContent=`${hours}`
-    td3.textContent=`${minutes}`
-    td4.textContent=`${hours}`
-    td5.textContent=`${minutes}`
-    td6.textContent=`${hours}`
-    td7.textContent=`${minutes}`
-    td8.textContent=`1.5`
-    td9.textContent=`90`
-    td10.textContent=`${15-1.5-hours*3}`
-    td11.textContent=`${900-90-minutes*3}`
+
+
+    reset()
+
+    //totalHrs=0; hours =2.5
+    for(let i=0;i<3;i++){
+        totalHrs += hours
+        totalMins += minutes
+        if (totalHrs>13){
+            arr.push(13-(totalHrs-hours))
+            arr2.push(780-(totalMins-minutes))
+            break;
+        }else{
+            arr.push(hours)
+            arr2.push(minutes)
+
+        }
+        console.log(arr)
+        console.log(arr2)
+    }        
+
+    if (totalHrs < 13){
+        arr.push(13-totalHrs)
+        arr2.push(780-totalMins)
+    }else{
+        arr.push(0)
+        arr2.push(0)
+
+    }
+    if (arr[3]==undefined){
+        arr.push(0)
+        arr2.push(0)
+    }
+    console.log(arr)
+
+    const sum = arr.reduce((partialSum, a) => partialSum + a, 0);
+    console.log(sum);    
+
+
+
+    td2.textContent=`${arr[0]}`
+    td3.textContent=`${arr2[0]}`
+    td4.textContent=`${arr[1]}`
+    td5.textContent=`${arr2[1]}`
+    td6.textContent=`2`
+    td7.textContent=`120`
+    td8.textContent=`${arr[2]}`
+    td9.textContent=`${arr2[2]}`
+    td10.textContent=`${arr[3]}`
+    td11.textContent=`${arr2[3]}`
 
     underline.textContent = "Copy text to discord:"
-    study.textContent=`Study Time: ${hours} hours; ${minutes} minutes`
-    play.textContent=`Play Time: ${hours} hours; ${minutes} minutes`
-    research.textContent=`Research/Important: ${hours} hours; ${minutes} minutes`
-    eatnwalk.textContent=`Eating & walking: 1.5 hours; 90 minutes`
-    offline.textContent=`Offline or Linux: ${15-1.5-hours*3} hours; ${900-90-minutes*3} minutes`
+    study.textContent=`Study Time: ${arr[0]} hours; ${arr2[0]} minutes`
+    play.textContent=`Play Time: ${arr[1]} hours; ${arr2[1]} minutes`
+    eatnwalk.textContent=`Eating/walk/dishes: 2 hours; 120 minutes`
+    research.textContent=`Research/Important: ${arr[2]} hours; ${arr2[2]} minutes`
+    offline.textContent=`Offline or Linux: ${arr[3]} hours; ${arr2[3]} minutes`
+
 
     anychart.onDocumentReady(function() {
 
         // set the data
-        var data = [
-            {x: "Study", value: hours},
-            {x: "Play", value: hours},
-            {x: "Research/Important", value: hours},
-            {x: "Offline or Linux", value: 15-1.5-hours*3},
+        let data = [
+            {x: "Study", value: arr[0]},
+            {x: "Play", value: arr[1]},
+            {x: "Eat n walk", value: 1.5},
+            {x: "Research/Important", value: arr[2]},
+            {x: "Offline or Linux", value: arr[3]},
         ];
+
+        // create the pieChart
+        let pieChart = anychart.pie();
       
-        // create the chart
-        var chart = anychart.pie();
-      
-        // set the chart title
-        chart.title("Time Schedule");
+        // set the pieChart title
+        pieChart.title("Time Schedule");
       
         // add the data
-        chart.data(data);
+        pieChart.data(data);
       
-        // display the chart in the container
-        chart.container('container');
-        chart.draw();
-      
+        // display the pieChart in the container
+        pieChart.container('container');
+        pieChart.draw();
+
+        
       });
+
+      let hasSVG = document.querySelector("svg") != null
+      if (hasSVG){
+          body.querySelector("svg").remove()
+      }
+      /*
+      svg.addEventListener("onmouseenter",e=>{
+        console.log(e)
+    }, {once : true});
+    */
+    //bug fix potential!!!!I may want to try body[1] to find SVG to delete!!!!
 })
 
