@@ -299,27 +299,105 @@ function display(){
     wrapper.appendChild(pomodoroNum)
 
     reset()
+    let totalTemp1=0
+    let totalTemp2=0
+    let temp1=0
+    let temp2=0
 
-    //totalHrs=0; hours =2.5
-    for(let i=0;i<3;i++){
+    for(let i=0;i<4;i++){
         totalHrs += hours
         totalMins += minutes
-        if (totalHrs>13){
-            arr.push((13-(totalHrs-hours))*ratio[i])
-            arr2.push(780-(totalMins-minutes)*ratio[i])
+
+        if(i==2){
+            temp1=2*ratio[i-1]
+            temp2=120*ratio[i-1]
+            totalTemp1+=temp1
+            totalTemp2+=temp2
+            
+            arr.push(temp1)
+            arr2.push(temp2)
+
+        } else if(totalTemp1<15){
+            temp1=(15-(totalHrs-hours))*ratio[i-1]
+            temp2=(900-(totalMins-minutes))*ratio[i-1]
+            totalTemp1+=temp1
+            totalTemp2+=temp2
+
+            arr.push(temp1)
+            arr2.push(temp2)
+        } else {
+            arr.push(0)
+            arr2.push(0)
+        }
+
+/*        if(i==2){//ratio time [Eat/Walk/Dishes]
+            temp1=2*ratio[i-1]
+            temp2=120*ratio[i-1]
+            totalTemp1+=temp1
+            totalTemp2+=temp2
+            
+            arr.push(temp1)
+            arr2.push(temp2)
+
+        } else if (totalHrs>15){
+            if(i>0){ //ratio time [play time] maybe [research/important]
+                temp1=(15-(totalHrs-hours))*ratio[i-1]
+                temp2=(900-(totalMins-minutes))*ratio[i-1]
+                totalTemp1+=temp1
+                totalTemp2+=temp2
+
+                arr.push(temp1)
+                arr2.push(temp2)
+            }else{ //[study/code] only
+                temp1=(15-(totalHrs-hours))
+                temp2=(900-(totalMins-minutes))
+                totalTemp1+=temp1
+                totalTemp2+=temp2
+
+                arr.push(temp1)
+                arr2.push(temp2)
+            }
             break;
         }else{
-            arr.push(hours*ratio[i])
-            arr2.push(minutes*ratio[i])
+            if(i>0){ //ratio time 
+                temp1=(hours*ratio[i-1])
+                temp2=(minutes*ratio[i-1])
+                totalTemp1+=temp1
+                totalTemp2+=temp2
 
+                arr.push(temp1)
+                arr2.push(temp2)
+            }else{ //study/code only
+                temp1=(hours)
+                temp2=(minutes)
+                totalTemp1+=temp1
+                totalTemp2+=temp2
+
+                arr.push(temp1)
+                arr2.push(temp2)
+            }
         }
-        console.log(arr)
-        console.log(arr2)
-    }        
+        //console.log(arr)
+        //console.log(arr2)
+        */
+    } 
+    if (totalTemp1>15){
+        arr.push(0)
+        arr2.push(0)
+    }else{
+        arr.push(15-totalTemp1)
+        arr2.push(900-totalTemp2)
+    }
 
-    if (totalHrs < 13){
-        arr.push((13-totalHrs))
-        arr2.push((780-totalMins))
+    /*
+    if (totalTemp1<15){
+        temp1=((15-totalHrs))
+        temp2=((900-totalMins))
+        totalTemp1+=temp1
+        totalTemp2+=temp2
+
+        arr.push(temp1)
+        arr2.push(temp2)
     }else{
         arr.push(0)
         arr2.push(0)
@@ -329,6 +407,8 @@ function display(){
         arr.push(0)
         arr2.push(0)
     }
+
+    */
     console.log(arr)
 
     const sum = arr.reduce((partialSum, a) => partialSum + a, 0);
@@ -340,21 +420,21 @@ function display(){
     td3.textContent=`${arr2[0]}`
     td4.textContent=`${arr[1]}`
     td5.textContent=`${arr2[1]}`
-    td6.textContent=`2`
-    td7.textContent=`120`
-    td8.textContent=`${arr[2]}`
-    td9.textContent=`${arr2[2]}`
-    td10.textContent=`${arr[3]}`
-    td11.textContent=`${arr2[3]}`
+    td6.textContent=`${arr[2]}`
+    td7.textContent=`${arr[2]}`
+    td8.textContent=`${arr[3]}`
+    td9.textContent=`${arr2[3]}`
+    td10.textContent=`${arr[4]}`
+    td11.textContent=`${arr2[4]}`
 
     underline.textContent = "Copy text to discord:"
     pomodoroNum.textContent =      "+-------------------------------------------------------+\n"+
-    `|Pomodoro (30 min): ${pomodoro}` +Array(5).fill('\x09').join('') +"|\n" +
-    `|Study/Code(ratio): ${arr[0]} hours; ${arr2[0]} minutes  `+Array(2).fill('\x09').join('') +"|\n" +    
-    `|Play Time(ratio): ${arr[1]} hours; ${arr2[1]} minutes  `+Array(2).fill('\x09').join('') +"|\n" +    
-    `|Eat/walk/dishes (ratio): 2 hours; 120 minutes`+Array(2).fill('\x09').join('') +"|\n" +    
-    `|Research/Important (ratio): ${arr[2]} hours;  ${arr2[2]} minutes`+Array(1).fill('\x09').join('') +"|\n" +    
-    `|Offline/Linux (ratio): ${arr[3]} hours; ${arr2[3]} minutes`+Array(2).fill('\x09').join('') +"|\n" +
+    `Pomodoro (30 min): ${pomodoro}` +Array(5).fill('\x09').join('') +"\n" +
+    `Study/Code(ratio): ${arr[0]} hours; ${arr2[0]} minutes  `+Array(2).fill('\x09').join('') +"\n" +    
+    `Play Time(ratio): ${arr[1]} hours; ${arr2[1]} minutes  `+Array(2).fill('\x09').join('') +"\n" +    
+    `Eat/walk/dishes (ratio): 2 hours; 120 minutes`+Array(2).fill('\x09').join('') +"\n" +    
+    `Research/Important (ratio): ${arr[2]} hours;  ${arr2[2]} minutes`+Array(1).fill('\x09').join('') +"\n" +    
+    `Offline/Linux (ratio): ${arr[3]} hours; ${arr2[3]} minutes`+Array(2).fill('\x09').join('') +"\n" +
     "+-------------------------------------------------------+"
 
 
@@ -376,7 +456,7 @@ function display(){
         let pieChart = anychart.pie();
       
         // set the pieChart title
-        pieChart.title("Time Schedule");
+        pieChart.title("15 Hr Time Schedule");
       
         // add the data
         pieChart.data(data);
