@@ -11,6 +11,8 @@ let playHrs=0;
 let researchHrs=0;
 let offlineHrs=0;
 
+ratio=[1,1,1,1]
+
 const form= document.querySelector("form")
 const body= document.querySelector("body")
 
@@ -18,6 +20,9 @@ const container=document.createElement("div")
 const attr1=document.createAttribute("class");
 attr1.value="container";
 container.setAttributeNode(attr1);
+
+const button=document.createElement("input")
+
     const table=document.createElement("table")
         const tr1=document.createElement("tr")
             const col1=document.createElement("col")
@@ -31,22 +36,27 @@ container.setAttributeNode(attr1);
             const th1=document.createElement("th")
             const th2=document.createElement("th")
         const tr3=document.createElement("tr")
+
             const th3=document.createElement("th")
             const td2=document.createElement("td")
             const td3=document.createElement("td")
         const tr4=document.createElement("tr")
+
             const th4=document.createElement("th")
             const td4=document.createElement("td")
             const td5=document.createElement("td")
         const tr5=document.createElement("tr")
+
             const th5=document.createElement("th")
             const td6=document.createElement("td")
             const td7=document.createElement("td")
         const tr6=document.createElement("tr")
+
             const th6=document.createElement("th")
             const td8=document.createElement("td")
             const td9=document.createElement("td")
         const tr7=document.createElement("tr")
+
             const th7=document.createElement("th")
             const td10=document.createElement("td")
             const td11=document.createElement("td")
@@ -55,15 +65,129 @@ const chart=document.createElement("div")
 const attr3=document.createAttribute("id");
 attr3.value="container";
 chart.setAttributeNode(attr3);
-       
+
+const form2=document.createElement("form")
+const form2attr1=document.createAttribute("action")
+form2attr1.value=""
+form2.setAttributeNode(form2attr1)
+const form2attr2=document.createAttribute("class")
+form2attr2.value="form2"
+form2.setAttributeNode(form2attr2)
+const input1=document.createElement("input")
+const input1type1=document.createAttribute("type");
+input1type1.value="number";
+const input1type2=document.createAttribute("name");
+input1type2.value="number";
+const input1type3=document.createAttribute("min");
+input1type3.value="1";
+const input1type4=document.createAttribute("max");
+input1type4.value="20";
+const input1type5=document.createAttribute("value");
+input1type5.value="1";
+const input1type6=document.createAttribute("class");
+input1type6.value="ratio";
+
+const input2=document.createElement("input")
+const input2type1=document.createAttribute("type");
+input2type1.value="number";
+const input2type2=document.createAttribute("name");
+input2type2.value="number";
+const input2type3=document.createAttribute("min");
+input2type3.value="1";
+const input2type4=document.createAttribute("max");
+input2type4.value="20";
+const input2type5=document.createAttribute("value");
+input2type5.value="1";
+const input2type6=document.createAttribute("class");
+input2type6.value="ratio";
+
+const input3=document.createElement("input")
+const input3type1=document.createAttribute("type");
+input3type1.value="number";
+const input3type2=document.createAttribute("name");
+input3type2.value="number";
+const input3type3=document.createAttribute("min");
+input3type3.value="1";
+const input3type4=document.createAttribute("max");
+input3type4.value="20";
+const input3type5=document.createAttribute("value");
+input3type5.value="1";
+const input3type6=document.createAttribute("class");
+input3type6.value="ratio";
+
+const input4=document.createElement("input")
+const input4type1=document.createAttribute("type");
+input4type1.value="number";
+const input4type2=document.createAttribute("name");
+input4type2.value="number";
+const input4type3=document.createAttribute("min");
+input4type3.value="1";
+const input4type4=document.createAttribute("max");
+input4type4.value="20";
+const input4type5=document.createAttribute("value");
+input4type5.value="1";
+const submit=document.createElement("button")
+submit.textContent="Submit"
+const input4type6=document.createAttribute("class");
+input4type6.value="ratio";
+
+
+input1.setAttributeNode(input1type1);
+input1.setAttributeNode(input1type2);
+input1.setAttributeNode(input1type3);
+input1.setAttributeNode(input1type4);
+input1.setAttributeNode(input1type5);
+input1.setAttributeNode(input1type6);
+
+
+input2.setAttributeNode(input2type1);
+input2.setAttributeNode(input2type2);
+input2.setAttributeNode(input2type3);
+input2.setAttributeNode(input2type4);
+input2.setAttributeNode(input2type5);
+input2.setAttributeNode(input2type6);
+
+
+
+input3.setAttributeNode(input3type1);
+input3.setAttributeNode(input3type2);
+input3.setAttributeNode(input3type3);
+input3.setAttributeNode(input3type4);
+input3.setAttributeNode(input3type5);
+input3.setAttributeNode(input3type6);
+
+
+
+input4.setAttributeNode(input4type1);
+input4.setAttributeNode(input4type2);
+input4.setAttributeNode(input4type3);
+input4.setAttributeNode(input4type4);
+input4.setAttributeNode(input4type5);
+input4.setAttributeNode(input4type6);
+
+
+/*
+const container2=document.createElement("div");
+const container2Class=document.createAttribute("class");
+container2Class.value="container2"
+container2.setAttributeNode(container2Class)
+container.appendChild(container2)
+container2.appendChild(form2)
+*/
+container.appendChild(form2)
+form2.appendChild(input1)
+form2.appendChild(input2)
+form2.appendChild(input3)
+form2.appendChild(input4)
+form2.appendChild(submit)
 
 th1.textContent="Hours"
 th2.textContent="Minutes"
-th3.textContent="Study Time"
+th3.textContent="Study/Code"
 th4.textContent="Play Time"
-th5.textContent="Eating and walking"
+th5.textContent="Eat/Walk/Dishes"
 th6.textContent="Research/Important"
-th7.textContent="Offline or Linux"
+th7.textContent="Offline/Linux"
 
 
 
@@ -77,10 +201,12 @@ function appendTable(){
 
                 tr1.appendChild(col3)
             table.appendChild(tr2)
+
                 tr2.appendChild(td1)
                 tr2.appendChild(th1)
                 tr2.appendChild(th2)
             table.appendChild(tr3)
+
                 tr3.appendChild(th3)
                 tr3.appendChild(td2)
                 tr3.appendChild(td3)
@@ -101,10 +227,10 @@ function appendTable(){
                 tr7.appendChild(td10)
                 tr7.appendChild(td11)
            //console.log(document.querySelector("#container"))
-           let deleteThisFUCKER=document.querySelector("#container")
-            let fuckingSHIT= deleteThisFUCKER!=null
-            if(fuckingSHIT){
-                deleteThisFUCKER.removeChild(deleteThisFUCKER.firstChild)
+           let anyChartSpammer=document.querySelector("#container")
+            let anychartNull= anyChartSpammer!=null
+            if(anychartNull){
+                anyChartSpammer.removeChild(anyChartSpammer.firstChild)
 
             }
 
@@ -130,23 +256,39 @@ const underline=document.createElement("u")
 
 
 const wrapper=document.createElement("div")
-const study=document.createElement("div")
-const play=document.createElement("div")
-const research=document.createElement("div")
-const eatnwalk=document.createElement("div")
-const offline=document.createElement("div")
+const attr4=document.createAttribute("class");
+attr4.value="wrapper";
+wrapper.setAttributeNode(attr4);
+const pomodoroNum=document.createElement("pre")
 
+form2.addEventListener("submit", function(e) {
+    
+    e.preventDefault();
+    var data = new FormData(form2);
+    ratio=[]
+    for (const [name,value] of data) {
+        ratio.push(value) 
+        console.log(`name,value: ${name,value}`)
+    }
+    console.log(ratio)
+    display()
 
-
+})
 
 form.addEventListener("submit", function(e) {
-    
     e.preventDefault();
     var data = new FormData(form);
     for (const [name,value] of data) {
         pomodoro = value
-        //console.log(name,value)
+        console.log(`name,value: ${name,value}`)
     }
+
+    display()
+
+})
+
+function display(){
+    console.log("hello??")
     minutes = pomodoro * 30;
     hours = minutes / 60;
     appendTable();
@@ -154,13 +296,7 @@ form.addEventListener("submit", function(e) {
     body.appendChild(discord)
     discord.appendChild(underline)
     body.appendChild(wrapper)
-    wrapper.appendChild(study)
-    wrapper.appendChild(play)
-    wrapper.appendChild(research)
-    wrapper.appendChild(eatnwalk)
-    wrapper.appendChild(offline)
-
-
+    wrapper.appendChild(pomodoroNum)
 
     reset()
 
@@ -169,12 +305,12 @@ form.addEventListener("submit", function(e) {
         totalHrs += hours
         totalMins += minutes
         if (totalHrs>13){
-            arr.push(13-(totalHrs-hours))
-            arr2.push(780-(totalMins-minutes))
+            arr.push((13-(totalHrs-hours))*ratio[i])
+            arr2.push(780-(totalMins-minutes)*ratio[i])
             break;
         }else{
-            arr.push(hours)
-            arr2.push(minutes)
+            arr.push(hours*ratio[i])
+            arr2.push(minutes*ratio[i])
 
         }
         console.log(arr)
@@ -182,8 +318,8 @@ form.addEventListener("submit", function(e) {
     }        
 
     if (totalHrs < 13){
-        arr.push(13-totalHrs)
-        arr2.push(780-totalMins)
+        arr.push((13-totalHrs))
+        arr2.push((780-totalMins))
     }else{
         arr.push(0)
         arr2.push(0)
@@ -212,22 +348,28 @@ form.addEventListener("submit", function(e) {
     td11.textContent=`${arr2[3]}`
 
     underline.textContent = "Copy text to discord:"
-    study.textContent=`Study Time: ${arr[0]} hours; ${arr2[0]} minutes`
-    play.textContent=`Play Time: ${arr[1]} hours; ${arr2[1]} minutes`
-    eatnwalk.textContent=`Eating/walk/dishes: 2 hours; 120 minutes`
-    research.textContent=`Research/Important: ${arr[2]} hours; ${arr2[2]} minutes`
-    offline.textContent=`Offline or Linux: ${arr[3]} hours; ${arr2[3]} minutes`
+    pomodoroNum.textContent =      "+-------------------------------------------------------+\n"+
+    `|Pomodoro (30 min): ${pomodoro}` +Array(5).fill('\x09').join('') +"|\n" +
+    `|Study/Code(ratio): ${arr[0]} hours; ${arr2[0]} minutes  `+Array(2).fill('\x09').join('') +"|\n" +    
+    `|Play Time(ratio): ${arr[1]} hours; ${arr2[1]} minutes  `+Array(2).fill('\x09').join('') +"|\n" +    
+    `|Eat/walk/dishes (ratio): 2 hours; 120 minutes`+Array(2).fill('\x09').join('') +"|\n" +    
+    `|Research/Important (ratio): ${arr[2]} hours;  ${arr2[2]} minutes`+Array(1).fill('\x09').join('') +"|\n" +    
+    `|Offline/Linux (ratio): ${arr[3]} hours; ${arr2[3]} minutes`+Array(2).fill('\x09').join('') +"|\n" +
+    "+-------------------------------------------------------+"
+
+
+
 
 
     anychart.onDocumentReady(function() {
 
         // set the data
         let data = [
-            {x: "Study", value: arr[0]},
-            {x: "Play", value: arr[1]},
-            {x: "Eat n walk", value: 1.5},
+            {x: "Study/Code", value: arr[0]},
+            {x: "Play Time", value: arr[1]},
+            {x: "Eat/walk/dishes", value: 2},
             {x: "Research/Important", value: arr[2]},
-            {x: "Offline or Linux", value: arr[3]},
+            {x: "Offline/Linux", value: arr[3]},
         ];
 
         // create the pieChart
@@ -256,5 +398,5 @@ form.addEventListener("submit", function(e) {
     }, {once : true});
     */
     //bug fix potential!!!!I may want to try body[1] to find SVG to delete!!!!
-})
+}
 
