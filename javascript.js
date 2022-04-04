@@ -1,15 +1,8 @@
 let pomodoro=0;
 let minutes=0;
 let hours=0;
-let totalHrs=0;
-let totalMins=0;
 let arr=[]
 let arr2=[]
-
-let studyHrs=0;
-let playHrs=0;
-let researchHrs=0;
-let offlineHrs=0;
 
 ratio=[1,1,1,1]
 
@@ -245,8 +238,7 @@ function appendTable(){
 }
 
 function reset(){
-    totalHrs=0;
-    totalMins=0;
+
     arr=[]
     arr2=[]
 }
@@ -288,7 +280,6 @@ form.addEventListener("submit", function(e) {
 })
 
 function display(){
-    console.log("hello??")
     minutes = pomodoro * 30;
     hours = minutes / 60;
     appendTable();
@@ -301,119 +292,61 @@ function display(){
     reset()
     let totalTemp1=0
     let totalTemp2=0
-    let temp1=0
-    let temp2=0
 
-    for(let i=0;i<4;i++){
-        totalHrs += hours
-        totalMins += minutes
+    for(let i=0;i<4;i++){ // looping through 4 items while item 5 is outside [index 2 will be excluded from the pattern]
+        totalTemp1 += hours
+        totalTemp2 += minutes
+        console.log(`totalTemp1:${totalTemp1}`)
 
-        if(i==2){
-            temp1=2*ratio[i-1]
-            temp2=120*ratio[i-1]
-            totalTemp1+=temp1
-            totalTemp2+=temp2
-            
-            arr.push(temp1)
-            arr2.push(temp2)
 
-        } else if(totalTemp1<15){
-            temp1=(15-(totalHrs-hours))*ratio[i-1]
-            temp2=(900-(totalMins-minutes))*ratio[i-1]
-            totalTemp1+=temp1
-            totalTemp2+=temp2
-
-            arr.push(temp1)
-            arr2.push(temp2)
-        } else {
-            arr.push(0)
-            arr2.push(0)
-        }
-
-/*        if(i==2){//ratio time [Eat/Walk/Dishes]
-            temp1=2*ratio[i-1]
-            temp2=120*ratio[i-1]
-            totalTemp1+=temp1
-            totalTemp2+=temp2
-            
-            arr.push(temp1)
-            arr2.push(temp2)
-
-        } else if (totalHrs>15){
-            if(i>0){ //ratio time [play time] maybe [research/important]
-                temp1=(15-(totalHrs-hours))*ratio[i-1]
-                temp2=(900-(totalMins-minutes))*ratio[i-1]
-                totalTemp1+=temp1
-                totalTemp2+=temp2
-
-                arr.push(temp1)
-                arr2.push(temp2)
-            }else{ //[study/code] only
-                temp1=(15-(totalHrs-hours))
-                temp2=(900-(totalMins-minutes))
-                totalTemp1+=temp1
-                totalTemp2+=temp2
-
-                arr.push(temp1)
-                arr2.push(temp2)
+        if(i==2){//index 2 is it's own contained pattern
+            customhr=2;
+            custommin=120;
+            totalTemp1 -= hours 
+            totalTemp2 -= minutes;
+            totalTemp1 += customhr;
+            totalTemp2 += custommin;
+            if((15-(totalTemp1-customhr))<0){ //check if the calculation goes negative then automatically 0
+                arr.push(0)
+                arr2.push(0)
+            }else if (totalTemp1<15){
+                arr.push(customhr)
+                arr2.push(custommin)
+            }else{
+                console.log(`(15-(${totalTemp1}-${customhr}))=${(15-(totalTemp1-customhr))}`)
+                arr.push(15-(totalTemp1-customhr))
+                arr2.push(900-(totalTemp2-custommin))
             }
-            break;
-        }else{
-            if(i>0){ //ratio time 
-                temp1=(hours*ratio[i-1])
-                temp2=(minutes*ratio[i-1])
-                totalTemp1+=temp1
-                totalTemp2+=temp2
+            console.log(`totalTemp1:${totalTemp1}`)
 
-                arr.push(temp1)
-                arr2.push(temp2)
-            }else{ //study/code only
-                temp1=(hours)
-                temp2=(minutes)
-                totalTemp1+=temp1
-                totalTemp2+=temp2
-
-                arr.push(temp1)
-                arr2.push(temp2)
+        }else if (totalTemp1 < 15){
+            arr.push(hours)
+            arr2.push(minutes)
+        }else{ //totalTemp1 > 15
+            console.log(`(15-(${totalTemp1}-${hours}))=${(15-(totalTemp1-hours))}`)
+            if((15-(totalTemp1-hours))<0){ //check if the calculation goes negative then automatically 0
+                arr.push(0)
+                arr2.push(0)
+            }else{
+                arr.push(15-(totalTemp1-hours))
+                arr2.push(900-(totalTemp2-minutes))
             }
+            
         }
-        //console.log(arr)
-        //console.log(arr2)
-        */
-    } 
-    if (totalTemp1>15){
-        arr.push(0)
-        arr2.push(0)
-    }else{
-        arr.push(15-totalTemp1)
-        arr2.push(900-totalTemp2)
     }
 
-    /*
-    if (totalTemp1<15){
-        temp1=((15-totalHrs))
-        temp2=((900-totalMins))
-        totalTemp1+=temp1
-        totalTemp2+=temp2
-
-        arr.push(temp1)
-        arr2.push(temp2)
-    }else{
-        arr.push(0)
-        arr2.push(0)
-
-    }
-    if (arr[3]==undefined){
-        arr.push(0)
-        arr2.push(0)
-    }
-
-    */
-    console.log(arr)
-
+    //index 5 
     const sum = arr.reduce((partialSum, a) => partialSum + a, 0);
-    console.log(sum);    
+    const sum2= arr2.reduce((partialSum, a) => partialSum + a, 0);
+    if (sum>15){
+        arr.push(0)
+        arr2.push(0)
 
+    }else{
+        arr.push(15-sum)
+        arr2.push(900-sum2)
+
+    }
 
 
     td2.textContent=`${arr[0]}`
@@ -421,7 +354,7 @@ function display(){
     td4.textContent=`${arr[1]}`
     td5.textContent=`${arr2[1]}`
     td6.textContent=`${arr[2]}`
-    td7.textContent=`${arr[2]}`
+    td7.textContent=`${arr2[2]}`
     td8.textContent=`${arr[3]}`
     td9.textContent=`${arr2[3]}`
     td10.textContent=`${arr[4]}`
