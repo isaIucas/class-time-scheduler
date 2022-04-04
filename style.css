@@ -11,6 +11,7 @@ table{
 td, th{
     border: 1px solid rgb(200,200,200);
     padding:20px;
+
 }
 
 th {
@@ -43,7 +44,7 @@ body{
     height: 100%;
     margin: 0;
     padding: 0;
-    max-height:35vh;
+    max-height:40vh;
 
   }
 
@@ -60,8 +61,12 @@ body{
   gap: 38px;
   padding-right:10px;
 }
-/*
-.ratio{
-  margin-top:50px;
+
+.buttonsubmit{
+  margin-top:60px
 }
-*/
+
+
+.totalCSS{
+  border-top: 1.5px solid black ;
+}

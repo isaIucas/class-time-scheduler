@@ -4,7 +4,7 @@ let hours=0;
 let arr=[]
 let arr2=[]
 
-ratio=[1,1,1,1]
+ratio=[1,1,1]
 
 const form= document.querySelector("form")
 const body= document.querySelector("body")
@@ -53,6 +53,14 @@ const button=document.createElement("input")
             const th7=document.createElement("th")
             const td10=document.createElement("td")
             const td11=document.createElement("td")
+        const tr8=document.createElement("tr")
+
+            const td12=document.createElement("td")
+            const td13=document.createElement("td")
+            const td14=document.createElement("td")
+
+
+
 const chartContainer=document.createElement("div")
 const chart=document.createElement("div")
 const attr3=document.createAttribute("id");
@@ -72,13 +80,15 @@ input1type1.value="number";
 const input1type2=document.createAttribute("name");
 input1type2.value="number";
 const input1type3=document.createAttribute("min");
-input1type3.value="1";
+input1type3.value=".1";
 const input1type4=document.createAttribute("max");
 input1type4.value="20";
 const input1type5=document.createAttribute("value");
 input1type5.value="1";
 const input1type6=document.createAttribute("class");
 input1type6.value="ratio";
+const input1type7=document.createAttribute("step");
+input1type7.value=".1";
 
 const input2=document.createElement("input")
 const input2type1=document.createAttribute("type");
@@ -86,13 +96,15 @@ input2type1.value="number";
 const input2type2=document.createAttribute("name");
 input2type2.value="number";
 const input2type3=document.createAttribute("min");
-input2type3.value="1";
+input2type3.value=".1";
 const input2type4=document.createAttribute("max");
 input2type4.value="20";
 const input2type5=document.createAttribute("value");
 input2type5.value="1";
 const input2type6=document.createAttribute("class");
 input2type6.value="ratio";
+const input2type7=document.createAttribute("step");
+input2type7.value=".1";
 
 const input3=document.createElement("input")
 const input3type1=document.createAttribute("type");
@@ -100,14 +112,16 @@ input3type1.value="number";
 const input3type2=document.createAttribute("name");
 input3type2.value="number";
 const input3type3=document.createAttribute("min");
-input3type3.value="1";
+input3type3.value=".1";
 const input3type4=document.createAttribute("max");
 input3type4.value="20";
 const input3type5=document.createAttribute("value");
 input3type5.value="1";
 const input3type6=document.createAttribute("class");
 input3type6.value="ratio";
-
+const input3type7=document.createAttribute("step");
+input3type7.value=".1";
+/*
 const input4=document.createElement("input")
 const input4type1=document.createAttribute("type");
 input4type1.value="number";
@@ -119,10 +133,18 @@ const input4type4=document.createAttribute("max");
 input4type4.value="20";
 const input4type5=document.createAttribute("value");
 input4type5.value="1";
-const submit=document.createElement("button")
-submit.textContent="Submit"
 const input4type6=document.createAttribute("class");
 input4type6.value="ratio";
+*/
+const submit=document.createElement("button")
+submit.textContent="Submit"
+const class1=document.createAttribute("class");
+class1.value="buttonsubmit";
+submit.setAttributeNode(class1);
+
+const tr8class=document.createAttribute("class");
+tr8class.value="totalCSS";
+tr8.setAttributeNode(tr8class);
 
 
 input1.setAttributeNode(input1type1);
@@ -131,6 +153,7 @@ input1.setAttributeNode(input1type3);
 input1.setAttributeNode(input1type4);
 input1.setAttributeNode(input1type5);
 input1.setAttributeNode(input1type6);
+input1.setAttributeNode(input1type7);
 
 
 input2.setAttributeNode(input2type1);
@@ -139,6 +162,7 @@ input2.setAttributeNode(input2type3);
 input2.setAttributeNode(input2type4);
 input2.setAttributeNode(input2type5);
 input2.setAttributeNode(input2type6);
+input2.setAttributeNode(input2type7);
 
 
 
@@ -148,9 +172,10 @@ input3.setAttributeNode(input3type3);
 input3.setAttributeNode(input3type4);
 input3.setAttributeNode(input3type5);
 input3.setAttributeNode(input3type6);
+input3.setAttributeNode(input3type7);
 
 
-
+/*
 input4.setAttributeNode(input4type1);
 input4.setAttributeNode(input4type2);
 input4.setAttributeNode(input4type3);
@@ -171,7 +196,7 @@ container.appendChild(form2)
 form2.appendChild(input1)
 form2.appendChild(input2)
 form2.appendChild(input3)
-form2.appendChild(input4)
+//form2.appendChild(input4)
 form2.appendChild(submit)
 
 th1.textContent="Hours"
@@ -219,6 +244,10 @@ function appendTable(){
                 tr7.appendChild(th7)
                 tr7.appendChild(td10)
                 tr7.appendChild(td11)
+            table.appendChild(tr8)
+                tr8.appendChild(td12)
+                tr8.appendChild(td13)
+                tr8.appendChild(td14)
            //console.log(document.querySelector("#container"))
            let anyChartSpammer=document.querySelector("#container")
             let anychartNull= anyChartSpammer!=null
@@ -251,7 +280,7 @@ const wrapper=document.createElement("div")
 const attr4=document.createAttribute("class");
 attr4.value="wrapper";
 wrapper.setAttributeNode(attr4);
-const pomodoroNum=document.createElement("pre")
+const discordTextOuput=document.createElement("pre")
 
 form2.addEventListener("submit", function(e) {
     
@@ -287,7 +316,7 @@ function display(){
     body.appendChild(discord)
     discord.appendChild(underline)
     body.appendChild(wrapper)
-    wrapper.appendChild(pomodoroNum)
+    wrapper.appendChild(discordTextOuput)
 
     reset()
     let totalTemp1=0
@@ -297,7 +326,6 @@ function display(){
         totalTemp1 += hours
         totalTemp2 += minutes
         console.log(`totalTemp1:${totalTemp1}`)
-
 
         if(i==2){//index 2 is it's own contained pattern
             customhr=2;
@@ -335,7 +363,17 @@ function display(){
         }
     }
 
-    //index 5 
+    for(let i=1;i<4;i++){
+        console.log("adding ratios to arr")
+        console.log(arr)
+        console.log(ratio)
+
+        arr[i]=+(arr[i]*ratio[i-1]).toFixed(2)
+        arr2[i]=+(arr2[i]*ratio[i-1]).toFixed(2)
+
+    }
+
+    //item 5
     const sum = arr.reduce((partialSum, a) => partialSum + a, 0);
     const sum2= arr2.reduce((partialSum, a) => partialSum + a, 0);
     if (sum>15){
@@ -343,10 +381,17 @@ function display(){
         arr2.push(0)
 
     }else{
-        arr.push(15-sum)
-        arr2.push(900-sum2)
-
+        arr.push(+(15-sum).toFixed(2))
+        arr2.push(+(900-sum2).toFixed(2))
     }
+
+    const totalSum = arr.reduce((partialSum, a) => partialSum + a, 0);
+    const totalSum2 = arr2.reduce((partialSum, a) => partialSum + a, 0);
+
+    arr.push(+(totalSum).toFixed(2))
+    arr2.push(+(totalSum2).toFixed(2))
+
+
 
 
     td2.textContent=`${arr[0]}`
@@ -359,15 +404,17 @@ function display(){
     td9.textContent=`${arr2[3]}`
     td10.textContent=`${arr[4]}`
     td11.textContent=`${arr2[4]}`
+    td13.textContent=`${arr[5]}`
+    td14.textContent=`${arr2[5]}`
 
     underline.textContent = "Copy text to discord:"
-    pomodoroNum.textContent =      "+-------------------------------------------------------+\n"+
-    `Pomodoro (30 min): ${pomodoro}` +Array(5).fill('\x09').join('') +"\n" +
-    `Study/Code(ratio): ${arr[0]} hours; ${arr2[0]} minutes  `+Array(2).fill('\x09').join('') +"\n" +    
-    `Play Time(ratio): ${arr[1]} hours; ${arr2[1]} minutes  `+Array(2).fill('\x09').join('') +"\n" +    
-    `Eat/walk/dishes (ratio): 2 hours; 120 minutes`+Array(2).fill('\x09').join('') +"\n" +    
-    `Research/Important (ratio): ${arr[2]} hours;  ${arr2[2]} minutes`+Array(1).fill('\x09').join('') +"\n" +    
-    `Offline/Linux (ratio): ${arr[3]} hours; ${arr2[3]} minutes`+Array(2).fill('\x09').join('') +"\n" +
+    discordTextOuput.textContent =      "+-------------------------------------------------------+\n"+
+    `Pomodoro (30 min): ${pomodoro}` +"\n" +
+    `Study/Code: ${arr[0]} hours; ${arr2[0]} minutes  ` +"\n" +    
+    `Play Time (x${ratio[0]}): ${arr[1]} hours; ${arr2[1]} minutes  `+"\n" +    
+    `Eat/walk/dishes (x${ratio[1]}): ${arr[2]} hours; ${arr2[2]} minutes`+"\n" +    
+    `Research/Important (x${ratio[2]}): ${arr[3]} hours;  ${arr2[3]} minutes`+"\n" +    
+    `Offline/Linux: ${arr[4]} hours; ${arr2[4]} minutes`+"\n" +
     "+-------------------------------------------------------+"
 
 
@@ -380,16 +427,16 @@ function display(){
         let data = [
             {x: "Study/Code", value: arr[0]},
             {x: "Play Time", value: arr[1]},
-            {x: "Eat/walk/dishes", value: 2},
-            {x: "Research/Important", value: arr[2]},
-            {x: "Offline/Linux", value: arr[3]},
+            {x: "Eat/walk/dishes", value: arr[2]},
+            {x: "Research/Important", value: arr[3]},
+            {x: "Offline/Linux", value: arr[4]},
         ];
 
         // create the pieChart
         let pieChart = anychart.pie();
       
         // set the pieChart title
-        pieChart.title("15 Hr Time Schedule");
+        pieChart.title("Time Schedule");
       
         // add the data
         pieChart.data(data);
