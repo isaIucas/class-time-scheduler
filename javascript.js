@@ -388,6 +388,7 @@ form.addEventListener("submit", function(e) {
 })
 
 function display(){
+    //#tmr
     RemainingMiliseconds=(Math.abs(date - date2))
     RemainingMinutes=RemainingMiliseconds/60000
     RemainingHours=RemainingMinutes/60
