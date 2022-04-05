@@ -70,3 +70,17 @@ body{
 .totalCSS{
   border-top: 1.5px solid black ;
 }
+
+input{
+  width: 50px;
+}
+
+#appt{
+  width: 100px;
+}
+
+.fixed{
+  position:fixed;
+  left:20vh;
+  top:40vh;
+}

@@ -1,8 +1,12 @@
-let pomodoro=0;
+let pomodoro=[];
 let minutes=0;
 let hours=0;
 let arr=[]
 let arr2=[]
+
+let date= ""; 
+let date2=""
+
 
 ratio=[1,1,1]
 
@@ -74,6 +78,16 @@ form2.setAttributeNode(form2attr1)
 const form2attr2=document.createAttribute("class")
 form2attr2.value="form2"
 form2.setAttributeNode(form2attr2)
+
+const form3=document.createElement("form")
+const form3attr1=document.createAttribute("action")
+form3attr1.value=""
+form3.setAttributeNode(form3attr1)
+const form3attr2=document.createAttribute("class")
+form3attr2.value="form3"
+form3.setAttributeNode(form3attr2)
+
+
 const input1=document.createElement("input")
 const input1type1=document.createAttribute("type");
 input1type1.value="number";
@@ -89,6 +103,14 @@ const input1type6=document.createAttribute("class");
 input1type6.value="ratio";
 const input1type7=document.createAttribute("step");
 input1type7.value=".1";
+const input1type8=document.createAttribute("id");
+input1type8.value="des";
+
+const ratioLabel1=document.createElement("label")
+const ratioLabeltype1=document.createAttribute("for");
+ratioLabeltype1.value="des";
+ratioLabel1.textContent=" x";
+
 
 const input2=document.createElement("input")
 const input2type1=document.createAttribute("type");
@@ -105,6 +127,13 @@ const input2type6=document.createAttribute("class");
 input2type6.value="ratio";
 const input2type7=document.createAttribute("step");
 input2type7.value=".1";
+const input2type8=document.createAttribute("id");
+input1type8.value="des";
+
+const ratioLabel2=document.createElement("label")
+const ratioLabeltype2=document.createAttribute("for");
+ratioLabeltype2.value="des";
+ratioLabel2.textContent=" x";
 
 const input3=document.createElement("input")
 const input3type1=document.createAttribute("type");
@@ -121,6 +150,13 @@ const input3type6=document.createAttribute("class");
 input3type6.value="ratio";
 const input3type7=document.createAttribute("step");
 input3type7.value=".1";
+const input3type8=document.createAttribute("id");
+input1type8.value="des";
+
+const ratioLabel3=document.createElement("label")
+const ratioLabeltype3=document.createAttribute("for");
+ratioLabeltype3.value="des";
+ratioLabel3.textContent=" x";
 /*
 const input4=document.createElement("input")
 const input4type1=document.createAttribute("type");
@@ -154,6 +190,8 @@ input1.setAttributeNode(input1type4);
 input1.setAttributeNode(input1type5);
 input1.setAttributeNode(input1type6);
 input1.setAttributeNode(input1type7);
+input1.setAttributeNode(input1type8);
+ratioLabel1.setAttributeNode(ratioLabeltype1)
 
 
 input2.setAttributeNode(input2type1);
@@ -163,6 +201,7 @@ input2.setAttributeNode(input2type4);
 input2.setAttributeNode(input2type5);
 input2.setAttributeNode(input2type6);
 input2.setAttributeNode(input2type7);
+ratioLabel2.setAttributeNode(ratioLabeltype2)
 
 
 
@@ -173,6 +212,7 @@ input3.setAttributeNode(input3type4);
 input3.setAttributeNode(input3type5);
 input3.setAttributeNode(input3type6);
 input3.setAttributeNode(input3type7);
+ratioLabel3.setAttributeNode(ratioLabeltype3)
 
 
 /*
@@ -192,10 +232,21 @@ container2.setAttributeNode(container2Class)
 container.appendChild(container2)
 container2.appendChild(form2)
 */
+const div1=document.createElement("div")
+const div2=document.createElement("div")
+const div3=document.createElement("div")
+
+
 container.appendChild(form2)
-form2.appendChild(input1)
-form2.appendChild(input2)
-form2.appendChild(input3)
+form2.appendChild(div1)
+div1.appendChild(input1)
+div1.appendChild(ratioLabel1)
+form2.appendChild(div2)
+div2.appendChild(input2)
+div2.appendChild(ratioLabel2)
+form2.appendChild(div3)
+div3.appendChild(input3)
+div3.appendChild(ratioLabel3)
 //form2.appendChild(input4)
 form2.appendChild(submit)
 
@@ -296,20 +347,52 @@ form2.addEventListener("submit", function(e) {
 
 })
 
+form3.addEventListener("submit", function(e) {
+    
+    e.preventDefault();
+    var data = new FormData(form2);
+    ratio=[]
+    for (const [name,value] of data) {
+        ratio.push(value) 
+        console.log(`name,value: ${name,value}`)
+    }
+    console.log(ratio)
+    display()
+
+})
+
 form.addEventListener("submit", function(e) {
     e.preventDefault();
     var data = new FormData(form);
+    pomodoro=[]
     for (const [name,value] of data) {
-        pomodoro = value
+        pomodoro.push(value)
         console.log(`name,value: ${name,value}`)
+        console.log(pomodoro)
+
     }
+    //#tmr
+    date = new Date(); // for now
+    console.log(date)
+    date2=new Date(`${date.getFullYear()}-${date.getDate()}-${date.getMonth()+2} ` + pomodoro[2]);
+    console.log(date2)
+
+
+
+
+
+
 
     display()
 
 })
 
 function display(){
-    minutes = pomodoro * 30;
+    RemainingMiliseconds=(Math.abs(date - date2))
+    RemainingMinutes=RemainingMiliseconds/60000
+    RemainingHours=RemainingMinutes/60
+
+    minutes = pomodoro[1] * pomodoro[0];
     hours = minutes / 60;
     appendTable();
 
@@ -391,6 +474,10 @@ function display(){
     arr.push(+(totalSum).toFixed(2))
     arr2.push(+(totalSum2).toFixed(2))
 
+    //just in case
+    arr[0]=+(arr[0]).toFixed(2)
+
+
 
 
 
@@ -409,7 +496,7 @@ function display(){
 
     underline.textContent = "Copy text to discord:"
     discordTextOuput.textContent =      "+-------------------------------------------------------+\n"+
-    `Pomodoro (30 min): ${pomodoro}` +"\n" +
+    `Pomodoro (${pomodoro[0]} min): ${pomodoro[1]}` +"\n" +
     `Study/Code: ${arr[0]} hours; ${arr2[0]} minutes  ` +"\n" +    
     `Play Time (x${ratio[0]}): ${arr[1]} hours; ${arr2[1]} minutes  `+"\n" +    
     `Eat/walk/dishes (x${ratio[1]}): ${arr[2]} hours; ${arr2[2]} minutes`+"\n" +    
@@ -460,3 +547,10 @@ function display(){
     //bug fix potential!!!!I may want to try body[1] to find SVG to delete!!!!
 }
 
+//instruction
+const div4=document.createElement("div")
+div4.textContent="hello world!"
+const divclass=document.createAttribute("class")
+divclass.value="fixed"
+div4.setAttributeNode(divclass)
+body.appendChild(div4)
