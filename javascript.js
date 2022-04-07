@@ -290,7 +290,6 @@ function appendTable(){
             table.appendChild(tr1)
                 tr1.appendChild(col1)
                 tr1.appendChild(col2)
-
                 tr1.appendChild(col3)
             table.appendChild(tr2)
 
@@ -472,8 +471,8 @@ function display(){
         custommin=120;
         totalTemp1 += customhr;
         totalTemp2 += custommin;
-        mandatoryHrArr.push(customhr)
-        mandatoryMinArr.push(custommin)
+        mandatoryHrArr.push(customhr*mandatoryRatio[i]).toFixed(2)
+        mandatoryMinArr.push(custommin*mandatoryRatio[i]).toFixed(2)
     }
 
     //Study/code is part of customHrArr but is a special case since the number relates to research and play time
@@ -504,20 +503,25 @@ function display(){
             console.log(`totalTemp1:${totalTemp1}`)
 
         }else*/ 
-        if (totalTemp1 < RemainingHours){
+        if (i==0){
             customHrArr.push(hours)
             customMinArr.push(minutes)
+        }
+        else if (totalTemp1 < RemainingHours){
+            customHrArr.push(+(hours*customRatio[i-1]).toFixed(2))
+            customMinArr.push(+(minutes*customRatio[i-1]).toFixed(2))
         }else{ //totalTemp1 > RemainingHours
             console.log(`(RemainingHours-(${totalTemp1}-${hours}))=${(RemainingHours-(totalTemp1-hours))}`)
             if((RemainingHours-(totalTemp1-hours))<0){ //check if the calculation goes negative then automatically 0
                 customHrArr.push(0)
                 customMinArr.push(0)
             }else{
-                customHrArr.push(RemainingHours-(totalTemp1-hours))
-                customMinArr.push(RemainingMinutes-(totalTemp2-minutes))
+                customHrArr.push(+((RemainingHours-(totalTemp1-hours))*customRatio[i-1].toFixed(2)))
+                customMinArr.push(+((RemainingMinutes-(totalTemp2-minutes))*customRatio[i-1].toFixed(2)))
             }
         }
     }
+    /*
     for(let i=0;i<1;i++){ //mandatoryRatio for mandatory hours
         mandatoryHrArr[i]=+(mandatoryHrArr[i]*mandatoryRatio[i]).toFixed(2)
         mandatoryMinArr[i]=+(mandatoryMinArr[i]*mandatoryRatio[i]).toFixed(2)
@@ -526,6 +530,7 @@ function display(){
         customHrArr[i]=+(customHrArr[i]*customRatio[i-1]).toFixed(2)
         customMinArr[i]=+(customMinArr[i]*customRatio[i-1]).toFixed(2)
     }
+    */
 
     //custom pos[,,,3]
     const sum = mandatoryHrArr.reduce((partialSum, a) => partialSum + a, 0) +customHrArr.reduce((partialSum, a) => partialSum + a, 0);
@@ -597,8 +602,8 @@ function display(){
     `Pomodoro (${pomodoro[0]} min): ${pomodoro[1]}` +"\n" +
     `Study/Code: ${customHrArr[0]} hours; ${customMinArr[0]} minutes  ` +"\n" +    
     `Play Time (x${customRatio[0]}): ${customHrArr[1]} hours; ${customMinArr[1]} minutes  `+"\n" +    
-    `Eat/walk/dishes (x${customRatio[1]}): ${mandatoryHrArr[0]} hours; ${mandatoryMinArr[0]} minutes`+"\n" +    
-    `Research/Important (x${customRatio[2]}): ${customHrArr[2]} hours;  ${customMinArr[2]} minutes`+"\n" +    
+    `Eat/walk/dishes (x${mandatoryRatio[0]}): ${mandatoryHrArr[0]} hours; ${mandatoryMinArr[0]} minutes`+"\n" +    
+    `Research/Important (x${customRatio[1]}): ${customHrArr[2]} hours;  ${customMinArr[2]} minutes`+"\n" +    
     `Offline/Linux: ${customHrArr[3]} hours; ${customMinArr[3]} minutes`+"\n" +
     "+-------------------------------------------------------+"
 
