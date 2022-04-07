@@ -21,49 +21,67 @@ attr1.value="container";
 container.setAttributeNode(attr1);
 
 const button=document.createElement("input")
-
+    
     const table=document.createElement("table")
     const caption1=document.createElement("caption")
         const tr1=document.createElement("tr")
             const col1=document.createElement("col")
             const col2=document.createElement("col")
             const col3=document.createElement("col")
+            const col4=document.createElement("col")
+            const col5=document.createElement("col")
+            
         const tr2=document.createElement("tr")
             const td1=document.createElement("td")
             const th1=document.createElement("th")
             const th2=document.createElement("th")
+            const th3=document.createElement("th")
+            const th4=document.createElement("th")
         const tr3=document.createElement("tr")
 
-            const th3=document.createElement("th")
+            const th5=document.createElement("th")
             const td2=document.createElement("td")
             const td3=document.createElement("td")
-        const tr4=document.createElement("tr")
-
-            const th4=document.createElement("th")
             const td4=document.createElement("td")
             const td5=document.createElement("td")
-        const tr5=document.createElement("tr")
-
-            const th5=document.createElement("th")
-            const td6=document.createElement("td")
-            const td7=document.createElement("td")
-        const tr6=document.createElement("tr")
+        const tr4=document.createElement("tr")
 
             const th6=document.createElement("th")
+            const td6=document.createElement("td")
+            const td7=document.createElement("td")
             const td8=document.createElement("td")
             const td9=document.createElement("td")
-        const tr7=document.createElement("tr")
+        const tr5=document.createElement("tr")
 
             const th7=document.createElement("th")
             const td10=document.createElement("td")
             const td11=document.createElement("td")
-        const tr8=document.createElement("tr")
-
             const td12=document.createElement("td")
             const td13=document.createElement("td")
+        const tr6=document.createElement("tr")
+
+            const th8=document.createElement("th")
             const td14=document.createElement("td")
+            const td15=document.createElement("td")
+            const td16=document.createElement("td")
+            const td17=document.createElement("td")
+        const tr7=document.createElement("tr")
+
+            const th9=document.createElement("th")
+            const td18=document.createElement("td")
+            const td19=document.createElement("td")
+            const td20=document.createElement("td")
+            const td21=document.createElement("td")
+        const tr8=document.createElement("tr")
+
+            const td22=document.createElement("td")
+            const td23=document.createElement("td")
+            const td24=document.createElement("td")
+            const td25=document.createElement("td")
+            const td26=document.createElement("td")
 
         // second table for date schedule
+        /*
         const table2=document.createElement("table")
         const caption2=document.createElement("caption")
 
@@ -106,7 +124,7 @@ const button=document.createElement("input")
             const td2_13=document.createElement("td")
             const td2_14=document.createElement("td")
 
-
+*/
 
 const chartContainer=document.createElement("div")
 const chart=document.createElement("div")
@@ -209,10 +227,11 @@ submit.setAttributeNode(class1);
 const tr8class=document.createAttribute("class");
 tr8class.value="totalCSS";
 tr8.setAttributeNode(tr8class);
-
+/* second table
 const tr9class=document.createAttribute("class");
 tr9class.value="totalCSS";
 tr2_8.setAttributeNode(tr9class);
+*/
 
 
 input1.setAttributeNode(input1type1);
@@ -266,19 +285,15 @@ form2.appendChild(submit)
 
 th1.textContent="Hours"
 th2.textContent="Minutes"
-th3.textContent="!Study/Code!"
-th4.textContent="Play Time"
-th5.textContent="*Eat/Walk/Dishes*"
-th6.textContent="Research/Important"
-th7.textContent="Offline/Linux"
+th3.textContent="From"
+th4.textContent="To"
+th5.textContent="!Study/Code!"
+th6.textContent="Play Time"
+th7.textContent="*Eat/Walk/Dishes*"
+th8.textContent="Research/Important"
+th9.textContent="Offline/Linux"
 
-th2_1.textContent="From"
-th2_2.textContent="To"
-th2_3.textContent="!Study/Code!"
-th2_4.textContent="Play Time"
-th2_5.textContent="*Eat/Walk/Dishes*"
-th2_6.textContent="Research/Important"
-th2_7.textContent="Offline/Linux"
+
 
 
 
@@ -291,36 +306,59 @@ function appendTable(){
                 tr1.appendChild(col1)
                 tr1.appendChild(col2)
                 tr1.appendChild(col3)
+                tr1.appendChild(col4)
+                tr1.appendChild(col5)
             table.appendChild(tr2)
-
                 tr2.appendChild(td1)
                 tr2.appendChild(th1)
                 tr2.appendChild(th2)
-            table.appendChild(tr3)
 
-                tr3.appendChild(th3)
+                tr2.appendChild(th3)
+                tr2.appendChild(th4)
+
+            table.appendChild(tr3)
+                tr3.appendChild(th5)
                 tr3.appendChild(td2)
                 tr3.appendChild(td3)
+
+                tr3.appendChild(td4)
+                tr3.appendChild(td5)
             table.appendChild(tr4)
-                tr4.appendChild(th4)
-                tr4.appendChild(td4)
-                tr4.appendChild(td5)
+                tr4.appendChild(th6)
+                tr4.appendChild(td6)
+                tr4.appendChild(td7)
+
+                tr4.appendChild(td8)
+                tr4.appendChild(td9)
+
             table.appendChild(tr5)
-                tr5.appendChild(th5)
-                tr5.appendChild(td6)
-                tr5.appendChild(td7)
+                tr5.appendChild(th7)
+                tr5.appendChild(td10)
+                tr5.appendChild(td11)
+
+                tr5.appendChild(td12)
+                tr5.appendChild(td13)
             table.appendChild(tr6)
-                tr6.appendChild(th6)
-                tr6.appendChild(td8)
-                tr6.appendChild(td9)
+                tr6.appendChild(th8)
+                tr6.appendChild(td14)
+                tr6.appendChild(td15)
+
+                tr6.appendChild(td16)
+                tr6.appendChild(td17)
+
             table.appendChild(tr7)
-                tr7.appendChild(th7)
-                tr7.appendChild(td10)
-                tr7.appendChild(td11)
+                tr7.appendChild(th9)
+                tr7.appendChild(td18)
+                tr7.appendChild(td19)
+
+                tr7.appendChild(td20)
+                tr7.appendChild(td21)
             table.appendChild(tr8)
-                tr8.appendChild(td12)
-                tr8.appendChild(td13)
-                tr8.appendChild(td14)
+                tr8.appendChild(td22)
+                tr8.appendChild(td23)
+                tr8.appendChild(td24)
+                tr8.appendChild(td25)
+                tr8.appendChild(td26)
 
             
     let anyChartSpammer=document.querySelector("#container")
@@ -331,7 +369,7 @@ function appendTable(){
     }
     container.appendChild(chartContainer)
         chartContainer.appendChild(chart)
-
+/* second table
     container.appendChild(table2)
         table2.appendChild(tr2_1)
         table2.appendChild(caption2)
@@ -368,7 +406,7 @@ function appendTable(){
             tr2_8.appendChild(td2_12)
             tr2_8.appendChild(td2_13)
             tr2_8.appendChild(td2_14)
-
+*/
 }
 
 function reset(){
@@ -556,43 +594,43 @@ function display(){
     caption1.textContent="Rough estimate!"
     td2.textContent=`${customHrArr[0]}`
     td3.textContent=`${customMinArr[0]}`
-    td4.textContent=`${customHrArr[1]}`
-    td5.textContent=`${customMinArr[1]}`
-    td6.textContent=`${mandatoryHrArr[0]}`
-    td7.textContent=`${mandatoryMinArr[0]}`
-    td8.textContent=`${customHrArr[2]}`
-    td9.textContent=`${customMinArr[2]}`
-    td10.textContent=`${customHrArr[3]}`
-    td11.textContent=`${customMinArr[3]}`
-    td13.textContent=`${customHrArr[4]}`
-    td14.textContent=`${customMinArr[4]}`
+    td6.textContent=`${customHrArr[1]}`
+    td7.textContent=`${customMinArr[1]}`
+    td10.textContent=`${mandatoryHrArr[0]}`
+    td11.textContent=`${mandatoryMinArr[0]}`
+    td14.textContent=`${customHrArr[2]}`
+    td15.textContent=`${customMinArr[2]}`
+    td18.textContent=`${customHrArr[3]}`
+    td19.textContent=`${customMinArr[3]}`
+    td23.textContent=`${customHrArr[4]}`
+    td24.textContent=`${customMinArr[4]}`
 
     //dateNow Time
-    caption2.textContent="Today's schedule!"
+    //caption2.textContent="Today's schedule!"
     let tempDate= new Date();
     tempDate.setMinutes(tempDate.getMinutes()-customMinArr[0])
     let originDate = formatAMPM(tempDate);
-    td2_2.textContent=`${formatAMPM(tempDate)}`
-    td2_3.textContent=`${formatAMPM(dateNow)}`
+    td4.textContent=`${formatAMPM(tempDate)}`
+    td5.textContent=`${formatAMPM(dateNow)}`
     tempDate.setMinutes(tempDate.getMinutes()+customMinArr[0])
     dateNow.setMinutes(dateNow.getMinutes()+customMinArr[1])
-    td2_4.textContent=`${formatAMPM(tempDate)}`
-    td2_5.textContent=`${formatAMPM(dateNow)}`
+    td8.textContent=`${formatAMPM(tempDate)}`
+    td9.textContent=`${formatAMPM(dateNow)}`
     tempDate.setMinutes(tempDate.getMinutes()+customMinArr[1])
     dateNow.setMinutes(dateNow.getMinutes()+mandatoryMinArr[0])
-    td2_6.textContent=`${formatAMPM(tempDate)}`
-    td2_7.textContent=`${formatAMPM(dateNow)}`
+    td12.textContent=`${formatAMPM(tempDate)}`
+    td13.textContent=`${formatAMPM(dateNow)}`
     tempDate.setMinutes(tempDate.getMinutes()+mandatoryMinArr[0])
     dateNow.setMinutes(dateNow.getMinutes()+customMinArr[2])
-    td2_8.textContent=`${formatAMPM(tempDate)}`
-    td2_9.textContent=`${formatAMPM(dateNow)}`
+    td16.textContent=`${formatAMPM(tempDate)}`
+    td17.textContent=`${formatAMPM(dateNow)}`
     tempDate.setMinutes(tempDate.getMinutes()+customMinArr[2])
     dateNow.setMinutes(dateNow.getMinutes()+customMinArr[3])
-    td2_10.textContent=`${formatAMPM(tempDate)}`
-    td2_11.textContent=`${formatAMPM(dateNow)}`
+    td20.textContent=`${formatAMPM(tempDate)}`
+    td21.textContent=`${formatAMPM(dateNow)}`
 
-    td2_13.textContent=`${originDate}`
-    td2_14.textContent=`${formatAMPM(dateNow)}`
+    td25.textContent=`${originDate}`
+    td26.textContent=`${formatAMPM(dateNow)}`
 
 
 
