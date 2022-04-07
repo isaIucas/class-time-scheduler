@@ -1,14 +1,16 @@
 let pomodoro=[];
 let minutes=0;
 let hours=0;
-let arr=[]
-let arr2=[]
+let mandatoryHrArr=[]
+let mandatoryMinArr=[]
+let customHrArr=[]
+let customMinArr=[]
 
 let date= ""; 
 let date2=""
 
-
-ratio=[1,1,1]
+mandatoryRatio=[1]
+customRatio=[1,1,1]
 
 const form= document.querySelector("form")
 const body= document.querySelector("body")
@@ -92,7 +94,7 @@ const input1=document.createElement("input")
 const input1type1=document.createAttribute("type");
 input1type1.value="number";
 const input1type2=document.createAttribute("name");
-input1type2.value="number";
+input1type2.value="customRatio";
 const input1type3=document.createAttribute("min");
 input1type3.value=".1";
 const input1type4=document.createAttribute("max");
@@ -100,7 +102,7 @@ input1type4.value="20";
 const input1type5=document.createAttribute("value");
 input1type5.value="1";
 const input1type6=document.createAttribute("class");
-input1type6.value="ratio";
+input1type6.value="customRatio";
 const input1type7=document.createAttribute("step");
 input1type7.value=".1";
 const input1type8=document.createAttribute("id");
@@ -111,12 +113,12 @@ const ratioLabeltype1=document.createAttribute("for");
 ratioLabeltype1.value="des";
 ratioLabel1.textContent=" x";
 
-
+//check later
 const input2=document.createElement("input")
 const input2type1=document.createAttribute("type");
 input2type1.value="number";
 const input2type2=document.createAttribute("name");
-input2type2.value="number";
+input2type2.value="mandatoryRatio";
 const input2type3=document.createAttribute("min");
 input2type3.value=".1";
 const input2type4=document.createAttribute("max");
@@ -124,7 +126,7 @@ input2type4.value="20";
 const input2type5=document.createAttribute("value");
 input2type5.value="1";
 const input2type6=document.createAttribute("class");
-input2type6.value="ratio";
+input2type6.value="mandatoryRatio";
 const input2type7=document.createAttribute("step");
 input2type7.value=".1";
 const input2type8=document.createAttribute("id");
@@ -139,7 +141,7 @@ const input3=document.createElement("input")
 const input3type1=document.createAttribute("type");
 input3type1.value="number";
 const input3type2=document.createAttribute("name");
-input3type2.value="number";
+input3type2.value="customRatio";
 const input3type3=document.createAttribute("min");
 input3type3.value=".1";
 const input3type4=document.createAttribute("max");
@@ -147,7 +149,7 @@ input3type4.value="20";
 const input3type5=document.createAttribute("value");
 input3type5.value="1";
 const input3type6=document.createAttribute("class");
-input3type6.value="ratio";
+input3type6.value="customRatio";
 const input3type7=document.createAttribute("step");
 input3type7.value=".1";
 const input3type8=document.createAttribute("id");
@@ -157,21 +159,7 @@ const ratioLabel3=document.createElement("label")
 const ratioLabeltype3=document.createAttribute("for");
 ratioLabeltype3.value="des";
 ratioLabel3.textContent=" x";
-/*
-const input4=document.createElement("input")
-const input4type1=document.createAttribute("type");
-input4type1.value="number";
-const input4type2=document.createAttribute("name");
-input4type2.value="number";
-const input4type3=document.createAttribute("min");
-input4type3.value="1";
-const input4type4=document.createAttribute("max");
-input4type4.value="20";
-const input4type5=document.createAttribute("value");
-input4type5.value="1";
-const input4type6=document.createAttribute("class");
-input4type6.value="ratio";
-*/
+
 const submit=document.createElement("button")
 submit.textContent="Submit"
 const class1=document.createAttribute("class");
@@ -215,23 +203,6 @@ input3.setAttributeNode(input3type7);
 ratioLabel3.setAttributeNode(ratioLabeltype3)
 
 
-/*
-input4.setAttributeNode(input4type1);
-input4.setAttributeNode(input4type2);
-input4.setAttributeNode(input4type3);
-input4.setAttributeNode(input4type4);
-input4.setAttributeNode(input4type5);
-input4.setAttributeNode(input4type6);
-
-
-/*
-const container2=document.createElement("div");
-const container2Class=document.createAttribute("class");
-container2Class.value="container2"
-container2.setAttributeNode(container2Class)
-container.appendChild(container2)
-container2.appendChild(form2)
-*/
 const div1=document.createElement("div")
 const div2=document.createElement("div")
 const div3=document.createElement("div")
@@ -247,14 +218,13 @@ div2.appendChild(ratioLabel2)
 form2.appendChild(div3)
 div3.appendChild(input3)
 div3.appendChild(ratioLabel3)
-//form2.appendChild(input4)
 form2.appendChild(submit)
 
 th1.textContent="Hours"
 th2.textContent="Minutes"
-th3.textContent="Study/Code"
+th3.textContent="*Study/Code*"
 th4.textContent="Play Time"
-th5.textContent="Eat/Walk/Dishes"
+th5.textContent="*Eat/Walk/Dishes*"
 th6.textContent="Research/Important"
 th7.textContent="Offline/Linux"
 
@@ -299,7 +269,6 @@ function appendTable(){
                 tr8.appendChild(td12)
                 tr8.appendChild(td13)
                 tr8.appendChild(td14)
-           //console.log(document.querySelector("#container"))
            let anyChartSpammer=document.querySelector("#container")
             let anychartNull= anyChartSpammer!=null
             if(anychartNull){
@@ -309,18 +278,17 @@ function appendTable(){
 
 
             
-            //console.log(document.querySelector("#container"))
 
         container.appendChild(chartContainer)
             chartContainer.appendChild(chart)
-            //console.log(document.querySelector("#container"))
 
 }
 
 function reset(){
-
-    arr=[]
-    arr2=[]
+    mandatoryHrArr=[]
+    mandatoryMinArr=[]
+    customHrArr=[]
+    customMinArr=[]
 }
 
 const discord=document.createElement("div")
@@ -333,59 +301,59 @@ attr4.value="wrapper";
 wrapper.setAttributeNode(attr4);
 const discordTextOuput=document.createElement("pre")
 
-form2.addEventListener("submit", function(e) {
-    
-    e.preventDefault();
-    var data = new FormData(form2);
-    ratio=[]
-    for (const [name,value] of data) {
-        ratio.push(value) 
-        console.log(`name,value: ${name,value}`)
-    }
-    console.log(ratio)
-    display()
-
-})
-
-form3.addEventListener("submit", function(e) {
-    
-    e.preventDefault();
-    var data = new FormData(form2);
-    ratio=[]
-    for (const [name,value] of data) {
-        ratio.push(value) 
-        console.log(`name,value: ${name,value}`)
-    }
-    console.log(ratio)
-    display()
-
-})
-
 form.addEventListener("submit", function(e) {
     e.preventDefault();
     var data = new FormData(form);
     pomodoro=[]
     for (const [name,value] of data) {
         pomodoro.push(value)
-        console.log(`name,value: ${name,value}`)
-        console.log(pomodoro)
+        //console.log(`name,value: ${name,value}`)
 
     }
     //#tmr
-    date = new Date(); // for now
-    console.log(date)
+    date = new Date(); 
     date2=new Date(`${date.getFullYear()}-${date.getDate()}-${date.getMonth()+2} ` + pomodoro[2]);
-    console.log(date2)
-
-
-
-
-
-
 
     display()
 
 })
+
+form2.addEventListener("submit", function(e) {
+    
+    e.preventDefault();
+    var data = new FormData(form2);
+    customRatio=[]
+    mandatoryRatio=[]
+    for (const [name,value] of data) {
+        if (name==="customRatio"){
+            customRatio.push(value) 
+        }else{
+            mandatoryRatio.push(value)
+        }
+        console.log(`name: ${name}`)
+        console.log(`value: ${value}`)
+    }
+    console.log(`!customRatio: ${customRatio}`)
+    console.log(`!mandatoryRatio: ${mandatoryRatio}`)
+    display()
+
+})
+
+form3.addEventListener("submit", function(e) {
+    e.preventDefault();
+    var data = new FormData(form2);
+    customRatio=[]
+    mandatoryRatio=[]
+    for (const [name,value] of data) {
+        customRatio.push(value) 
+        console.log(`name,value: ${name,value}`)
+        console.log("nani3")
+        }
+    display()
+
+})
+
+
 
 function display(){
     //#tmr
@@ -405,12 +373,23 @@ function display(){
     reset()
     let totalTemp1=0
     let totalTemp2=0
+    //[eat/walk/dishes] pos[0]
+    for(let i=0;i<1;i++){
+        customhr=2;
+        custommin=120;
+        totalTemp1 += customhr;
+        totalTemp2 += custommin;
+        mandatoryHrArr.push(customhr)
+        mandatoryMinArr.push(custommin)
+    }
 
-    for(let i=0;i<4;i++){ // looping through 4 items while item 5 is outside [index 2 will be excluded from the pattern]
+    //Study/code is part of customHrArr but is a special case since the number relates to research and play time
+    //[study, play, research] custom pos[0,1,2, ]
+    for(let i=0;i<3;i++){ 
         totalTemp1 += hours
         totalTemp2 += minutes
-        console.log(`totalTemp1:${totalTemp1}`)
-
+        //console.log(`totalTemp1:${totalTemp1}`)
+        /* stored this code just in case of future custom feature that requires this pattern
         if(i==2){//index 2 is it's own contained pattern
             customhr=2;
             custommin=120;
@@ -419,90 +398,92 @@ function display(){
             totalTemp1 += customhr;
             totalTemp2 += custommin;
             if((15-(totalTemp1-customhr))<0){ //check if the calculation goes negative then automatically 0
-                arr.push(0)
-                arr2.push(0)
+                customHrArr.push(0)
+                customMinArr.push(0)
             }else if (totalTemp1<15){
-                arr.push(customhr)
-                arr2.push(custommin)
+                customHrArr.push(customhr)
+                customMinArr.push(custommin)
             }else{
                 console.log(`(15-(${totalTemp1}-${customhr}))=${(15-(totalTemp1-customhr))}`)
-                arr.push(15-(totalTemp1-customhr))
-                arr2.push(900-(totalTemp2-custommin))
+                customHrArr.push(15-(totalTemp1-customhr))
+                customMinArr.push(900-(totalTemp2-custommin))
             }
             console.log(`totalTemp1:${totalTemp1}`)
 
-        }else if (totalTemp1 < 15){
-            arr.push(hours)
-            arr2.push(minutes)
+        }else*/ 
+        if (totalTemp1 < 15){
+            customHrArr.push(hours)
+            customMinArr.push(minutes)
         }else{ //totalTemp1 > 15
             console.log(`(15-(${totalTemp1}-${hours}))=${(15-(totalTemp1-hours))}`)
             if((15-(totalTemp1-hours))<0){ //check if the calculation goes negative then automatically 0
-                arr.push(0)
-                arr2.push(0)
+                customHrArr.push(0)
+                customMinArr.push(0)
             }else{
-                arr.push(15-(totalTemp1-hours))
-                arr2.push(900-(totalTemp2-minutes))
+                customHrArr.push(15-(totalTemp1-hours))
+                customMinArr.push(900-(totalTemp2-minutes))
             }
-            
         }
     }
-
-    for(let i=1;i<4;i++){
-        console.log("adding ratios to arr")
-        console.log(arr)
-        console.log(ratio)
-
-        arr[i]=+(arr[i]*ratio[i-1]).toFixed(2)
-        arr2[i]=+(arr2[i]*ratio[i-1]).toFixed(2)
-
+    for(let i=0;i<1;i++){ //mandatoryRatio for mandatory hours
+        mandatoryHrArr[i]=+(mandatoryHrArr[i]*mandatoryRatio[i]).toFixed(2)
+        mandatoryMinArr[i]=+(mandatoryMinArr[i]*mandatoryRatio[i]).toFixed(2)
+    }
+    for(let i=1;i<3;i++){ //customRatio for custom hours [i-1] is to exclude study/code
+        customHrArr[i]=+(customHrArr[i]*customRatio[i-1]).toFixed(2)
+        customMinArr[i]=+(customMinArr[i]*customRatio[i-1]).toFixed(2)
     }
 
-    //item 5
-    const sum = arr.reduce((partialSum, a) => partialSum + a, 0);
-    const sum2= arr2.reduce((partialSum, a) => partialSum + a, 0);
+    //custom pos[,,,3]
+    console.log(`mandatoryHrArr: ${mandatoryHrArr}`)
+    console.log(`customHrArr: ${customHrArr}`)
+    const sum = mandatoryHrArr.reduce((partialSum, a) => partialSum + a, 0) +customHrArr.reduce((partialSum, a) => partialSum + a, 0);
+    const sum2= mandatoryMinArr.reduce((partialSum, a) => partialSum + a, 0) + customMinArr.reduce((partialSum, a) => partialSum + a, 0);
     if (sum>15){
-        arr.push(0)
-        arr2.push(0)
+        customHrArr.push(0)
+        customMinArr.push(0)
 
     }else{
-        arr.push(+(15-sum).toFixed(2))
-        arr2.push(+(900-sum2).toFixed(2))
+        customHrArr.push(+(15-sum).toFixed(2))
+        customMinArr.push(+(900-sum2).toFixed(2))
     }
+    console.log(`mandatoryHrArr: ${mandatoryHrArr}`)
+    console.log(`customHrArr: ${customHrArr}`)
+    //custom pos[,,,,4]
+    const totalSum = mandatoryHrArr.reduce((partialSum, a) => partialSum + a, 0) + customHrArr.reduce((partialSum, a) => partialSum + a, 0);
+    const totalSum2 = mandatoryMinArr.reduce((partialSum, a) => partialSum + a, 0) + customMinArr.reduce((partialSum, a) => partialSum + a, 0);
 
-    const totalSum = arr.reduce((partialSum, a) => partialSum + a, 0);
-    const totalSum2 = arr2.reduce((partialSum, a) => partialSum + a, 0);
-
-    arr.push(+(totalSum).toFixed(2))
-    arr2.push(+(totalSum2).toFixed(2))
+    customHrArr.push(+(totalSum).toFixed(2))
+    customMinArr.push(+(totalSum2).toFixed(2))
 
     //just in case
-    arr[0]=+(arr[0]).toFixed(2)
+    customHrArr[0]=+(customHrArr[0]).toFixed(2)
 
 
 
 
 
-    td2.textContent=`${arr[0]}`
-    td3.textContent=`${arr2[0]}`
-    td4.textContent=`${arr[1]}`
-    td5.textContent=`${arr2[1]}`
-    td6.textContent=`${arr[2]}`
-    td7.textContent=`${arr2[2]}`
-    td8.textContent=`${arr[3]}`
-    td9.textContent=`${arr2[3]}`
-    td10.textContent=`${arr[4]}`
-    td11.textContent=`${arr2[4]}`
-    td13.textContent=`${arr[5]}`
-    td14.textContent=`${arr2[5]}`
+    td2.textContent=`${customHrArr[0]}`
+    td3.textContent=`${customMinArr[0]}`
+    td4.textContent=`${customHrArr[1]}`
+    td5.textContent=`${customMinArr[1]}`
+    td6.textContent=`${mandatoryHrArr[0]}`
+    td7.textContent=`${mandatoryMinArr[0]}`
+    td8.textContent=`${customHrArr[2]}`
+    td9.textContent=`${customMinArr[2]}`
+    td10.textContent=`${customHrArr[3]}`
+    td11.textContent=`${customMinArr[3]}`
+    td13.textContent=`${customHrArr[4]}`
+    td14.textContent=`${customMinArr[4]}`
 
     underline.textContent = "Copy text to discord:"
-    discordTextOuput.textContent =      "+-------------------------------------------------------+\n"+
+    discordTextOuput.textContent =      "+-----------------{what I did today}--------------------+\n"+
     `Pomodoro (${pomodoro[0]} min): ${pomodoro[1]}` +"\n" +
-    `Study/Code: ${arr[0]} hours; ${arr2[0]} minutes  ` +"\n" +    
-    `Play Time (x${ratio[0]}): ${arr[1]} hours; ${arr2[1]} minutes  `+"\n" +    
-    `Eat/walk/dishes (x${ratio[1]}): ${arr[2]} hours; ${arr2[2]} minutes`+"\n" +    
-    `Research/Important (x${ratio[2]}): ${arr[3]} hours;  ${arr2[3]} minutes`+"\n" +    
-    `Offline/Linux: ${arr[4]} hours; ${arr2[4]} minutes`+"\n" +
+    `Study/Code: ${customHrArr[0]} hours; ${customMinArr[0]} minutes  ` +"\n" +    
+    `Play Time (x${customRatio[0]}): ${customHrArr[1]} hours; ${customMinArr[1]} minutes  `+"\n" +    
+    `Eat/walk/dishes (x${customRatio[1]}): ${mandatoryHrArr[0]} hours; ${mandatoryMinArr[0]} minutes`+"\n" +    
+    `Research/Important (x${customRatio[2]}): ${customHrArr[2]} hours;  ${customMinArr[2]} minutes`+"\n" +    
+    `Offline/Linux: ${customHrArr[3]} hours; ${customMinArr[3]} minutes`+"\n" +
     "+-------------------------------------------------------+"
 
 
@@ -513,11 +494,11 @@ function display(){
 
         // set the data
         let data = [
-            {x: "Study/Code", value: arr[0]},
-            {x: "Play Time", value: arr[1]},
-            {x: "Eat/walk/dishes", value: arr[2]},
-            {x: "Research/Important", value: arr[3]},
-            {x: "Offline/Linux", value: arr[4]},
+            {x: "Study/Code", value: customHrArr[0]},
+            {x: "Play Time", value: customHrArr[1]},
+            {x: "Eat/walk/dishes", value: mandatoryHrArr[0]},
+            {x: "Research/Important", value: customHrArr[2]},
+            {x: "Offline/Linux", value: customHrArr[3]},
         ];
 
         // create the pieChart
@@ -550,7 +531,7 @@ function display(){
 
 //instruction
 const div4=document.createElement("div")
-div4.textContent="hello world!"
+div4.textContent="Study/Code and Eat/walk/dishes is mandatory!"
 const divclass=document.createAttribute("class")
 divclass.value="fixed"
 div4.setAttributeNode(divclass)
