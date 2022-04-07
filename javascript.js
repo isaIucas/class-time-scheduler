@@ -283,10 +283,10 @@ div3.appendChild(input3)
 div3.appendChild(ratioLabel3)
 form2.appendChild(submit)
 
-th1.textContent="Hours"
-th2.textContent="Minutes"
-th3.textContent="From"
-th4.textContent="To"
+th1.textContent="From"
+th2.textContent="To"
+th3.textContent="Hours"
+th4.textContent="Minutes"
 th5.textContent="!Study/Code!"
 th6.textContent="Play Time"
 th7.textContent="*Eat/Walk/Dishes*"
@@ -592,45 +592,45 @@ function display(){
     customHrArr[0]=+(customHrArr[0]).toFixed(2)
 
     caption1.textContent="Rough estimate!"
-    td2.textContent=`${customHrArr[0]}`
-    td3.textContent=`${customMinArr[0]}`
-    td6.textContent=`${customHrArr[1]}`
-    td7.textContent=`${customMinArr[1]}`
-    td10.textContent=`${mandatoryHrArr[0]}`
-    td11.textContent=`${mandatoryMinArr[0]}`
-    td14.textContent=`${customHrArr[2]}`
-    td15.textContent=`${customMinArr[2]}`
-    td18.textContent=`${customHrArr[3]}`
-    td19.textContent=`${customMinArr[3]}`
-    td23.textContent=`${customHrArr[4]}`
-    td24.textContent=`${customMinArr[4]}`
+    td4.textContent=`${customHrArr[0]}`
+    td5.textContent=`${customMinArr[0]}`
+    td8.textContent=`${customHrArr[1]}`
+    td9.textContent=`${customMinArr[1]}`
+    td12.textContent=`${mandatoryHrArr[0]}`
+    td13.textContent=`${mandatoryMinArr[0]}`
+    td16.textContent=`${customHrArr[2]}`
+    td17.textContent=`${customMinArr[2]}`
+    td20.textContent=`${customHrArr[3]}`
+    td21.textContent=`${customMinArr[3]}`
+    td25.textContent=`${customHrArr[4]}`
+    td26.textContent=`${customMinArr[4]}`
 
     //dateNow Time
     //caption2.textContent="Today's schedule!"
     let tempDate= new Date();
     tempDate.setMinutes(tempDate.getMinutes()-customMinArr[0])
     let originDate = formatAMPM(tempDate);
-    td4.textContent=`${formatAMPM(tempDate)}`
-    td5.textContent=`${formatAMPM(dateNow)}`
+    td2.textContent=`${formatAMPM(tempDate)}`
+    td3.textContent=`${formatAMPM(dateNow)}`
     tempDate.setMinutes(tempDate.getMinutes()+customMinArr[0])
     dateNow.setMinutes(dateNow.getMinutes()+customMinArr[1])
-    td8.textContent=`${formatAMPM(tempDate)}`
-    td9.textContent=`${formatAMPM(dateNow)}`
+    td6.textContent=`${formatAMPM(tempDate)}`
+    td7.textContent=`${formatAMPM(dateNow)}`
     tempDate.setMinutes(tempDate.getMinutes()+customMinArr[1])
     dateNow.setMinutes(dateNow.getMinutes()+mandatoryMinArr[0])
-    td12.textContent=`${formatAMPM(tempDate)}`
-    td13.textContent=`${formatAMPM(dateNow)}`
+    td10.textContent=`${formatAMPM(tempDate)}`
+    td11.textContent=`${formatAMPM(dateNow)}`
     tempDate.setMinutes(tempDate.getMinutes()+mandatoryMinArr[0])
     dateNow.setMinutes(dateNow.getMinutes()+customMinArr[2])
-    td16.textContent=`${formatAMPM(tempDate)}`
-    td17.textContent=`${formatAMPM(dateNow)}`
+    td14.textContent=`${formatAMPM(tempDate)}`
+    td15.textContent=`${formatAMPM(dateNow)}`
     tempDate.setMinutes(tempDate.getMinutes()+customMinArr[2])
     dateNow.setMinutes(dateNow.getMinutes()+customMinArr[3])
-    td20.textContent=`${formatAMPM(tempDate)}`
-    td21.textContent=`${formatAMPM(dateNow)}`
+    td18.textContent=`${formatAMPM(tempDate)}`
+    td19.textContent=`${formatAMPM(dateNow)}`
 
-    td25.textContent=`${originDate}`
-    td26.textContent=`${formatAMPM(dateNow)}`
+    td23.textContent=`${originDate}`
+    td24.textContent=`${formatAMPM(dateNow)}`
 
 
 
