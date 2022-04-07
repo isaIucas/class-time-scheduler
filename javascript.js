@@ -427,16 +427,22 @@ form.addEventListener("submit", function(e) {
     pomodoro=[]
     for (const [name,value] of data) {
         pomodoro.push(value)
-        //console.log(`name,value: ${name,value}`)
+        console.log(`name,value: ${name,value}`)
 
     }
+
     display()
 
 })
 
 function display(){
     dateNow = new Date(); 
-    dateTmr=new Date(`${dateNow.getFullYear()}-${dateNow.getMonth()+1}-${dateNow.getDate()+1} ` + pomodoro[2]);
+    check=pomodoro[2].split(":")
+    if (check[0]>=12){
+    dateTmr=new Date(`${dateNow.getFullYear()}-${dateNow.getMonth()+1}-${dateNow.getDate()} ` + pomodoro[2]);
+    }else{
+        dateTmr=new Date(`${dateNow.getFullYear()}-${dateNow.getMonth()+1}-${dateNow.getDate()+1} ` + pomodoro[2]);
+    }
 
     minutes = pomodoro[1] * pomodoro[0];
     hours = minutes / 60;
@@ -447,12 +453,6 @@ function display(){
     RemainingMiliseconds=(Math.abs(totalDate - dateTmr))
     RemainingMinutes=RemainingMiliseconds/60000
     RemainingHours=RemainingMinutes/60
-
-  
-
-
-    console.log(`RemainingMinutes: ${RemainingMinutes}`)
-    console.log(`RemainingHours: ${RemainingHours}`)
 
 
   
