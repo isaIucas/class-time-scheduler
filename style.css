@@ -58,7 +58,7 @@ body{
 .form2{
   display:flex;
   flex-direction:column;
-  margin-top:138px;
+  margin-top:158px;
   gap: 38px;
   padding-right:10px;
 }
@@ -82,6 +82,6 @@ input{
 
 .fixed{
   position:fixed;
-  left:20vh;
+  left:10vh;
   top:40vh;
 }

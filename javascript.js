@@ -6,8 +6,8 @@ let mandatoryMinArr=[]
 let customHrArr=[]
 let customMinArr=[]
 
-let date= ""; 
-let date2=""
+let dateNow= ""; 
+let dateTmr=""
 
 mandatoryRatio=[1]
 customRatio=[1,1,1]
@@ -23,12 +23,10 @@ container.setAttributeNode(attr1);
 const button=document.createElement("input")
 
     const table=document.createElement("table")
+    const caption1=document.createElement("caption")
         const tr1=document.createElement("tr")
             const col1=document.createElement("col")
             const col2=document.createElement("col")
-            const attr2=document.createAttribute("style");
-            attr2.value="border: 1px solid red";
-            col2.setAttributeNode(attr2);
             const col3=document.createElement("col")
         const tr2=document.createElement("tr")
             const td1=document.createElement("td")
@@ -64,6 +62,49 @@ const button=document.createElement("input")
             const td12=document.createElement("td")
             const td13=document.createElement("td")
             const td14=document.createElement("td")
+
+        // second table for date schedule
+        const table2=document.createElement("table")
+        const caption2=document.createElement("caption")
+
+        const tr2_1=document.createElement("tr")
+            const col2_1=document.createElement("col")
+            const col2_2=document.createElement("col")
+            const col2_3=document.createElement("col")
+        const tr2_2=document.createElement("tr")
+            const td2_1=document.createElement("td")
+            const th2_1=document.createElement("th")
+            const th2_2=document.createElement("th")
+        const tr2_3=document.createElement("tr")
+
+            const th2_3=document.createElement("th")
+            const td2_2=document.createElement("td")
+            const td2_3=document.createElement("td")
+        const tr2_4=document.createElement("tr")
+
+            const th2_4=document.createElement("th")
+            const td2_4=document.createElement("td")
+            const td2_5=document.createElement("td")
+        const tr2_5=document.createElement("tr")
+
+            const th2_5=document.createElement("th")
+            const td2_6=document.createElement("td")
+            const td2_7=document.createElement("td")
+        const tr2_6=document.createElement("tr")
+
+            const th2_6=document.createElement("th")
+            const td2_8=document.createElement("td")
+            const td2_9=document.createElement("td")
+        const tr2_7=document.createElement("tr")
+
+            const th2_7=document.createElement("th")
+            const td2_10=document.createElement("td")
+            const td2_11=document.createElement("td")
+        const tr2_8=document.createElement("tr")
+
+            const td2_12=document.createElement("td")
+            const td2_13=document.createElement("td")
+            const td2_14=document.createElement("td")
 
 
 
@@ -113,7 +154,6 @@ const ratioLabeltype1=document.createAttribute("for");
 ratioLabeltype1.value="des";
 ratioLabel1.textContent=" x";
 
-//check later
 const input2=document.createElement("input")
 const input2type1=document.createAttribute("type");
 input2type1.value="number";
@@ -170,6 +210,10 @@ const tr8class=document.createAttribute("class");
 tr8class.value="totalCSS";
 tr8.setAttributeNode(tr8class);
 
+const tr9class=document.createAttribute("class");
+tr9class.value="totalCSS";
+tr2_8.setAttributeNode(tr9class);
+
 
 input1.setAttributeNode(input1type1);
 input1.setAttributeNode(input1type2);
@@ -222,11 +266,19 @@ form2.appendChild(submit)
 
 th1.textContent="Hours"
 th2.textContent="Minutes"
-th3.textContent="*Study/Code*"
+th3.textContent="!Study/Code!"
 th4.textContent="Play Time"
 th5.textContent="*Eat/Walk/Dishes*"
 th6.textContent="Research/Important"
 th7.textContent="Offline/Linux"
+
+th2_1.textContent="From"
+th2_2.textContent="To"
+th2_3.textContent="!Study/Code!"
+th2_4.textContent="Play Time"
+th2_5.textContent="*Eat/Walk/Dishes*"
+th2_6.textContent="Research/Important"
+th2_7.textContent="Offline/Linux"
 
 
 
@@ -234,6 +286,7 @@ function appendTable(){
 
     body.appendChild(container)
         container.appendChild(table)
+        table.appendChild(caption1)
             table.appendChild(tr1)
                 tr1.appendChild(col1)
                 tr1.appendChild(col2)
@@ -269,18 +322,53 @@ function appendTable(){
                 tr8.appendChild(td12)
                 tr8.appendChild(td13)
                 tr8.appendChild(td14)
-           let anyChartSpammer=document.querySelector("#container")
-            let anychartNull= anyChartSpammer!=null
-            if(anychartNull){
-                anyChartSpammer.removeChild(anyChartSpammer.firstChild)
-
-            }
-
 
             
+    let anyChartSpammer=document.querySelector("#container")
+    let anychartNull= anyChartSpammer!=null
+    if(anychartNull){
+        anyChartSpammer.removeChild(anyChartSpammer.firstChild)
 
-        container.appendChild(chartContainer)
-            chartContainer.appendChild(chart)
+    }
+    container.appendChild(chartContainer)
+        chartContainer.appendChild(chart)
+
+    container.appendChild(table2)
+        table2.appendChild(tr2_1)
+        table2.appendChild(caption2)
+            tr2_1.appendChild(col2_1)
+            tr2_1.appendChild(col2_2)
+            tr2_1.appendChild(col2_3)
+        table2.appendChild(tr2_2)
+
+            tr2_2.appendChild(td2_1)
+            tr2_2.appendChild(th2_1)
+            tr2_2.appendChild(th2_2)
+        table2.appendChild(tr2_3)
+
+            tr2_3.appendChild(th2_3)
+            tr2_3.appendChild(td2_2)
+            tr2_3.appendChild(td2_3)
+        table2.appendChild(tr2_4)
+            tr2_4.appendChild(th2_4)
+            tr2_4.appendChild(td2_4)
+            tr2_4.appendChild(td2_5)
+        table2.appendChild(tr2_5)
+            tr2_5.appendChild(th2_5)
+            tr2_5.appendChild(td2_6)
+            tr2_5.appendChild(td2_7)
+        table2.appendChild(tr2_6)
+            tr2_6.appendChild(th2_6)
+            tr2_6.appendChild(td2_8)
+            tr2_6.appendChild(td2_9)
+        table2.appendChild(tr2_7)
+            tr2_7.appendChild(th2_7)
+            tr2_7.appendChild(td2_10)
+            tr2_7.appendChild(td2_11)
+        table2.appendChild(tr2_8)
+            tr2_8.appendChild(td2_12)
+            tr2_8.appendChild(td2_13)
+            tr2_8.appendChild(td2_14)
 
 }
 
@@ -301,22 +389,7 @@ attr4.value="wrapper";
 wrapper.setAttributeNode(attr4);
 const discordTextOuput=document.createElement("pre")
 
-form.addEventListener("submit", function(e) {
-    e.preventDefault();
-    var data = new FormData(form);
-    pomodoro=[]
-    for (const [name,value] of data) {
-        pomodoro.push(value)
-        //console.log(`name,value: ${name,value}`)
 
-    }
-    //#tmr
-    date = new Date(); 
-    date2=new Date(`${date.getFullYear()}-${date.getDate()}-${date.getMonth()+2} ` + pomodoro[2]);
-
-    display()
-
-})
 
 form2.addEventListener("submit", function(e) {
     
@@ -330,11 +403,7 @@ form2.addEventListener("submit", function(e) {
         }else{
             mandatoryRatio.push(value)
         }
-        console.log(`name: ${name}`)
-        console.log(`value: ${value}`)
     }
-    console.log(`!customRatio: ${customRatio}`)
-    console.log(`!mandatoryRatio: ${mandatoryRatio}`)
     display()
 
 })
@@ -347,22 +416,46 @@ form3.addEventListener("submit", function(e) {
     for (const [name,value] of data) {
         customRatio.push(value) 
         console.log(`name,value: ${name,value}`)
-        console.log("nani3")
         }
     display()
 
 })
 
+form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    var data = new FormData(form);
+    pomodoro=[]
+    for (const [name,value] of data) {
+        pomodoro.push(value)
+        //console.log(`name,value: ${name,value}`)
 
+    }
+    display()
+
+})
 
 function display(){
-    //#tmr
-    RemainingMiliseconds=(Math.abs(date - date2))
-    RemainingMinutes=RemainingMiliseconds/60000
-    RemainingHours=RemainingMinutes/60
+    dateNow = new Date(); 
+    dateTmr=new Date(`${dateNow.getFullYear()}-${dateNow.getMonth()+1}-${dateNow.getDate()+1} ` + pomodoro[2]);
 
     minutes = pomodoro[1] * pomodoro[0];
     hours = minutes / 60;
+
+    //#tmr
+    let totalDate= new Date();
+    totalDate.setMinutes(totalDate.getMinutes()-minutes)
+    RemainingMiliseconds=(Math.abs(totalDate - dateTmr))
+    RemainingMinutes=RemainingMiliseconds/60000
+    RemainingHours=RemainingMinutes/60
+
+  
+
+
+    console.log(`RemainingMinutes: ${RemainingMinutes}`)
+    console.log(`RemainingHours: ${RemainingHours}`)
+
+
+  
     appendTable();
 
     body.appendChild(discord)
@@ -397,31 +490,31 @@ function display(){
             totalTemp2 -= minutes;
             totalTemp1 += customhr;
             totalTemp2 += custommin;
-            if((15-(totalTemp1-customhr))<0){ //check if the calculation goes negative then automatically 0
+            if((RemainingHours-(totalTemp1-customhr))<0){ //check if the calculation goes negative then automatically 0
                 customHrArr.push(0)
                 customMinArr.push(0)
-            }else if (totalTemp1<15){
+            }else if (totalTemp1<RemainingHours){
                 customHrArr.push(customhr)
                 customMinArr.push(custommin)
             }else{
-                console.log(`(15-(${totalTemp1}-${customhr}))=${(15-(totalTemp1-customhr))}`)
-                customHrArr.push(15-(totalTemp1-customhr))
-                customMinArr.push(900-(totalTemp2-custommin))
+                console.log(`(RemainingHours-(${totalTemp1}-${customhr}))=${(RemainingHours-(totalTemp1-customhr))}`)
+                customHrArr.push(RemainingHours-(totalTemp1-customhr))
+                customMinArr.push(RemainingMinutes-(totalTemp2-custommin))
             }
             console.log(`totalTemp1:${totalTemp1}`)
 
         }else*/ 
-        if (totalTemp1 < 15){
+        if (totalTemp1 < RemainingHours){
             customHrArr.push(hours)
             customMinArr.push(minutes)
-        }else{ //totalTemp1 > 15
-            console.log(`(15-(${totalTemp1}-${hours}))=${(15-(totalTemp1-hours))}`)
-            if((15-(totalTemp1-hours))<0){ //check if the calculation goes negative then automatically 0
+        }else{ //totalTemp1 > RemainingHours
+            console.log(`(RemainingHours-(${totalTemp1}-${hours}))=${(RemainingHours-(totalTemp1-hours))}`)
+            if((RemainingHours-(totalTemp1-hours))<0){ //check if the calculation goes negative then automatically 0
                 customHrArr.push(0)
                 customMinArr.push(0)
             }else{
-                customHrArr.push(15-(totalTemp1-hours))
-                customMinArr.push(900-(totalTemp2-minutes))
+                customHrArr.push(RemainingHours-(totalTemp1-hours))
+                customMinArr.push(RemainingMinutes-(totalTemp2-minutes))
             }
         }
     }
@@ -435,20 +528,16 @@ function display(){
     }
 
     //custom pos[,,,3]
-    console.log(`mandatoryHrArr: ${mandatoryHrArr}`)
-    console.log(`customHrArr: ${customHrArr}`)
     const sum = mandatoryHrArr.reduce((partialSum, a) => partialSum + a, 0) +customHrArr.reduce((partialSum, a) => partialSum + a, 0);
     const sum2= mandatoryMinArr.reduce((partialSum, a) => partialSum + a, 0) + customMinArr.reduce((partialSum, a) => partialSum + a, 0);
-    if (sum>15){
+    if (sum>RemainingHours){
         customHrArr.push(0)
         customMinArr.push(0)
 
     }else{
-        customHrArr.push(+(15-sum).toFixed(2))
-        customMinArr.push(+(900-sum2).toFixed(2))
+        customHrArr.push(+(RemainingHours-sum).toFixed(2))
+        customMinArr.push(+(RemainingMinutes-sum2).toFixed(2))
     }
-    console.log(`mandatoryHrArr: ${mandatoryHrArr}`)
-    console.log(`customHrArr: ${customHrArr}`)
     //custom pos[,,,,4]
     const totalSum = mandatoryHrArr.reduce((partialSum, a) => partialSum + a, 0) + customHrArr.reduce((partialSum, a) => partialSum + a, 0);
     const totalSum2 = mandatoryMinArr.reduce((partialSum, a) => partialSum + a, 0) + customMinArr.reduce((partialSum, a) => partialSum + a, 0);
@@ -459,10 +548,7 @@ function display(){
     //just in case
     customHrArr[0]=+(customHrArr[0]).toFixed(2)
 
-
-
-
-
+    caption1.textContent="Rough estimate!"
     td2.textContent=`${customHrArr[0]}`
     td3.textContent=`${customMinArr[0]}`
     td4.textContent=`${customHrArr[1]}`
@@ -476,6 +562,36 @@ function display(){
     td13.textContent=`${customHrArr[4]}`
     td14.textContent=`${customMinArr[4]}`
 
+    //dateNow Time
+    caption2.textContent="Today's schedule!"
+    let tempDate= new Date();
+    tempDate.setMinutes(tempDate.getMinutes()-customMinArr[0])
+    let originDate = formatAMPM(tempDate);
+    td2_2.textContent=`${formatAMPM(tempDate)}`
+    td2_3.textContent=`${formatAMPM(dateNow)}`
+    tempDate.setMinutes(tempDate.getMinutes()+customMinArr[0])
+    dateNow.setMinutes(dateNow.getMinutes()+customMinArr[1])
+    td2_4.textContent=`${formatAMPM(tempDate)}`
+    td2_5.textContent=`${formatAMPM(dateNow)}`
+    tempDate.setMinutes(tempDate.getMinutes()+customMinArr[1])
+    dateNow.setMinutes(dateNow.getMinutes()+mandatoryMinArr[0])
+    td2_6.textContent=`${formatAMPM(tempDate)}`
+    td2_7.textContent=`${formatAMPM(dateNow)}`
+    tempDate.setMinutes(tempDate.getMinutes()+mandatoryMinArr[0])
+    dateNow.setMinutes(dateNow.getMinutes()+customMinArr[2])
+    td2_8.textContent=`${formatAMPM(tempDate)}`
+    td2_9.textContent=`${formatAMPM(dateNow)}`
+    tempDate.setMinutes(tempDate.getMinutes()+customMinArr[2])
+    dateNow.setMinutes(dateNow.getMinutes()+customMinArr[3])
+    td2_10.textContent=`${formatAMPM(tempDate)}`
+    td2_11.textContent=`${formatAMPM(dateNow)}`
+
+    td2_13.textContent=`${originDate}`
+    td2_14.textContent=`${formatAMPM(dateNow)}`
+
+
+
+
     underline.textContent = "Copy text to discord:"
     discordTextOuput.textContent =      "+-----------------{what I did today}--------------------+\n"+
     `Pomodoro (${pomodoro[0]} min): ${pomodoro[1]}` +"\n" +
@@ -487,7 +603,16 @@ function display(){
     "+-------------------------------------------------------+"
 
 
-
+    function formatAMPM(date) {
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+        var ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12;
+        hours = hours ? hours : 12; // the hour '0' should be '12'
+        minutes = minutes < 10 ? '0'+minutes : minutes;
+        var strTime = hours + ':' + minutes + ' ' + ampm;
+        return strTime;
+      }
 
 
     anychart.onDocumentReady(function() {
@@ -530,8 +655,8 @@ function display(){
 }
 
 //instruction
-const div4=document.createElement("div")
-div4.textContent="Study/Code and Eat/walk/dishes is mandatory!"
+const div4=document.createElement("pre")
+div4.textContent="! is exclusive \n* is mandatory"
 const divclass=document.createAttribute("class")
 divclass.value="fixed"
 div4.setAttributeNode(divclass)
