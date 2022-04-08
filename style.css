@@ -46,13 +46,12 @@ body{
     margin: 0;
     padding: 0;
     max-height:40vh;
-
   }
 
 .wrapper{
   display:flex;
-  flex-direction:column;
-  align-items:center;
+  justify-content:center;
+  gap: 20px;
 }
 
 .form2{
@@ -68,9 +67,6 @@ body{
 }
 
 
-.totalCSS{
-  border-top: 1.5px solid black ;
-}
 
 input{
   width: 50px;
@@ -84,4 +80,19 @@ input{
   position:fixed;
   left:10vh;
   top:40vh;
+}
+.clickDemButtons{
+  margin-top:158px;
+  gap: 38px;
+  padding-left:10px;
+
+  display:flex;
+  flex-direction:column;
+}
+.scoreDisplay{
+  margin-top:104px;
+  gap: 38px;
+  padding-left:10px;
+  display:flex;
+  flex-direction:column;
 }
