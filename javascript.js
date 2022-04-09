@@ -9,8 +9,8 @@ let customMinArr=[]
 let dateNow= ""; 
 let dateTmr=""
 
-mandatoryRatio=[1]
-customRatio=[1,1,1]
+mandatoryRatio=[1,1,1]
+customRatio=[1,1,1,1,1]
 
 const form= document.querySelector("form")
 const body= document.querySelector("body")
@@ -60,9 +60,24 @@ const button=document.createElement("input")
             const td11=document.createElement("td")
         const tr8=document.createElement("tr")
 
+            const th8=document.createElement("td")
             const td12=document.createElement("td")
             const td13=document.createElement("td")
+        const tr9=document.createElement("tr")
+
+            const th9=document.createElement("td")
             const td14=document.createElement("td")
+            const td15=document.createElement("td")
+        const tr10=document.createElement("tr")
+
+            const th10=document.createElement("td")
+            const td16=document.createElement("td")
+            const td17=document.createElement("td")
+        const tr11=document.createElement("tr")
+
+            const td18=document.createElement("td")
+            const td19=document.createElement("td")
+            const td20=document.createElement("td")
 
     // chart in the middle
     const chartContainer=document.createElement("div")
@@ -110,9 +125,24 @@ const button=document.createElement("input")
             const td2_11=document.createElement("td")
         const tr2_8=document.createElement("tr")
 
+            const th2_8=document.createElement("td")
             const td2_12=document.createElement("td")
             const td2_13=document.createElement("td")
+        const tr2_9=document.createElement("tr")
+
+            const th2_9=document.createElement("td")
             const td2_14=document.createElement("td")
+            const td2_15=document.createElement("td")
+        const tr2_10=document.createElement("tr")
+
+            const th2_10=document.createElement("td")
+            const td2_16=document.createElement("td")
+            const td2_17=document.createElement("td")
+        const tr2_11=document.createElement("tr")
+
+            const td2_18=document.createElement("td")
+            const td2_19=document.createElement("td")
+            const td2_20=document.createElement("td")
 
 
     //ratio inputs on the left side table
@@ -230,7 +260,7 @@ const button=document.createElement("input")
     button4.disabled=true;
 
 
-        //display the score afte rbutton is click
+        //display the score after button is click
         const scoreDisplay=document.createElement("div")
         const scoreAttr=document.createAttribute("class")
         scoreAttr.value="scoreDisplay"
@@ -331,22 +361,24 @@ form2.appendChild(submit)
 th1.textContent="Hours"
 th2.textContent="Minutes"
 th3.textContent="!Study/Code!"
-th4.textContent="Play Time"
-th5.textContent="*Eat/Walk/Dishes*"
-th6.textContent="Research/Important"
-th7.textContent="Offline/Linux"
+th4.textContent="*cook & eat*"
+th5.textContent="walk"
+th6.textContent="Play Time"
+th7.textContent="Research/Important"
+th8.textContent="*Dishes*"
+th9.textContent="play"
+th10.textContent="Offline/Chill"
 
 th2_1.textContent="From"
 th2_2.textContent="To"
 th2_3.textContent="!Study/Code!"
-th2_4.textContent="Play Time"
-th2_5.textContent="*Eat/Walk/Dishes*"
-th2_6.textContent="Research/Important"
-th2_7.textContent="Offline/Linux"
-
-
-
-
+th2_4.textContent="*cook & eat*"
+th2_5.textContent="walk"
+th2_6.textContent="Play Time"
+th2_7.textContent="Research/Important"
+th2_8.textContent="*Dishes*"
+th2_9.textContent="play"
+th2_10.textContent="Offline/Chill"
 
 function appendTable(){
 
@@ -363,7 +395,6 @@ function appendTable(){
                 tr2.appendChild(th1)
                 tr2.appendChild(th2)
             table.appendChild(tr3)
-
                 tr3.appendChild(th3)
                 tr3.appendChild(td2)
                 tr3.appendChild(td3)
@@ -384,9 +415,21 @@ function appendTable(){
                 tr7.appendChild(td10)
                 tr7.appendChild(td11)
             table.appendChild(tr8)
+                tr8.appendChild(th8)
                 tr8.appendChild(td12)
                 tr8.appendChild(td13)
-                tr8.appendChild(td14)
+            table.appendChild(tr9)
+                tr9.appendChild(th9)
+                tr9.appendChild(td14)
+                tr9.appendChild(td15)
+            table.appendChild(tr10)
+                tr10.appendChild(th10)
+                tr10.appendChild(td16)
+                tr10.appendChild(td17)
+            table.appendChild(tr11)
+                tr11.appendChild(td18)
+                tr11.appendChild(td19)
+                tr11.appendChild(td20)
 
             
     let anyChartSpammer=document.querySelector("#container")
@@ -404,11 +447,9 @@ function appendTable(){
             tr2_1.appendChild(col2_2)
             tr2_1.appendChild(col2_3)
         table2.appendChild(tr2_2)
-
             tr2_2.appendChild(th2_1)
             tr2_2.appendChild(th2_2)
         table2.appendChild(tr2_3)
-
             tr2_3.appendChild(td2_2)
             tr2_3.appendChild(td2_3)
         table2.appendChild(tr2_4)
@@ -424,8 +465,17 @@ function appendTable(){
             tr2_7.appendChild(td2_10)
             tr2_7.appendChild(td2_11)
         table2.appendChild(tr2_8)
+            tr2_8.appendChild(td2_12)
             tr2_8.appendChild(td2_13)
-            tr2_8.appendChild(td2_14)
+        table2.appendChild(tr2_9)
+            tr2_9.appendChild(td2_14)
+            tr2_9.appendChild(td2_15)
+        table2.appendChild(tr2_10)
+            tr2_10.appendChild(td2_16)
+            tr2_10.appendChild(td2_17)
+        table2.appendChild(tr2_11)
+            tr2_11.appendChild(td2_18)
+            tr2_11.appendChild(td2_19)
 
     container.appendChild(clickButtons)
         clickButtons.appendChild(button1)
@@ -689,85 +739,63 @@ function display(){
 
 
     reset()
-    let totalTemp1=0
-    let totalTemp2=0
-    //[eat/walk/dishes] pos[0]
-    for(let i=0;i<1;i++){
-        customhr=2;
-        custommin=120;
-        totalTemp1 += customhr;
-        totalTemp2 += custommin;
-        mandatoryHrArr.push(+(customhr*mandatoryRatio[i]).toFixed(1))
-        mandatoryMinArr.push(+(custommin*mandatoryRatio[i]).toFixed(0))
-    }
+    let totalHours=0
+    let totalMinutes=0
+    //[*cook & eat*/*walk*/*Dishes*/*offline*] mandatory pos[0,1]
+    totalHours += .5;
+    totalMinutes += 30;
+    mandatoryHrArr.push(+(.5*mandatoryRatio[0]).toFixed(1))
+    mandatoryMinArr.push(+(30*mandatoryRatio[0]).toFixed(0))
 
+    totalHours += 1;
+    totalMinutes += 60;
+    mandatoryHrArr.push(+(1*mandatoryRatio[1]).toFixed(1))
+    mandatoryMinArr.push(+(60*mandatoryRatio[1]).toFixed(0))
+
+    totalHours += 0.33;
+    totalMinutes += 20;
+    mandatoryHrArr.push(+(0.33*mandatoryRatio[2]).toFixed(1))
+    mandatoryMinArr.push(+(20*mandatoryRatio[2]).toFixed(0))
+    /*
+    totalHours += 0.5;
+    totalMinutes += 30;
+    mandatoryHrArr.push(+(0.5*mandatoryRatio[3]).toFixed(1))
+    mandatoryMinArr.push(+(30*mandatoryRatio[3]).toFixed(0))
+    */
     //Study/code is part of customHrArr but is a special case since the number relates to research and play time
     //[study, play, research] custom pos[0,1,2, ]
     for(let i=0;i<3;i++){ 
-        totalTemp1 += hours
-        totalTemp2 += minutes
-        //console.log(`totalTemp1:${totalTemp1}`)
-        /* stored this code just in case of future custom feature that requires this pattern
-        if(i==2){//index 2 is it's own contained pattern
-            customhr=2;
-            custommin=120;
-            totalTemp1 -= hours 
-            totalTemp2 -= minutes;
-            totalTemp1 += customhr;
-            totalTemp2 += custommin;
-            if((RemainingHours-(totalTemp1-customhr))<0){ //check if the calculation goes negative then automatically 0
-                customHrArr.push(0)
-                customMinArr.push(0)
-            }else if (totalTemp1<RemainingHours){
-                customHrArr.push(customhr)
-                customMinArr.push(custommin)
-            }else{
-                console.log(`(RemainingHours-(${totalTemp1}-${customhr}))=${(RemainingHours-(totalTemp1-customhr))}`)
-                customHrArr.push(RemainingHours-(totalTemp1-customhr))
-                customMinArr.push(RemainingMinutes-(totalTemp2-custommin))
-            }
-            console.log(`totalTemp1:${totalTemp1}`)
-
-        }else*/ 
-
-
-
+        totalHours += hours
+        totalMinutes += minutes
         if (i==0){
             customHrArr.push(hours)
             customMinArr.push(minutes)
         }
-        else if (totalTemp1 < RemainingHours){
+        else if (totalHours < RemainingHours){
             customHrArr.push(+(hours*customRatio[i-1]).toFixed(1))
             customMinArr.push(+(minutes*customRatio[i-1]).toFixed(0))
-        }else{ //totalTemp1 > RemainingHours
-            console.log(`(RemainingHours-(${totalTemp1}-${hours}))=${(RemainingHours-(totalTemp1-hours))}`)
-            if((RemainingHours-(totalTemp1-hours))<0){ //check if the calculation goes negative then automatically 0
+        }else{ //totalHours > RemainingHours
+            if((RemainingHours-(totalHours-hours))<0){ //check if the calculation goes negative then automatically 0
                 customHrArr.push(0)
                 customMinArr.push(0)
             }else{
-                customHrArr.push(+((RemainingHours-(totalTemp1-hours))*customRatio[i-1]).toFixed(1))
-                customMinArr.push(+((RemainingMinutes-(totalTemp2-minutes))*customRatio[i-1]).toFixed(0))
+                customHrArr.push(+((RemainingHours-(totalHours-hours))*customRatio[i-1]).toFixed(1))
+                customMinArr.push(+((RemainingMinutes-(totalMinutes-minutes))*customRatio[i-1]).toFixed(0))
             }
         }
-        console.log(`!customHrArr:${customHrArr}`)
-        console.log(`!mandatoryHrArr:${mandatoryHrArr}`)
-        console.log(`?customRatio:${customRatio}`)
-        console.log(`?mandatoryRatio:${mandatoryRatio}`)
-        console.log(" ")
     }
 
-    //custom pos[,,,3]
+    //custom pos[,,,3] offline
     const sum = mandatoryHrArr.reduce((partialSum, a) => partialSum + a, 0) +customHrArr.reduce((partialSum, a) => partialSum + a, 0);
     const sum2= mandatoryMinArr.reduce((partialSum, a) => partialSum + a, 0) + customMinArr.reduce((partialSum, a) => partialSum + a, 0);
     if (sum>RemainingHours){
         customHrArr.push(0)
         customMinArr.push(0)
-
     }else{
         customHrArr.push(+(RemainingHours-sum).toFixed(1))
         customMinArr.push(+(RemainingMinutes-sum2).toFixed(0))
     }
-    //custom pos[,,,,4]
+    //custom pos[,,,,4] total
     const totalSum = mandatoryHrArr.reduce((partialSum, a) => partialSum + a, 0) + customHrArr.reduce((partialSum, a) => partialSum + a, 0);
     const totalSum2 = mandatoryMinArr.reduce((partialSum, a) => partialSum + a, 0) + customMinArr.reduce((partialSum, a) => partialSum + a, 0);
 
@@ -783,18 +811,33 @@ function display(){
 
 
     caption1.textContent="Great job! Here's your estimate data :)"
-    td2.textContent=`${customHrArr[0]}`
-    td3.textContent=`${customMinArr[0]}`
-    td4.textContent=`${customHrArr[1]}`
-    td5.textContent=`${customMinArr[1]}`
-    td6.textContent=`${mandatoryHrArr[0]}`
-    td7.textContent=`${mandatoryMinArr[0]}`
-    td8.textContent=`${customHrArr[2]}`
-    td9.textContent=`${customMinArr[2]}`
-    td10.textContent=`${customHrArr[3]}`
-    td11.textContent=`${customMinArr[3]}`
-    td13.textContent=`${customHrArr[4]}`
-    td14.textContent=`${customMinArr[4]}`
+    //study
+    td2.textContent=`${customHrArr[0]}` 
+    td3.textContent=`${customMinArr[0]}` 
+    //cook
+    td4.textContent=`${mandatoryHrArr[0]}` 
+    td5.textContent=`${mandatoryHrArr[0]}`
+    //walk
+    td6.textContent=`${mandatoryHrArr[1]}`
+    td7.textContent=`${mandatoryMinArr[1]}`
+    //play
+    td8.textContent=`${customHrArr[1]}`
+    td9.textContent=`${customMinArr[1]}`
+    //research
+    td10.textContent=`${customHrArr[2]}`
+    td11.textContent=`${customMinArr[2]}`
+    //dish
+    td12.textContent=`${mandatoryHrArr[2]}`
+    td13.textContent=`${mandatoryMinArr[2]}`
+    //play
+    td14.textContent=`${customHrArr[1]}`
+    td15.textContent=`${customMinArr[1]}`
+    //offline
+    td16.textContent=`${customHrArr[3]}`
+    td17.textContent=`${customMinArr[3]}`
+    //total
+    td19.textContent=`${customHrArr[4]}`
+    td20.textContent=`${customMinArr[4]}`
 
     dateRecorded.push(new Date())
     description0.textContent=`Finished at ${formatAMPM(dateRecorded[0])} with total of ${displayMinOrHr(customMinArr[0])} = ${noOver100((customMinArr[0]/customMinArr[0])*100)}/100 pts `
