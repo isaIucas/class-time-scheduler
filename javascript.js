@@ -20,8 +20,9 @@ const attr1=document.createAttribute("class");
 attr1.value="container";
 container.setAttributeNode(attr1);
 
-const button=document.createElement("input")
 
+    //left side table 
+const button=document.createElement("input")
     const table=document.createElement("table")
     const caption1=document.createElement("caption")
         const tr1=document.createElement("tr")
@@ -63,9 +64,16 @@ const button=document.createElement("input")
             const td13=document.createElement("td")
             const td14=document.createElement("td")
 
-        // second table for date schedule
-        const table2=document.createElement("table")
-        const caption2=document.createElement("caption")
+    // chart in the middle
+    const chartContainer=document.createElement("div")
+    const chart=document.createElement("div")
+    const attr3=document.createAttribute("id");
+    attr3.value="container";
+    chart.setAttributeNode(attr3);
+
+    // right side table
+    const table2=document.createElement("table")
+    const caption2=document.createElement("caption")
 
         const tr2_1=document.createElement("tr")
             const col2_1=document.createElement("col")
@@ -107,131 +115,122 @@ const button=document.createElement("input")
             const td2_14=document.createElement("td")
 
 
+    //ratio inputs on the left side table
+    const form2=document.createElement("form")
+    const form2attr1=document.createAttribute("action")
+    form2attr1.value=""
+    form2.setAttributeNode(form2attr1)
+    const form2attr2=document.createAttribute("class")
+    form2attr2.value="form2"
+    form2.setAttributeNode(form2attr2)
+
+    const form3=document.createElement("form")
+    const form3attr1=document.createAttribute("action")
+    form3attr1.value=""
+    form3.setAttributeNode(form3attr1)
+    const form3attr2=document.createAttribute("class")
+    form3attr2.value="form3"
+    form3.setAttributeNode(form3attr2)
 
 
+    const input1=document.createElement("input")
+    const input1type1=document.createAttribute("type");
+    input1type1.value="number";
+    const input1type2=document.createAttribute("name");
+    input1type2.value="customRatio";
+    const input1type3=document.createAttribute("min");
+    input1type3.value=".1";
+    const input1type4=document.createAttribute("max");
+    input1type4.value="20";
+    const input1type5=document.createAttribute("value");
+    input1type5.value="1";
+    const input1type6=document.createAttribute("class");
+    input1type6.value="customRatio";
+    const input1type7=document.createAttribute("step");
+    input1type7.value=".1";
+    const input1type8=document.createAttribute("id");
+    input1type8.value="des";
 
-const chartContainer=document.createElement("div")
-const chart=document.createElement("div")
-const attr3=document.createAttribute("id");
-attr3.value="container";
-chart.setAttributeNode(attr3);
+    const ratioLabel1=document.createElement("label")
+    const ratioLabeltype1=document.createAttribute("for");
+    ratioLabeltype1.value="des";
+    ratioLabel1.textContent=" x";
 
-const form2=document.createElement("form")
-const form2attr1=document.createAttribute("action")
-form2attr1.value=""
-form2.setAttributeNode(form2attr1)
-const form2attr2=document.createAttribute("class")
-form2attr2.value="form2"
-form2.setAttributeNode(form2attr2)
+    const input2=document.createElement("input")
+    const input2type1=document.createAttribute("type");
+    input2type1.value="number";
+    const input2type2=document.createAttribute("name");
+    input2type2.value="mandatoryRatio";
+    const input2type3=document.createAttribute("min");
+    input2type3.value=".1";
+    const input2type4=document.createAttribute("max");
+    input2type4.value="20";
+    const input2type5=document.createAttribute("value");
+    input2type5.value="1";
+    const input2type6=document.createAttribute("class");
+    input2type6.value="mandatoryRatio";
+    const input2type7=document.createAttribute("step");
+    input2type7.value=".1";
+    const input2type8=document.createAttribute("id");
+    input1type8.value="des";
 
-const form3=document.createElement("form")
-const form3attr1=document.createAttribute("action")
-form3attr1.value=""
-form3.setAttributeNode(form3attr1)
-const form3attr2=document.createAttribute("class")
-form3attr2.value="form3"
-form3.setAttributeNode(form3attr2)
+    const ratioLabel2=document.createElement("label")
+    const ratioLabeltype2=document.createAttribute("for");
+    ratioLabeltype2.value="des";
+    ratioLabel2.textContent=" x";
 
+    const input3=document.createElement("input")
+    const input3type1=document.createAttribute("type");
+    input3type1.value="number";
+    const input3type2=document.createAttribute("name");
+    input3type2.value="customRatio";
+    const input3type3=document.createAttribute("min");
+    input3type3.value=".1";
+    const input3type4=document.createAttribute("max");
+    input3type4.value="20";
+    const input3type5=document.createAttribute("value");
+    input3type5.value="1";
+    const input3type6=document.createAttribute("class");
+    input3type6.value="customRatio";
+    const input3type7=document.createAttribute("step");
+    input3type7.value=".1";
+    const input3type8=document.createAttribute("id");
+    input1type8.value="des";
 
-const input1=document.createElement("input")
-const input1type1=document.createAttribute("type");
-input1type1.value="number";
-const input1type2=document.createAttribute("name");
-input1type2.value="customRatio";
-const input1type3=document.createAttribute("min");
-input1type3.value=".1";
-const input1type4=document.createAttribute("max");
-input1type4.value="20";
-const input1type5=document.createAttribute("value");
-input1type5.value="1";
-const input1type6=document.createAttribute("class");
-input1type6.value="customRatio";
-const input1type7=document.createAttribute("step");
-input1type7.value=".1";
-const input1type8=document.createAttribute("id");
-input1type8.value="des";
+    const ratioLabel3=document.createElement("label")
+    const ratioLabeltype3=document.createAttribute("for");
+    ratioLabeltype3.value="des";
+    ratioLabel3.textContent=" x";
 
-const ratioLabel1=document.createElement("label")
-const ratioLabeltype1=document.createAttribute("for");
-ratioLabeltype1.value="des";
-ratioLabel1.textContent=" x";
-
-const input2=document.createElement("input")
-const input2type1=document.createAttribute("type");
-input2type1.value="number";
-const input2type2=document.createAttribute("name");
-input2type2.value="mandatoryRatio";
-const input2type3=document.createAttribute("min");
-input2type3.value=".1";
-const input2type4=document.createAttribute("max");
-input2type4.value="20";
-const input2type5=document.createAttribute("value");
-input2type5.value="1";
-const input2type6=document.createAttribute("class");
-input2type6.value="mandatoryRatio";
-const input2type7=document.createAttribute("step");
-input2type7.value=".1";
-const input2type8=document.createAttribute("id");
-input1type8.value="des";
-
-const ratioLabel2=document.createElement("label")
-const ratioLabeltype2=document.createAttribute("for");
-ratioLabeltype2.value="des";
-ratioLabel2.textContent=" x";
-
-const input3=document.createElement("input")
-const input3type1=document.createAttribute("type");
-input3type1.value="number";
-const input3type2=document.createAttribute("name");
-input3type2.value="customRatio";
-const input3type3=document.createAttribute("min");
-input3type3.value=".1";
-const input3type4=document.createAttribute("max");
-input3type4.value="20";
-const input3type5=document.createAttribute("value");
-input3type5.value="1";
-const input3type6=document.createAttribute("class");
-input3type6.value="customRatio";
-const input3type7=document.createAttribute("step");
-input3type7.value=".1";
-const input3type8=document.createAttribute("id");
-input1type8.value="des";
-
-const ratioLabel3=document.createElement("label")
-const ratioLabeltype3=document.createAttribute("for");
-ratioLabeltype3.value="des";
-ratioLabel3.textContent=" x";
-
-const submit=document.createElement("button")
-submit.textContent="Submit"
-const class1=document.createAttribute("class");
-class1.value="buttonsubmit";
-submit.setAttributeNode(class1);
+    const submit=document.createElement("button")
+    submit.textContent="Submit"
+    const class1=document.createAttribute("class");
+    class1.value="buttonsubmit";
+    submit.setAttributeNode(class1);
 
 
-        //creating buttons of the right side 
-        const clickButtons=document.createElement("div")
-        const buttonAttr=document.createAttribute("class")
-        buttonAttr.value="clickDemButtons"
-        clickButtons.setAttributeNode(buttonAttr)
-        const button1=document.createElement("button")
-        button1.textContent="Finish"
-        const button2=document.createElement("button")
-        button2.textContent="Finish"
-        button2.disabled=true;
+    //creating buttons of the right side 
+    const clickButtons=document.createElement("div")
+    const buttonAttr=document.createAttribute("class")
+    buttonAttr.value="clickDemButtons"
+    clickButtons.setAttributeNode(buttonAttr)
+    const button1=document.createElement("button")
+    button1.textContent="Finish"
+    const button2=document.createElement("button")
+    button2.textContent="Finish"
+    button2.disabled=true;
 
-        const button3=document.createElement("button")
-        button3.textContent="Finish"
-        button3.disabled=true;
-
-
-        const button4=document.createElement("button")
-        button4.textContent="Finish"
-        button4.disabled=true;
+    const button3=document.createElement("button")
+    button3.textContent="Finish"
+    button3.disabled=true;
 
 
-                            //display the score
+    const button4=document.createElement("button")
+    button4.textContent="Finish"
+    button4.disabled=true;
 
+
+        //display the score afte rbutton is click
         const scoreDisplay=document.createElement("div")
         const scoreAttr=document.createAttribute("class")
         scoreAttr.value="scoreDisplay"
@@ -245,60 +244,36 @@ submit.setAttributeNode(class1);
         const description4=document.createElement("div")
 
 
-
-
-
-
-
-
 //setting colors to table\
-/*
-{x: "Study/Code", value: customHrArr[0], normal: {fill:"PaleGreen"}},
-{x: "Play Time", value: customHrArr[1], normal: {fill:"PaleTurquoise"}},
-{x: "Eat/walk/dishes", value: mandatoryHrArr[0], normal: {fill:"Lavender"}},
-{x: "Research/Important", value: customHrArr[2], normal: {fill:"MistyRose	"}},
-{x: "Offline/Linux", value: customHrArr[3], normal: {fill:"Honeydew	"}},
-*/
 th3.style="background-color:PaleGreen"
 td2.style="background-color:PaleGreen"
 td3.style="background-color:PaleGreen"
-
 th4.style="background-color:PaleTurquoise"
 td4.style="background-color:PaleTurquoise"
 td5.style="background-color:PaleTurquoise"
-
 th5.style="background-color:Lavender"
 td6.style="background-color:Lavender"
 td7.style="background-color:Lavender"
-
 th6.style="background-color:MistyRose"
 td8.style="background-color:MistyRose"
 td9.style="background-color:MistyRose"
-
 th7.style="background-color:Honeydew"
 td10.style="background-color:Honeydew"
 td11.style="background-color:Honeydew"
-
 tr8.style=  "border-top: 1.5px solid black "
-
 td2_2.style="background-color:PaleGreen"
 td2_3.style="background-color:PaleGreen"
-
 td2_4.style="background-color:PaleTurquoise"
 td2_5.style="background-color:PaleTurquoise"
-
 td2_6.style="background-color:Lavender"
 td2_7.style="background-color:Lavender"
-
 td2_8.style="background-color:MistyRose"
 td2_9.style="background-color:MistyRose"
-
 td2_10.style="background-color:Honeydew"
 td2_11.style="background-color:Honeydew"
+tr2_8.style="border-top: 1.5px solid black "
 
-tr2_8.style=  "border-top: 1.5px solid black "
-
-
+//black border margin-top for total
 const tr9class=document.createAttribute("class");
 tr9class.value="totalCSS";
 tr2_8.setAttributeNode(tr9class);
@@ -452,18 +427,11 @@ function appendTable(){
             tr2_8.appendChild(td2_13)
             tr2_8.appendChild(td2_14)
 
-
-
-
     container.appendChild(clickButtons)
         clickButtons.appendChild(button1)
         clickButtons.appendChild(button2)
         clickButtons.appendChild(button3)
         clickButtons.appendChild(button4)
-
-
-
-
 
     container.appendChild(scoreDisplay)
         scoreDisplay.appendChild(description0)
@@ -515,19 +483,6 @@ form2.addEventListener("submit", function(e) {
 
 })
 
-form3.addEventListener("submit", function(e) {
-    e.preventDefault();
-    var data = new FormData(form2);
-    customRatio=[]
-    mandatoryRatio=[]
-    for (const [name,value] of data) {
-        customRatio.push(value) 
-       // console.log(`name,value: ${name,value}`)
-        }
-    display()
-
-})
-
 form.addEventListener("submit", function(e) {
     e.preventDefault();
     var data = new FormData(form);
@@ -542,6 +497,19 @@ form.addEventListener("submit", function(e) {
 
 })
 let dateRecorded=[]
+let scoreRecorded=[]
+scoreRecorded.push(+((new Date()/new Date()*100)).toFixed(2))
+
+function displayMinOrHr(min){
+    return (min > 59) ? `${(min/60).toFixed(2)} hours` : `${min.toFixed(2)} minutes`;
+}
+
+function noOver100(score){
+    if(score===Infinity||score===-Infinity){
+        return 0
+    }
+    return (score>99) ? 100 : +score.toFixed(2);
+}
 
 button1.addEventListener("click", (e)=>{
     console.log("button1 pressed.")
@@ -553,11 +521,14 @@ button1.addEventListener("click", (e)=>{
     console.log(`dateRecorded[0]: ${dateRecorded[0]}`)
     console.log(`date1: ${date1}`)
 
-    description1.textContent=`${formatAMPM(date1)} => ${dateCalMin.toFixed(2)} mins or ${dateCalHr.toFixed(4)} hours`
+    scoreRecorded.push(noOver100(+(dateCalMin/customMinArr[1]*100).toFixed(2)))
+    console.log(scoreRecorded)
+    description1.textContent=`Finished at ${formatAMPM(date1)} with total of ${displayMinOrHr(dateCalMin)} = ${scoreRecorded[1]}/100 pts`
     button1.disabled=true;
     button2.disabled=false;
 
-},{once: true})
+
+})
 
 button2.addEventListener("click", (e)=>{
     console.log("button2 pressed.")
@@ -570,10 +541,14 @@ button2.addEventListener("click", (e)=>{
     console.log(`dateRecorded[1]: ${dateRecorded[1]}`)
     console.log(`date2: ${date2}`)
 
-    description2.textContent=`${formatAMPM(date2)} => ${dateCalMin.toFixed(2)} mins or ${dateCalHr.toFixed(4)} hours`
+    scoreRecorded.push(noOver100(+(dateCalMin/mandatoryMinArr[0]*100).toFixed(2)))
+
+    description2.textContent=`Finished at ${formatAMPM(date2)} with total of ${displayMinOrHr(dateCalMin)} = ${scoreRecorded[2]}/100 pts`
     button2.disabled=true;
     button3.disabled=false;
-},{once: true})
+
+
+})
 
 button3.addEventListener("click", (e)=>{
     console.log("button3 pressed.")
@@ -586,10 +561,15 @@ button3.addEventListener("click", (e)=>{
     console.log(`dateRecorded[2]: ${dateRecorded[2]}`)
     console.log(`date3: ${date3}`)
 
-    description3.textContent=`${formatAMPM(date3)} => ${dateCalMin.toFixed(2)} mins or ${dateCalHr.toFixed(4)} hours`
+        scoreRecorded.push(noOver100(+(dateCalMin/customMinArr[2]*100).toFixed(2)))
+
+
+    description3.textContent=`Finished at ${formatAMPM(date3)} with total of ${displayMinOrHr(dateCalMin)} = ${scoreRecorded[3]}/100 pts`
     button3.disabled=true;
     button4.disabled=false;
-},{once: true})
+
+
+})
 
 button4.addEventListener("click", (e)=>{
     console.log("button4 pressed.")
@@ -602,10 +582,58 @@ button4.addEventListener("click", (e)=>{
     console.log(`dateRecorded[3]: ${dateRecorded[3]}`)
     console.log(`date4: ${date4}`)
 
-    description4.textContent=`${formatAMPM(date4)} => ${dateCalMin.toFixed(2)} mins or ${dateCalHr.toFixed(4)} hours`
+    scoreRecorded.push(noOver100(+(dateCalMin/customMinArr[3]*100).toFixed(2)))
+
+
+    description4.textContent=`Finished at ${formatAMPM(date4)} with total of ${displayMinOrHr(dateCalMin)} = ${scoreRecorded[4]}/100 pts`
     button4.disabled=true;
+
+    console.log(scoreRecorded)
+    displayScore()
+    
+
     //modal jump?
-},{once: true})
+})
+
+function displayScore(){
+/*
+    let customNmandatory=[]
+    for(let i=0;i<customMinArr.length;i++){
+        customNmandatory.push(customMinArr[0])
+    }
+    for(let i=0;i<mandatoryMinArr.length;i++){
+        customNmandatory.push(mandatoryMinArr[0])
+    }
+    // this logic checks if the score goes over 100; if go over 100 the score stays max at 100
+    let scoreRecordedMax = scoreRecorded.map(x=> (x>=100) ? 100 : x)
+    let customNmandatoryMax = customNmandatory.map(x=> (x>=100) ? 100 : x)
+
+    const sum1 = scoreRecordedMax.reduce((partialSum, a) => partialSum + a, 0) / 5
+    
+    const sum3 = customNmandatoryMax.reduce((partialSum, a) => partialSum + a, 0) /5
+    console.log(`sum1: ${sum1}`)
+    console.log(`sum3 : ${sum3}`)
+    console.log(`Your score accuracy : ${(sum1/sum3)*100}`)
+    */
+    console.log(`scoreRecorded: ${scoreRecorded}`)
+
+    const sum1 = scoreRecorded.reduce((partialSum, a) => partialSum + a, 0) 
+    console.log(`sum1: ${sum1}`)
+
+    discordTextOutput2.textContent =      
+    "+-----------------{Your Total Score}-------------------+\n"+
+    `Study/Code: ${scoreRecorded[0]} points` +"\n" +    
+    `Play Time (x${customRatio[0]}): ${scoreRecorded[1]}  points`+"\n" +    
+    `Eat/walk/dishes (x${mandatoryRatio[0]}): ${scoreRecorded[2]} points`+"\n" +    
+    `Research/Important (x${customRatio[1]}): ${scoreRecorded[3]} points`+"\n" +    
+    `Offline/Linux: ${scoreRecorded[4]} points`+"\n" +
+    `total Score: ${((sum1/500)*100).toFixed(2)}/100`+"\n" +
+    "+-------------------------------------------------------+"
+    dateRecorded=[]
+    scoreRecorded=[]
+    scoreRecorded.push(+((new Date()/new Date()*100)).toFixed(2))
+
+}
 
 
 function formatAMPM(date) {
@@ -621,6 +649,9 @@ function formatAMPM(date) {
 
 
 function display(){
+    button1.disabled=false;
+    discordTextOutput2.textContent = ""
+
     dateNow = new Date(); 
     check=pomodoro[2].split(":")
     if (check[0]>=12){
@@ -756,7 +787,7 @@ function display(){
     td14.textContent=`${customMinArr[4]}`
 
     dateRecorded.push(new Date())
-    description0.textContent=`${formatAMPM(dateRecorded[0])} => ${customHrArr[0]}/${customHrArr[0]} Hours => 100% points! `
+    description0.textContent=`Finished at ${formatAMPM(dateRecorded[0])} with total of ${displayMinOrHr(customMinArr[0])} = ${noOver100((customMinArr[0]/customMinArr[0])*100)}/100 pts `
     description1.textContent="<= click here to record your time! "
     description2.textContent="<= click here to record your time!"
     description3.textContent="<= click here to record your time!"
@@ -795,7 +826,8 @@ function display(){
 
 
     underline.textContent = "Copy text to discord:"
-    discordTextOutput.textContent =      "+-----------------{My plan for today}-------------------+\n"+
+    discordTextOutput.textContent =      
+    "+-----------------{My plan for today}-------------------+\n"+
     `Pomodoro (${pomodoro[0]} min): ${pomodoro[1]}` +"\n" +
     `Study/Code: ${customHrArr[0]} hours; ${customMinArr[0]} minutes  ` +"\n" +    
     `Play Time (x${customRatio[0]}): ${customHrArr[1]} hours; ${customMinArr[1]} minutes  `+"\n" +    
@@ -803,6 +835,11 @@ function display(){
     `Research/Important (x${customRatio[1]}): ${customHrArr[2]} hours;  ${customMinArr[2]} minutes`+"\n" +    
     `Offline/Linux: ${customHrArr[3]} hours; ${customMinArr[3]} minutes`+"\n" +
     "+-------------------------------------------------------+"
+
+    
+
+
+  
 
 
 
