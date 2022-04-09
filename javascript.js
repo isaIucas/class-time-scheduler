@@ -498,6 +498,7 @@ form.addEventListener("submit", function(e) {
 })
 let dateRecorded=[]
 let scoreRecorded=[]
+let timeRecorded=[]
 scoreRecorded.push(+((new Date()/new Date()*100)).toFixed(2))
 
 function displayMinOrHr(min){
@@ -522,8 +523,9 @@ button1.addEventListener("click", (e)=>{
     console.log(`date1: ${date1}`)
 
     scoreRecorded.push(noOver100(+(dateCalMin/customMinArr[1]*100).toFixed(2)))
+    timeRecorded.push(displayMinOrHr(dateCalMin))
     console.log(scoreRecorded)
-    description1.textContent=`Finished at ${formatAMPM(date1)} with total of ${displayMinOrHr(dateCalMin)} = ${scoreRecorded[1]}/100 pts`
+    description1.textContent=`Finished at ${formatAMPM(date1)} with total of ${timeRecorded[1]} = ${scoreRecorded[1]}/100 pts`
     button1.disabled=true;
     button2.disabled=false;
 
@@ -542,8 +544,9 @@ button2.addEventListener("click", (e)=>{
     console.log(`date2: ${date2}`)
 
     scoreRecorded.push(noOver100(+(dateCalMin/mandatoryMinArr[0]*100).toFixed(2)))
+    timeRecorded.push(displayMinOrHr(dateCalMin))
 
-    description2.textContent=`Finished at ${formatAMPM(date2)} with total of ${displayMinOrHr(dateCalMin)} = ${scoreRecorded[2]}/100 pts`
+    description2.textContent=`Finished at ${formatAMPM(date2)} with total of ${timeRecorded[2]} = ${scoreRecorded[2]}/100 pts`
     button2.disabled=true;
     button3.disabled=false;
 
@@ -561,10 +564,11 @@ button3.addEventListener("click", (e)=>{
     console.log(`dateRecorded[2]: ${dateRecorded[2]}`)
     console.log(`date3: ${date3}`)
 
-        scoreRecorded.push(noOver100(+(dateCalMin/customMinArr[2]*100).toFixed(2)))
+    scoreRecorded.push(noOver100(+(dateCalMin/customMinArr[2]*100).toFixed(2)))
+    timeRecorded.push(displayMinOrHr(dateCalMin))
 
 
-    description3.textContent=`Finished at ${formatAMPM(date3)} with total of ${displayMinOrHr(dateCalMin)} = ${scoreRecorded[3]}/100 pts`
+    description3.textContent=`Finished at ${formatAMPM(date3)} with total of ${timeRecorded[3]} = ${scoreRecorded[3]}/100 pts`
     button3.disabled=true;
     button4.disabled=false;
 
@@ -583,9 +587,11 @@ button4.addEventListener("click", (e)=>{
     console.log(`date4: ${date4}`)
 
     scoreRecorded.push(noOver100(+(dateCalMin/customMinArr[3]*100).toFixed(2)))
+    timeRecorded.push(displayMinOrHr(dateCalMin))
 
 
-    description4.textContent=`Finished at ${formatAMPM(date4)} with total of ${displayMinOrHr(dateCalMin)} = ${scoreRecorded[4]}/100 pts`
+
+    description4.textContent=`Finished at ${formatAMPM(date4)} with total of ${timeRecorded[4]} = ${scoreRecorded[4]}/100 pts`
     button4.disabled=true;
 
     console.log(scoreRecorded)
@@ -622,15 +628,16 @@ function displayScore(){
 
     discordTextOutput2.textContent =      
     "+-----------------{Your Total Score}-------------------+\n"+
-    `Study/Code: ${scoreRecorded[0]} points` +"\n" +    
-    `Play Time (x${customRatio[0]}): ${scoreRecorded[1]}  points`+"\n" +    
-    `Eat/walk/dishes (x${mandatoryRatio[0]}): ${scoreRecorded[2]} points`+"\n" +    
-    `Research/Important (x${customRatio[1]}): ${scoreRecorded[3]} points`+"\n" +    
-    `Offline/Linux: ${scoreRecorded[4]} points`+"\n" +
+    `Study/Code: ${scoreRecorded[0]} points with ${timeRecorded[0]}` +"\n" +    
+    `Play Time (x${customRatio[0]}): ${scoreRecorded[1]} points with ${timeRecorded[1]}`+"\n" +    
+    `Eat/walk/dishes (x${mandatoryRatio[0]}): ${scoreRecorded[2]} points with ${timeRecorded[2]}`+"\n" +    
+    `Research/Important (x${customRatio[1]}): ${scoreRecorded[4]} points with ${timeRecorded[3]}`+"\n" +    
+    `Offline/Linux: ${scoreRecorded[4]} points with ${timeRecorded[4]}`+"\n" +
     `total Score: ${((sum1/500)*100).toFixed(2)}/100`+"\n" +
     "+-------------------------------------------------------+"
     dateRecorded=[]
     scoreRecorded=[]
+    timeRecorded=[]
     scoreRecorded.push(+((new Date()/new Date()*100)).toFixed(2))
 
 }
@@ -771,6 +778,9 @@ function display(){
     customHrArr[0]=+(customHrArr[0]).toFixed(1)
     customMinArr[0]=+(customMinArr[0]).toFixed(0)
 
+    timeRecorded.push(displayMinOrHr(customMinArr[0]))
+
+
 
     caption1.textContent="Great job! Here's your estimate data :)"
     td2.textContent=`${customHrArr[0]}`
@@ -788,10 +798,10 @@ function display(){
 
     dateRecorded.push(new Date())
     description0.textContent=`Finished at ${formatAMPM(dateRecorded[0])} with total of ${displayMinOrHr(customMinArr[0])} = ${noOver100((customMinArr[0]/customMinArr[0])*100)}/100 pts `
-    description1.textContent="<= click here to record your time! "
-    description2.textContent="<= click here to record your time!"
-    description3.textContent="<= click here to record your time!"
-    description4.textContent="<= click here to record your time!"
+    description1.textContent="<= click here to record your play time! "
+    description2.textContent="<= click here to record your Eat/Walk/Dishes time!"
+    description3.textContent="<= click here to record your Research/Important time!"
+    description4.textContent="<= click here to record your Offline/Linux time!"
 
     //dateNow Time
     caption2.textContent="Today's schedule!"
