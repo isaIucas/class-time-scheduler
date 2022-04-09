@@ -44,7 +44,9 @@ body{
     height: 100%;
     margin: 0;
     padding: 0;
-    max-height:40vh;
+    max-height:60vh;
+    max-width:50vh;
+
   }
 
 .wrapper{
@@ -77,9 +79,9 @@ input{
 }
 
 .fixed{
-  position:fixed;
-  left:10vh;
-  top:40vh;
+  position:absolute;
+  left:5vh;
+  top:5vh;
 }
 .clickDemButtons{
   margin-top:158px;

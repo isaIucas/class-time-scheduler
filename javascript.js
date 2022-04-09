@@ -125,17 +125,17 @@ const button=document.createElement("input")
             const td2_11=document.createElement("td")
         const tr2_8=document.createElement("tr")
 
-            const th2_8=document.createElement("td")
+            const th2_8=document.createElement("th")
             const td2_12=document.createElement("td")
             const td2_13=document.createElement("td")
         const tr2_9=document.createElement("tr")
 
-            const th2_9=document.createElement("td")
+            const th2_9=document.createElement("th")
             const td2_14=document.createElement("td")
             const td2_15=document.createElement("td")
         const tr2_10=document.createElement("tr")
 
-            const th2_10=document.createElement("td")
+            const th2_10=document.createElement("th")
             const td2_16=document.createElement("td")
             const td2_17=document.createElement("td")
         const tr2_11=document.createElement("tr")
@@ -378,48 +378,57 @@ td2.style="background-color:PaleGreen"
 td3.style="background-color:PaleGreen"
 td2_2.style="background-color:PaleGreen"
 td2_3.style="background-color:PaleGreen"
+th2_3.style="background-color:PaleGreen"
+
 
 th4.style="background-color:LightCyan"
 td4.style="background-color:LightCyan"
 td5.style="background-color:LightCyan"
 td2_4.style="background-color:LightCyan"
 td2_5.style="background-color:LightCyan"
+th2_4.style="background-color:LightCyan"
 
 th5.style="background-color:LightGoldenrodYellow"
 td6.style="background-color:LightGoldenrodYellow"
 td7.style="background-color:LightGoldenrodYellow"
 td2_6.style="background-color:LightGoldenrodYellow"
 td2_7.style="background-color:LightGoldenrodYellow"
+th2_5.style="background-color:LightGoldenrodYellow"
 
 th6.style="background-color:PaleTurquoise"
 td8.style="background-color:PaleTurquoise"
 td9.style="background-color:PaleTurquoise"
 td2_8.style="background-color:PaleTurquoise"
 td2_9.style="background-color:PaleTurquoise"
+th2_6.style="background-color:PaleTurquoise"
 
 th7.style="background-color:MistyRose"
 td10.style="background-color:MistyRose"
 td11.style="background-color:MistyRose"
 td2_10.style="background-color:MistyRose"
 td2_11.style="background-color:MistyRose"
+th2_7.style="background-color:MistyRose"
 
 th8.style="background-color:Lavender"
 td12.style="background-color:Lavender"
 td13.style="background-color:Lavender"
 td2_12.style="background-color:Lavender"
 td2_13.style="background-color:Lavender"
+th2_8.style="background-color:Lavender"
 
 th9.style="background-color:PaleTurquoise"
 td14.style="background-color:PaleTurquoise"
 td15.style="background-color:PaleTurquoise"
 td2_14.style="background-color:PaleTurquoise"
 td2_15.style="background-color:PaleTurquoise"
+th2_9.style="background-color:PaleTurquoise"
 
 th10.style="background-color:Honeydew"
 td16.style="background-color:Honeydew"
 td17.style="background-color:Honeydew"
 td2_16.style="background-color:Honeydew"
 td2_17.style="background-color:Honeydew"
+th2_10.style="background-color:Honeydew"
 
 tr11.style=  "border-top: 1.5px solid black "
 tr2_11.style="border-top: 1.5px solid black "
@@ -518,17 +527,25 @@ form2.appendChild(submit)
 
 th1.textContent="Hours"
 th2.textContent="Minutes"
-th3.textContent="!Study/Code!"
+th3.textContent="!Study/Code!+"
 th4.textContent="*cook & eat*"
-th5.textContent="*walk*"
+th5.textContent="*walk*+"
 th6.textContent="Play Time"
-th7.textContent="Research/Important"
-th8.textContent="*Dishes*"
+th7.textContent="Research/Important+"
+th8.textContent="*Dishes*+"
 th9.textContent="Play"
 th10.textContent="*Offline/Chill*"
 
 th2_1.textContent="From"
 th2_2.textContent="To"
+th2_3.textContent="!Study/Code!+"
+th2_4.textContent="*cook & eat*"
+th2_5.textContent="*walk*+"
+th2_6.textContent="Play Time"
+th2_7.textContent="Research/Important+"
+th2_8.textContent="*Dishes*+"
+th2_9.textContent="Play"
+th2_10.textContent="*Offline/Chill*"
 
 
 function appendTable(){
@@ -541,7 +558,6 @@ function appendTable(){
                 tr1.appendChild(col2)
                 tr1.appendChild(col3)
             table.appendChild(tr2)
-
                 tr2.appendChild(td1)
                 tr2.appendChild(th1)
                 tr2.appendChild(th2)
@@ -595,38 +611,57 @@ function appendTable(){
     container.appendChild(table2)
         table2.appendChild(tr2_1)
         table2.appendChild(caption2)
+            tr2_1.appendChild(col2_1)
             tr2_1.appendChild(col2_2)
             tr2_1.appendChild(col2_3)
         table2.appendChild(tr2_2)
             tr2_2.appendChild(th2_1)
             tr2_2.appendChild(th2_2)
+            tr2_2.appendChild(td2_1)
         table2.appendChild(tr2_3)
             tr2_3.appendChild(td2_2)
             tr2_3.appendChild(td2_3)
+            tr2_3.appendChild(th2_3)
         table2.appendChild(tr2_4)
             tr2_4.appendChild(td2_4)
             tr2_4.appendChild(td2_5)
+            tr2_4.appendChild(th2_4)
+
         table2.appendChild(tr2_5)
             tr2_5.appendChild(td2_6)
             tr2_5.appendChild(td2_7)
+            tr2_5.appendChild(th2_5)
+
         table2.appendChild(tr2_6)
             tr2_6.appendChild(td2_8)
             tr2_6.appendChild(td2_9)
+            tr2_6.appendChild(th2_6)
+
         table2.appendChild(tr2_7)
             tr2_7.appendChild(td2_10)
             tr2_7.appendChild(td2_11)
+            tr2_7.appendChild(th2_7)
+
         table2.appendChild(tr2_8)
             tr2_8.appendChild(td2_12)
             tr2_8.appendChild(td2_13)
+            tr2_8.appendChild(th2_8)
+
         table2.appendChild(tr2_9)
             tr2_9.appendChild(td2_14)
             tr2_9.appendChild(td2_15)
+            tr2_9.appendChild(th2_9)
+
         table2.appendChild(tr2_10)
             tr2_10.appendChild(td2_16)
             tr2_10.appendChild(td2_17)
+            tr2_10.appendChild(th2_10)
+
         table2.appendChild(tr2_11)
             tr2_11.appendChild(td2_18)
             tr2_11.appendChild(td2_19)
+            tr2_11.appendChild(td2_20)
+
 
     container.appendChild(clickButtons)
         clickButtons.appendChild(button1)
@@ -647,11 +682,6 @@ function appendTable(){
         scoreDisplay.appendChild(description5)
         scoreDisplay.appendChild(description6)
         scoreDisplay.appendChild(description7)
-
-
-
-
-
 
 }
 
@@ -708,7 +738,6 @@ form.addEventListener("submit", function(e) {
 let dateRecorded=[]
 let scoreRecorded=[]
 let timeRecorded=[]
-scoreRecorded.push(+((new Date()/new Date()*100)).toFixed(2))
 
 function displayMinOrHr(min){
     return (min > 59) ? `${(min/60).toFixed(2)} hours` : `${min.toFixed(2)} minutes`;
@@ -722,7 +751,7 @@ function noOver100(score){
 }
 
 button1.addEventListener("click", (e)=>{
-    console.log("button1 pressed.")
+    console.log("cook pressed.")
     date1=new Date()
     dateRecorded.push(date1)
     dateCalMin=Math.abs(dateRecorded[0] - date1)/60000
@@ -740,7 +769,7 @@ button1.addEventListener("click", (e)=>{
 })
 
 button2.addEventListener("click", (e)=>{
-    console.log("button2 pressed.")
+    console.log("walk pressed.")
 
     date2=new Date()
     dateRecorded.push(date2)
@@ -750,7 +779,7 @@ button2.addEventListener("click", (e)=>{
     console.log(`dateRecorded[1]: ${dateRecorded[1]}`)
     console.log(`date2: ${date2}`)
 
-    scoreRecorded.push(noOver100(+(dateCalMin/mandatoryMinArr[1]*100).toFixed(2)))
+    scoreRecorded.push(+((dateCalMin/mandatoryMinArr[1]*100).toFixed(2)))
     timeRecorded.push(displayMinOrHr(dateCalMin))
 
     description2.textContent=`Finished at ${formatAMPM(date2)} with total of ${timeRecorded[2]} = ${scoreRecorded[2]}/100 pts`
@@ -761,7 +790,7 @@ button2.addEventListener("click", (e)=>{
 })
 
 button3.addEventListener("click", (e)=>{
-    console.log("button3 pressed.")
+    console.log("play pressed.")
 
     date3=new Date()
     dateRecorded.push(date3)
@@ -783,7 +812,7 @@ button3.addEventListener("click", (e)=>{
 })
 
 button4.addEventListener("click", (e)=>{
-    console.log("button4 pressed.")
+    console.log("research pressed.")
 
     date4=new Date()
     dateRecorded.push(date4)
@@ -793,7 +822,7 @@ button4.addEventListener("click", (e)=>{
     console.log(`dateRecorded[3]: ${dateRecorded[3]}`)
     console.log(`date4: ${date4}`)
 
-    scoreRecorded.push(noOver100(+(dateCalMin/customMinArr[2]*100).toFixed(2)))
+    scoreRecorded.push(+((dateCalMin/customMinArr[2]*100).toFixed(2)))
     timeRecorded.push(displayMinOrHr(dateCalMin))
 
 
@@ -806,7 +835,7 @@ button4.addEventListener("click", (e)=>{
 
 
 button5.addEventListener("click", (e)=>{
-    console.log("button5 pressed.")
+    console.log("dishes pressed.")
 
     date5=new Date()
     dateRecorded.push(date5)
@@ -816,7 +845,7 @@ button5.addEventListener("click", (e)=>{
     console.log(`dateRecorded[4]: ${dateRecorded[4]}`)
     console.log(`date5: ${date5}`)
 
-    scoreRecorded.push(noOver100(+(dateCalMin/mandatoryMinArr[2]*100).toFixed(2)))
+    scoreRecorded.push(+((dateCalMin/mandatoryMinArr[2]*100).toFixed(2)))
     timeRecorded.push(displayMinOrHr(dateCalMin))
 
 
@@ -829,7 +858,7 @@ button5.addEventListener("click", (e)=>{
 
 
 button6.addEventListener("click", (e)=>{
-    console.log("button6 pressed.")
+    console.log("play pressed.")
 
     date6=new Date()
     dateRecorded.push(date6)
@@ -852,7 +881,7 @@ button6.addEventListener("click", (e)=>{
 
 
 button7.addEventListener("click", (e)=>{
-    console.log("button7 pressed.")
+    console.log("offline pressed.")
 
     date7=new Date()
     dateRecorded.push(date7)
@@ -876,41 +905,28 @@ button7.addEventListener("click", (e)=>{
 })
 
 function displayScore(){
-/*
-    let customNmandatory=[]
-    for(let i=0;i<customMinArr.length;i++){
-        customNmandatory.push(customMinArr[0])
-    }
-    for(let i=0;i<mandatoryMinArr.length;i++){
-        customNmandatory.push(mandatoryMinArr[0])
-    }
-    // this logic checks if the score goes over 100; if go over 100 the score stays max at 100
-    let scoreRecordedMax = scoreRecorded.map(x=> (x>=100) ? 100 : x)
-    let customNmandatoryMax = customNmandatory.map(x=> (x>=100) ? 100 : x)
-
-    const sum1 = scoreRecordedMax.reduce((partialSum, a) => partialSum + a, 0) / 5
-    
-    const sum3 = customNmandatoryMax.reduce((partialSum, a) => partialSum + a, 0) /5
-    console.log(`sum1: ${sum1}`)
-    console.log(`sum3 : ${sum3}`)
-    console.log(`Your score accuracy : ${(sum1/sum3)*100}`)
-    */
     console.log(`scoreRecorded: ${scoreRecorded}`)
 
     const sum1 = scoreRecorded.reduce((partialSum, a) => partialSum + a, 0) 
     console.log(`sum1: ${sum1}`)
 
+    let totalTimeRecorded=0
+    someNum=timeRecorded[1].split(" ")
+    totalTimeRecorded+=(+someNum[0])
+    someNum=timeRecorded[2].split(" ")
+    totalTimeRecorded+=(+someNum[0])
+    someNum=timeRecorded[5].split(" ")
+    totalTimeRecorded+=(+someNum[0])
+
+
     discordTextOutput2.textContent =      
     "+-----------------{Your Total Score}-------------------+\n"+
+    `${scoreRecorded}` +"\n" +   
     `Study/Code: ${scoreRecorded[0]} points with ${timeRecorded[0]}` +"\n" +    
-    `*cook & eat*(x${mandatoryRatio[0]}): ${scoreRecorded[1]} points with ${timeRecorded[1]}`+"\n" +    
-    `*walk*(x${mandatoryRatio[1]}): ${scoreRecorded[2]} points with ${timeRecorded[2]}`+"\n" +    
-    `Play Time(x${customRatio[0]}): ${scoreRecorded[3]} points with ${timeRecorded[3]}`+"\n" +    
+    `cook & eat/walk/dishes(x${mandatoryRatio[0]}/x${mandatoryRatio[1]}/x${mandatoryRatio[2]}): ${(scoreRecorded[1]+scoreRecorded[2]+scoreRecorded[5]).toFixed(2)} points with ${displayMinOrHr(totalTimeRecorded)}`+"\n" +    
+    `Play Time(x${customRatio[0]}): ${scoreRecorded[3]+scoreRecorded[6]} points with ${timeRecorded[3]+timeRecorded[6]}`+"\n" +    
     `Research/Important(x${customRatio[1]}): ${scoreRecorded[4]} points with ${timeRecorded[4]}`+"\n" +
-    `*Dishes*(x${mandatoryRatio[2]}): ${scoreRecorded[5]} points with ${timeRecorded[5]}`+"\n" +
-    `Play(x${customRatio[0]}): ${scoreRecorded[6]} points with ${timeRecorded[6]}`+"\n" +
     `Offline/Linux(x${mandatoryRatio[3]}): ${scoreRecorded[7]} points with ${timeRecorded[7]}`+"\n" +
-
     `total Score: ${((sum1/500)*100).toFixed(2)}/100`+"\n" +
     "+-------------------------------------------------------+"
     dateRecorded=[]
@@ -1058,6 +1074,7 @@ function display(){
     customMinArr[0]=+(customMinArr[0]).toFixed(0)
 
     timeRecorded.push(displayMinOrHr(customMinArr[0]))
+    scoreRecorded.push((customMinArr[0]/150*100))
 
 
 
@@ -1091,7 +1108,7 @@ function display(){
     td20.textContent=`${customMinArr[4]}`
 
     dateRecorded.push(new Date())
-    description0.textContent=`Finished at ${formatAMPM(dateRecorded[0])} with total of ${displayMinOrHr(customMinArr[0])} = ${noOver100((customMinArr[0]/customMinArr[0])*100)}/100 pts `
+    description0.textContent=`Finished at ${formatAMPM(dateRecorded[0])} with total of ${displayMinOrHr(customMinArr[0])} = ${scoreRecorded[0]}/100 pts `
     description1.textContent="<= click here to record your cook & eat time! "
     description2.textContent="<= click here to record your walk time!"
     description3.textContent="<= click here to record your play time!"
@@ -1152,18 +1169,18 @@ function display(){
 
 
 
-    /*
+    
     underline.textContent = "Copy text to discord:"
     discordTextOutput.textContent =      
     "+-----------------{My plan for today}-------------------+\n"+
     `Pomodoro (${pomodoro[0]} min): ${pomodoro[1]}` +"\n" +
     `Study/Code: ${customHrArr[0]} hours; ${customMinArr[0]} minutes  ` +"\n" +    
     `Play Time (x${customRatio[0]}): ${customHrArr[1]} hours; ${customMinArr[1]} minutes  `+"\n" +    
-    `Eat/walk/dishes (x${mandatoryRatio[0]}): ${mandatoryHrArr[0]} hours; ${mandatoryMinArr[0]} minutes`+"\n" +    
+    `Cook & Eat/walk/dishes (x${mandatoryRatio[0]}/x${mandatoryRatio[1]}/x${mandatoryRatio[2]}): ${mandatoryHrArr[0]+mandatoryHrArr[1]+mandatoryHrArr[2]} hours; ${mandatoryMinArr[0]+mandatoryMinArr[1]+mandatoryMinArr[2]} minutes`+"\n" +    
     `Research/Important (x${customRatio[1]}): ${customHrArr[2]} hours;  ${customMinArr[2]} minutes`+"\n" +    
-    `Offline/Linux: ${customHrArr[3]} hours; ${customMinArr[3]} minutes`+"\n" +
+    `Offline/Linux(x${mandatoryRatio[3]}): ${customHrArr[3]} hours; ${customMinArr[3]} minutes`+"\n" +
     "+-------------------------------------------------------+"
-*/
+
     
 
 
@@ -1225,11 +1242,9 @@ function display(){
 }
 
 //instruction
-/*
-const div4=document.createElement("pre")
-div4.textContent="! is exclusive \n* is mandatory"
+const div10=document.createElement("pre")
+div10.textContent="! is exclusive \n* is mandatory \n+ can go over 100 points\n default pomodoro aim is 5 or 150 mins"
 const divclass=document.createAttribute("class")
 divclass.value="fixed"
-div4.setAttributeNode(divclass)
-body.appendChild(div4)
-*/
+div10.setAttributeNode(divclass)
+body.appendChild(div10)
