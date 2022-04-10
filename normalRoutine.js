@@ -12,81 +12,92 @@ let dateTmr=""
 mandatoryRatio=[1,1,1,1]
 customRatio=[1,1,1,1,1]
 
-
 const body= document.querySelector("body")
 
+//create min pomodoro and time of sleep data fields
 const pomodoroDiv=document.createElement("div")
 const pomodoroForm=document.createElement("form")
 const pomodoroAction=document.createAttribute("action")
+pomodoroAction.value=""
+pomodoroForm.setAttributeNode(pomodoroAction)
+const pomodoroInnerDiv=document.createElement("div")
+const pomodoroInput1=document.createElement("input")
+const pomodoroInput2=document.createElement("input")
+const pomodoroInput1Action1=document.createAttribute("type")
+const pomodoroInput1Action2=document.createAttribute("name")
+const pomodoroInput1Action3=document.createAttribute("id")
+const pomodoroInput1Action4=document.createAttribute("min")
+const pomodoroInput1Action5=document.createAttribute("value")
+pomodoroInput1Action1.value="number"
+pomodoroInput1Action2.value="time"
+pomodoroInput1Action3.value="time"
+pomodoroInput1Action4.value="5"
+pomodoroInput1Action5.value="30"
+pomodoroInput1.setAttributeNode(pomodoroInput1Action1)
+pomodoroInput1.setAttributeNode(pomodoroInput1Action2)
+pomodoroInput1.setAttributeNode(pomodoroInput1Action3)
+pomodoroInput1.setAttributeNode(pomodoroInput1Action4)
+pomodoroInput1.setAttributeNode(pomodoroInput1Action5)
+const pomodoroInput1Label=document.createElement("label")
+const pomodoroInput1LabelAction=document.createAttribute("for")
+pomodoroInput1LabelAction.value="time"
+pomodoroInput1Label.setAttributeNode(pomodoroInput1LabelAction)
+pomodoroInput1Label.textContent=" min of"
+
+const pomodoroInput2Label=document.createElement("label")
+const pomodoroInput2LabelAction=document.createAttribute("for")
+pomodoroInput2LabelAction.value="pomodoro"
+pomodoroInput2Label.setAttributeNode(pomodoroInput2LabelAction)
+pomodoroInput2Label.textContent=" pomodoro: "
+let pomodoroInput2Actions=[]
+let defaultAttr=["type","name","id","min", "max", "value"]
+let defaultAttr2=["number","pomodoro","pomodoro","3","20", "3"]
+for (let i=0;i<6;i++){
+    pomodoroInput2Actions.push(document.createAttribute(defaultAttr[i]))
+}
+for (let i=0;i<6;i++){
+    pomodoroInput2Actions[i].value=defaultAttr2[i]
+}
+for (let i=0;i<6;i++){
+    pomodoroInput2.setAttributeNode(pomodoroInput2Actions[i])
+}
+const pomodoroInput3=document.createElement("input");
+const labelTime=document.createElement("label")
+const labelTimeAction=document.createAttribute("for")
+labelTimeAction.value="pomodoro"
+labelTime.setAttributeNode(labelTimeAction)
+labelTime.textContent="Select a time to sleep: "
+let labelTimeActions=[]
+let labelTimedefaultAttr=["type","id","name","value"]
+let labelTimedefaultAttr2=["time","appt","appt","00:00"]
+for (let i=0;i<6;i++){
+    labelTimeActions.push(document.createAttribute(labelTimedefaultAttr[i]))
+}
+for (let i=0;i<6;i++){
+    labelTimeActions[i].value=labelTimedefaultAttr2[i]
+}
+for (let i=0;i<6;i++){
+    pomodoroInput3.setAttributeNode(labelTimeActions[i])
+}
+const pomodoroButton=document.createElement("button")
+pomodoroButton.textContent="Submit"
 
 
 const normalRoutine = document.querySelector(".normal")
+const abnormalRoutine=document.querySelector(".abnormal")
 normalRoutine.addEventListener("click", ()=>{
-
-    pomodoroAction.value=""
-    pomodoroForm.setAttributeNode(pomodoroAction)
-    const pomodoroInnerDiv=document.createElement("div")
-    const pomodoroInput1=document.createElement("input")
-    const pomodoroInput2=document.createElement("input")
-    const pomodoroInput1Action1=document.createAttribute("type")
-    const pomodoroInput1Action2=document.createAttribute("name")
-    const pomodoroInput1Action3=document.createAttribute("id")
-    const pomodoroInput1Action4=document.createAttribute("min")
-    const pomodoroInput1Action5=document.createAttribute("value")
-    pomodoroInput1Action1.value="number"
-    pomodoroInput1Action2.value="time"
-    pomodoroInput1Action3.value="time"
-    pomodoroInput1Action4.value="5"
-    pomodoroInput1Action5.value="30"
-    pomodoroInput1.setAttributeNode(pomodoroInput1Action1)
-    pomodoroInput1.setAttributeNode(pomodoroInput1Action2)
-    pomodoroInput1.setAttributeNode(pomodoroInput1Action3)
-    pomodoroInput1.setAttributeNode(pomodoroInput1Action4)
-    pomodoroInput1.setAttributeNode(pomodoroInput1Action5)
-    const pomodoroInput1Label=document.createElement("label")
-    const pomodoroInput1LabelAction=document.createAttribute("for")
-    pomodoroInput1LabelAction.value="time"
-    pomodoroInput1Label.setAttributeNode(pomodoroInput1LabelAction)
-    pomodoroInput1Label.textContent=" min of"
-
-    const pomodoroInput2Label=document.createElement("label")
-    const pomodoroInput2LabelAction=document.createAttribute("for")
-    pomodoroInput2LabelAction.value="pomodoro"
-    pomodoroInput2Label.setAttributeNode(pomodoroInput2LabelAction)
-    pomodoroInput2Label.textContent=" pomodoro: "
-    let pomodoroInput2Actions=[]
-    let defaultAttr=["type","name","id","min", "max", "value"]
-    let defaultAttr2=["number","pomodoro","pomodoro","3","20", "3"]
-    for (let i=0;i<6;i++){
-        pomodoroInput2Actions.push(document.createAttribute(defaultAttr[i]))
+    normalRoutine.disabled=true;
+    abnormalRoutine.disabled=false;
+    const nodeList = document.body.childNodes;
+    let number = nodeList.length;
+    console.log(number)
+    //onsole.log(body.lastChild)
+    for (let i = 0; i < nodeList.length; i++) { 
+        console.log(nodeList[i]); 
     }
-    for (let i=0;i<6;i++){
-        pomodoroInput2Actions[i].value=defaultAttr2[i]
+    while(nodeList.length>5){
+        body.removeChild(body.lastChild)
     }
-    for (let i=0;i<6;i++){
-        pomodoroInput2.setAttributeNode(pomodoroInput2Actions[i])
-    }
-    const pomodoroInput3=document.createElement("input");
-    const labelTime=document.createElement("label")
-    const labelTimeAction=document.createAttribute("for")
-    labelTimeAction.value="pomodoro"
-    labelTime.setAttributeNode(labelTimeAction)
-    labelTime.textContent="Select a time to sleep: "
-    let labelTimeActions=[]
-    let labelTimedefaultAttr=["type","id","name","value"]
-    let labelTimedefaultAttr2=["time","appt","appt","00:00"]
-    for (let i=0;i<6;i++){
-        labelTimeActions.push(document.createAttribute(labelTimedefaultAttr[i]))
-    }
-    for (let i=0;i<6;i++){
-        labelTimeActions[i].value=labelTimedefaultAttr2[i]
-    }
-    for (let i=0;i<6;i++){
-        pomodoroInput3.setAttributeNode(labelTimeActions[i])
-    }
-    const pomodoroButton=document.createElement("button")
-    pomodoroButton.textContent="Submit"
-
     body.appendChild(pomodoroDiv)
     pomodoroDiv.appendChild(pomodoroForm)
     pomodoroForm.appendChild(pomodoroInnerDiv)
@@ -96,10 +107,7 @@ normalRoutine.addEventListener("click", ()=>{
     pomodoroInnerDiv.appendChild(pomodoroInput2)
     pomodoroForm.appendChild(labelTime)
     pomodoroForm.appendChild(pomodoroInput3)
-
     pomodoroForm.appendChild(pomodoroButton)
-
-
 })
 
 
@@ -642,7 +650,6 @@ th2_10.textContent="*Offline/Chill*"
 
 
 function appendTable(){
-
     body.appendChild(container)
         container.appendChild(table)
         table.appendChild(caption1)
@@ -1292,10 +1299,6 @@ function display(){
         // create the pieChart
         let pieChart = anychart.pie();
 
-
-
-
-      
         // set the pieChart title
         pieChart.title("Time Schedule");
       
@@ -1324,8 +1327,6 @@ function display(){
     }, {once : true});
     */
     //bug fix potential!!!!I may want to try body[1] to find SVG to delete!!!!
-}
-
 //instruction
 const div10=document.createElement("pre")
 div10.textContent="! is exclusive \n* is mandatory \n+ can go over 100 points\n default pomodoro aim is 5 or 150 mins"
@@ -1333,3 +1334,6 @@ const divclass=document.createAttribute("class")
 divclass.value="fixed"
 div10.setAttributeNode(divclass)
 body.appendChild(div10)
+
+}
+

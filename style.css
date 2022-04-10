@@ -102,3 +102,28 @@ input{
 .special{
   margin-top:58px
 }
+
+.selection{
+  display:flex;
+  justify-content: center;
+}
+
+/* abnormal routine css*/
+
+.absolute{
+  position:absolute;
+  bottom:45vh;
+  left:45vh;
+}
+
+.resultabsolute{
+  position:absolute;
+  bottom:25vh;
+  left:45vh;
+}
+
+.divcontainer{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+}
