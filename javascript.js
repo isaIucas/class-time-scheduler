@@ -12,8 +12,101 @@ let dateTmr=""
 mandatoryRatio=[1,1,1,1]
 customRatio=[1,1,1,1,1]
 
-const form= document.querySelector("form")
+
 const body= document.querySelector("body")
+
+const pomodoroDiv=document.createElement("div")
+const pomodoroForm=document.createElement("form")
+const pomodoroAction=document.createAttribute("action")
+
+
+const normalRoutine = document.querySelector(".normal")
+normalRoutine.addEventListener("click", ()=>{
+
+    pomodoroAction.value=""
+    pomodoroForm.setAttributeNode(pomodoroAction)
+    const pomodoroInnerDiv=document.createElement("div")
+    const pomodoroInput1=document.createElement("input")
+    const pomodoroInput2=document.createElement("input")
+    const pomodoroInput1Action1=document.createAttribute("type")
+    const pomodoroInput1Action2=document.createAttribute("name")
+    const pomodoroInput1Action3=document.createAttribute("id")
+    const pomodoroInput1Action4=document.createAttribute("min")
+    const pomodoroInput1Action5=document.createAttribute("value")
+    pomodoroInput1Action1.value="number"
+    pomodoroInput1Action2.value="time"
+    pomodoroInput1Action3.value="time"
+    pomodoroInput1Action4.value="5"
+    pomodoroInput1Action5.value="30"
+    pomodoroInput1.setAttributeNode(pomodoroInput1Action1)
+    pomodoroInput1.setAttributeNode(pomodoroInput1Action2)
+    pomodoroInput1.setAttributeNode(pomodoroInput1Action3)
+    pomodoroInput1.setAttributeNode(pomodoroInput1Action4)
+    pomodoroInput1.setAttributeNode(pomodoroInput1Action5)
+    const pomodoroInput1Label=document.createElement("label")
+    const pomodoroInput1LabelAction=document.createAttribute("for")
+    pomodoroInput1LabelAction.value="time"
+    pomodoroInput1Label.setAttributeNode(pomodoroInput1LabelAction)
+    pomodoroInput1Label.textContent=" min of"
+
+    const pomodoroInput2Label=document.createElement("label")
+    const pomodoroInput2LabelAction=document.createAttribute("for")
+    pomodoroInput2LabelAction.value="pomodoro"
+    pomodoroInput2Label.setAttributeNode(pomodoroInput2LabelAction)
+    pomodoroInput2Label.textContent=" pomodoro: "
+    let pomodoroInput2Actions=[]
+    let defaultAttr=["type","name","id","min", "max", "value"]
+    let defaultAttr2=["number","pomodoro","pomodoro","3","20", "3"]
+    for (let i=0;i<6;i++){
+        pomodoroInput2Actions.push(document.createAttribute(defaultAttr[i]))
+    }
+    for (let i=0;i<6;i++){
+        pomodoroInput2Actions[i].value=defaultAttr2[i]
+    }
+    for (let i=0;i<6;i++){
+        pomodoroInput2.setAttributeNode(pomodoroInput2Actions[i])
+    }
+    const pomodoroInput3=document.createElement("input");
+    const labelTime=document.createElement("label")
+    const labelTimeAction=document.createAttribute("for")
+    labelTimeAction.value="pomodoro"
+    labelTime.setAttributeNode(labelTimeAction)
+    labelTime.textContent="Select a time to sleep: "
+    let labelTimeActions=[]
+    let labelTimedefaultAttr=["type","id","name","value"]
+    let labelTimedefaultAttr2=["time","appt","appt","00:00"]
+    for (let i=0;i<6;i++){
+        labelTimeActions.push(document.createAttribute(labelTimedefaultAttr[i]))
+    }
+    for (let i=0;i<6;i++){
+        labelTimeActions[i].value=labelTimedefaultAttr2[i]
+    }
+    for (let i=0;i<6;i++){
+        pomodoroInput3.setAttributeNode(labelTimeActions[i])
+    }
+    const pomodoroButton=document.createElement("button")
+    pomodoroButton.textContent="Submit"
+
+    body.appendChild(pomodoroDiv)
+    pomodoroDiv.appendChild(pomodoroForm)
+    pomodoroForm.appendChild(pomodoroInnerDiv)
+    pomodoroInnerDiv.appendChild(pomodoroInput1)
+    pomodoroInnerDiv.appendChild(pomodoroInput1Label)
+    pomodoroInnerDiv.appendChild(pomodoroInput2Label)
+    pomodoroInnerDiv.appendChild(pomodoroInput2)
+    pomodoroForm.appendChild(labelTime)
+    pomodoroForm.appendChild(pomodoroInput3)
+
+    pomodoroForm.appendChild(pomodoroButton)
+
+
+})
+
+
+
+
+//need to change
+const form= document.querySelector("form")
 
 const container=document.createElement("div")
 const attr1=document.createAttribute("class");
@@ -690,6 +783,9 @@ function reset(){
     mandatoryMinArr=[]
     customHrArr=[]
     customMinArr=[]
+    dateRecorded=[]
+    scoreRecorded=[]
+    timeRecorded=[]
 }
 
 const discord=document.createElement("div")
@@ -722,13 +818,13 @@ form2.addEventListener("submit", function(e) {
 
 })
 
-form.addEventListener("submit", function(e) {
+pomodoroForm.addEventListener("submit", function(e) {
     e.preventDefault();
-    var data = new FormData(form);
+    var data = new FormData(pomodoroForm);
     pomodoro=[]
     for (const [name,value] of data) {
         pomodoro.push(value)
-       //console.log(`name,value: ${name,value}`)
+       console.log(`name,value: ${name,value}`)
 
     }
 
@@ -1006,19 +1102,14 @@ function display(){
     mandatoryHrArr.push(+(0.5*mandatoryRatio[3]).toFixed(1))
     mandatoryMinArr.push(+(30*mandatoryRatio[3]).toFixed(0))
 
-    console.log(`total mandatory totalHours: ${totalHours}`)
-    console.log(`total mandatory totalMinutes: ${totalMinutes}`)
+    
     
     //Study/code is part of customHrArr but is a special case since the number relates to research and play time
     //[study, play, research] custom pos[0,1,2, ]
     for(let i=0;i<3;i++){ 
         totalHours += hours
         totalMinutes += minutes
-        console.log(`custom hours: ${hours}`)
-        console.log(`custom minutes: ${minutes}`)
-        console.log(`custom totalHours ${i}: ${totalHours}`)
-        console.log(`custom totalMinutes ${i}: ${totalMinutes}`)
-        console.log(`RemainingHours: ${RemainingHours}`)
+
 
         if (i==0){
             customHrArr.push(hours)
@@ -1037,26 +1128,20 @@ function display(){
             }
         }
     }
-    console.log(`total custom totalHours: ${totalHours}`)
-    console.log(`total custom totalMinutes: ${totalMinutes}`)
+
     //custom pos[,,,3] offline
     const sum = mandatoryHrArr.reduce((partialSum, a) => partialSum + a, 0) + customHrArr.reduce((partialSum, a) => partialSum + a, 0);
     const sum2= mandatoryMinArr.reduce((partialSum, a) => partialSum + a, 0) + customMinArr.reduce((partialSum, a) => partialSum + a, 0);
-    console.log(`mandatoryHrArr:${mandatoryHrArr}`)
-    console.log(`customHrArr:${customHrArr}`)
+
 
 
     if (sum>RemainingHours){
-        console.log(`mandatoryHrArr[3]:${mandatoryHrArr[3]}`)
         console.log(` `)
 
         customHrArr.push(mandatoryHrArr[3])
         customMinArr.push(mandatoryMinArr[3])
     }else{
-        console.log(`sum:${sum}`)
-        console.log(`RemainingHours:${RemainingHours}`)
-        console.log(`RemainingHours-sum:${RemainingHours-sum}`)
-        console.log(` `)
+
 
 
         customHrArr.push(+(RemainingHours-sum+mandatoryHrArr[3]).toFixed(1))
