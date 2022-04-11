@@ -111,19 +111,45 @@ input{
 /* abnormal routine css*/
 
 .absolute{
-  position:absolute;
-  bottom:45vh;
-  left:45vh;
+
 }
 
 .resultabsolute{
-  position:absolute;
-  bottom:25vh;
-  left:45vh;
-}
-
-.divcontainer{
   display:flex;
   justify-content:center;
-  gap:20px;
+}
+
+.generalDiv{
+  display:flex;
+  flex-direction: column;
+  gap:5vh;
+}
+.message{
+  display:flex;
+  justify-content: center
+}
+.adiv_2{
+  display:flex;
+}
+
+.button4size{
+  display:flex;
+  align-self:center;
+  max-width:10vw;
+}
+
+.adiv_2_1{
+  border-top:1px solid black;
+  border-left:1px solid black;
+  border-bottom:1px solid black;
+
+}
+
+.adiv_2_2{
+  border:1px solid black;
+
+}
+/*
+*{
+  border: 1px solid red;
 }
