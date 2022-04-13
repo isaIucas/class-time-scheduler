@@ -460,4 +460,19 @@ abnormalRoutine.addEventListener("click", () => {
       body.querySelector("svg").remove();
     }
   }
+
+  /*
+    svg.addEventListener("onmouseenter",e=>{
+      console.log(e)
+  }, {once : true});
+  */
+  //bug fix potential!!!!I may want to try body[1] to find SVG to delete!!!!
+  //instruction
+  const div10 = document.createElement("pre");
+  div10.textContent =
+    "Important (priority 1): e.g. studying, coding, working, learning \nSemi-important (priority 2): e.g. chores, walk, social \nFree (priority 3): play games, surf web, omega chill";
+  const divclass = document.createAttribute("class");
+  divclass.value = "fixed";
+  div10.setAttributeNode(divclass);
+  body.appendChild(div10);
 });
