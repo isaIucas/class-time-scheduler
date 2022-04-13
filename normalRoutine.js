@@ -84,7 +84,17 @@ pomodoroButton.textContent = "Submit";
 
 const normalRoutine = document.querySelector(".normal");
 const abnormalRoutine = document.querySelector(".abnormal");
+let normalRoutineBoolean = false
 normalRoutine.addEventListener("click", () => {
+  let text = "Do you want to clear your current data?"
+  if(abnormalRoutineBoolean){
+    if(confirm(text)== true){
+      abnormalRoutineBoolean=false
+      normalRoutineBoolean=false
+    }else{
+      return;
+    }
+  }
   normalRoutine.disabled = true;
   abnormalRoutine.disabled = false;
   const nodeList = document.body.childNodes;
@@ -893,6 +903,9 @@ function noOver100(score) {
 }
 
 button1.addEventListener("click", (e) => {
+
+  normalRoutineBoolean=true
+
   console.log("cook pressed.");
   date1 = new Date();
   dateRecorded.push(date1);
@@ -912,13 +925,16 @@ button1.addEventListener("click", (e) => {
   } = ${scoreRecorded[1]}/100 pts`;
   button1.disabled = true;
   button1_1.disabled = true;
-  button2_2.disabled = true;
+  button1_2.disabled = true;
   button2.disabled = false;
   button2_1.disabled = false;
   button2_2.disabled = false;
 });
 
 button1_1.addEventListener("click", (e) => {
+
+  normalRoutineBoolean=true
+
   console.log("cook done pressed.");
   date1 = new Date();
   dateRecorded.push(date1);
@@ -938,6 +954,8 @@ button1_1.addEventListener("click", (e) => {
 });
 
 button1_2.addEventListener("click", (e) => {
+    normalRoutineBoolean=true
+
   console.log("cook skip pressed.");
   date1 = new Date();
   dateRecorded.push(date1);
@@ -955,6 +973,9 @@ button1_2.addEventListener("click", (e) => {
 });
 
 button2.addEventListener("click", (e) => {
+
+  normalRoutineBoolean=true
+
   console.log("walk pressed.");
 
   date2 = new Date();
@@ -980,6 +1001,8 @@ button2.addEventListener("click", (e) => {
 });
 
 button2_1.addEventListener("click", (e) => {
+    normalRoutineBoolean=true
+
   console.log("walk pressed.");
 
   date2 = new Date();
@@ -1003,6 +1026,8 @@ button2_1.addEventListener("click", (e) => {
 });
 
 button2_2.addEventListener("click", (e) => {
+    normalRoutineBoolean=true
+
   console.log("walk pressed.");
 
   date2 = new Date();
@@ -1026,6 +1051,8 @@ button2_2.addEventListener("click", (e) => {
 });
 
 button3.addEventListener("click", (e) => {
+  normalRoutineBoolean=true
+
   console.log("play pressed.");
 
   date3 = new Date();
@@ -1053,6 +1080,8 @@ button3.addEventListener("click", (e) => {
   button4_2.disabled = false;
 });
 button3_1.addEventListener("click", (e) => {
+    normalRoutineBoolean=true
+
   console.log("play pressed.");
 
   date3 = new Date();
@@ -1076,6 +1105,8 @@ button3_1.addEventListener("click", (e) => {
   button4_2.disabled = false;
 });
 button3_2.addEventListener("click", (e) => {
+    normalRoutineBoolean=true
+
   console.log("play pressed.");
 
   date3 = new Date();
@@ -1100,6 +1131,8 @@ button3_2.addEventListener("click", (e) => {
 });
 
 button4.addEventListener("click", (e) => {
+  normalRoutineBoolean=true
+
   console.log("research pressed.");
 
   date4 = new Date();
@@ -1140,6 +1173,8 @@ button4.addEventListener("click", (e) => {
 });
 
 button4_1.addEventListener("click", (e) => {
+    normalRoutineBoolean=true
+
   console.log("research pressed.");
 
   date4 = new Date();
@@ -1162,6 +1197,8 @@ button4_1.addEventListener("click", (e) => {
 });
 
 button4_2.addEventListener("click", (e) => {
+    normalRoutineBoolean=true
+
   console.log("research pressed.");
 
   date4 = new Date();
@@ -1184,6 +1221,8 @@ button4_2.addEventListener("click", (e) => {
 });
 
 button5.addEventListener("click", (e) => {
+  normalRoutineBoolean=true
+
   console.log("dishes pressed.");
 
   date5 = new Date();
@@ -1212,6 +1251,8 @@ button5.addEventListener("click", (e) => {
 });
 
 button5_1.addEventListener("click", (e) => {
+    normalRoutineBoolean=true
+
   console.log("dishes pressed.");
 
   date5 = new Date();
@@ -1235,6 +1276,8 @@ button5_1.addEventListener("click", (e) => {
 });
 
 button5_2.addEventListener("click", (e) => {
+    normalRoutineBoolean=true
+
   console.log("dishes pressed.");
 
   date5 = new Date();
@@ -1258,6 +1301,8 @@ button5_2.addEventListener("click", (e) => {
 });
 
 button6.addEventListener("click", (e) => {
+  normalRoutineBoolean=true
+
   console.log("play pressed.");
 
   date6 = new Date();
@@ -1287,6 +1332,8 @@ button6.addEventListener("click", (e) => {
 });
 
 button6_1.addEventListener("click", (e) => {
+    normalRoutineBoolean=true
+
   console.log("play pressed.");
 
   date6 = new Date();
@@ -1312,6 +1359,8 @@ button6_1.addEventListener("click", (e) => {
 });
 
 button6_2.addEventListener("click", (e) => {
+    normalRoutineBoolean=true
+
   console.log("play pressed.");
 
   date6 = new Date();
@@ -1337,6 +1386,8 @@ button6_2.addEventListener("click", (e) => {
 });
 
 button7.addEventListener("click", (e) => {
+  normalRoutineBoolean=true
+
   console.log("offline pressed.");
 
   date7 = new Date();
@@ -1366,6 +1417,8 @@ button7.addEventListener("click", (e) => {
 });
 
 button7_1.addEventListener("click", (e) => {
+    normalRoutineBoolean=true
+
   console.log("offline pressed.");
 
   date7 = new Date();
@@ -1391,6 +1444,8 @@ button7_1.addEventListener("click", (e) => {
 });
 
 button7_2.addEventListener("click", (e) => {
+    normalRoutineBoolean=true
+
   console.log("offline pressed.");
 
   date7 = new Date();

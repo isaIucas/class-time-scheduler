@@ -1,4 +1,17 @@
+let abnormalRoutineBoolean=false;
 abnormalRoutine.addEventListener("click", () => {
+  let text = "Do you want to clear your current data?"
+  if(normalRoutineBoolean){
+    if(confirm(text)== true){
+      abnormalRoutineBoolean=false
+      normalRoutineBoolean=false
+
+    }else{
+      return;
+    }
+  }
+
+
   abnormalRoutine.disabled = true;
   normalRoutine.disabled = false;
   const nodeList = document.body.childNodes;
@@ -249,6 +262,7 @@ abnormalRoutine.addEventListener("click", () => {
   }
 
   abutton1.addEventListener("click", () => {
+    abnormalRoutineBoolean=true
     resetTime();
     something = setInterval(setTime, 1000);
 
@@ -286,6 +300,8 @@ abnormalRoutine.addEventListener("click", () => {
   });
 
   abutton2.addEventListener("click", () => {
+    abnormalRoutineBoolean=true
+
     resetTime();
     something = setInterval(setTime, 1000);
 
@@ -323,6 +339,8 @@ abnormalRoutine.addEventListener("click", () => {
     console.log(`elapsed3: ${elapsed3}`);
   });
   abutton3.addEventListener("click", () => {
+    abnormalRoutineBoolean=true
+
     resetTime();
     something = setInterval(setTime, 1000);
 
@@ -420,6 +438,7 @@ abnormalRoutine.addEventListener("click", () => {
     )} \n Semi-Important: ${displayMinOrHr(
       totalNum2
     )} \n Free: ${displayMinOrHr(totalNum3)}`;
+    
     anychart.onDocumentReady(function () {
       // set the data
       let data = [
