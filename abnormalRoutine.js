@@ -75,11 +75,9 @@ abnormalRoutine.addEventListener("click", () => {
   resultclass.value = "resultabsolute";
   result.setAttributeNode(resultclass);
   body.appendChild(result);
-  /*
-  const generalDivAttr2 = document.createAttribute("class");
-  generalDivAttr2.value = "container";
-  generalDiv.setAttributeNode(generalDivAttr2);
-*/
+
+
+
   const generalDiv = document.createElement("div");
   const message = document.createElement("div");
   const message2 = document.createElement("div");
@@ -103,10 +101,25 @@ abnormalRoutine.addEventListener("click", () => {
   generalDivAttr.value = "generalDiv";
   generalDiv.setAttributeNode(generalDivAttr);
 
+  const chartDiv = document.createElement("div");
+  const chartDivAttr = document.createAttribute("id");
+  chartDivAttr.value = "container2";
+  chartDiv.setAttributeNode(chartDivAttr);
+
   const message2Attr = document.createAttribute("class");
   message2Attr.value = "message";
   message2.setAttributeNode(message2Attr);
 
+  const adiv1_1Attr = document.createAttribute("class");
+  adiv1_1Attr.value = "adiv_1";
+  adiv1_1.setAttributeNode(adiv1_1Attr);
+  const adiv2_1Attr = document.createAttribute("class");
+  adiv2_1Attr.value = "adiv_1";
+  adiv2_1.setAttributeNode(adiv2_1Attr);
+  const adiv3_1Attr = document.createAttribute("class");
+  adiv3_1Attr.value = "adiv_1";
+  adiv3_1.setAttributeNode(adiv3_1Attr);
+  
   const adiv1_2Attr = document.createAttribute("class");
   adiv1_2Attr.value = "adiv_2";
   adiv1_2.setAttributeNode(adiv1_2Attr);
@@ -171,8 +184,16 @@ abnormalRoutine.addEventListener("click", () => {
   adiv3_2.appendChild(adiv3_2_2);
   adiv3_2_2.appendChild(paragraph3); //column: min/hr
 
+  const resultDiv = document.createElement("div")
+  const resultDivAttr = document.createAttribute("class")
+  resultDivAttr.value="resultDiv"
+  resultDiv.setAttributeNode(resultDivAttr)
+
   generalDiv.appendChild(abutton4); //finish button
-  generalDiv.appendChild(result);
+  generalDiv.appendChild(resultDiv);
+  resultDiv.appendChild(result)
+  resultDiv.appendChild(chartDiv)
+
   /*
   const container = document.createElement("div");
   const attr1 = document.createAttribute("class");
@@ -222,8 +243,8 @@ abnormalRoutine.addEventListener("click", () => {
       paragraph2.textContent += `${displayMinOrHr(timeDuration2[i])} \n`;
     }
     for (let i = 0; i < timeDuration3.length; i++) {
-      paragraphDate3.textContent += `${formatAMPM(start2[i])} ~ ${formatAMPM(
-        elapsed2[i]
+      paragraphDate3.textContent += `${formatAMPM(start3[i])} ~ ${formatAMPM(
+        elapsed3[i]
       )} \n`;
       paragraph3.textContent += `${displayMinOrHr(timeDuration3[i])} \n`;
     }
@@ -412,6 +433,8 @@ abnormalRoutine.addEventListener("click", () => {
     abutton4.disabled = true;
     RecordingNow = "";
     displayResult();
+
+    
   });
   function displayResult() {
     resetTime();
@@ -441,7 +464,7 @@ abnormalRoutine.addEventListener("click", () => {
     
     anychart.onDocumentReady(function () {
       // set the data
-      let data = [
+      let data2 = [
         { x: "Important", value: totalNum1, normal: { fill: "PaleGreen" } },
         {
           x: "Semi-Important",
@@ -454,31 +477,32 @@ abnormalRoutine.addEventListener("click", () => {
           normal: { fill: "LightGoldenrodYellow" },
         },
       ];
-
+  
       // create the apieChart
       let apieChart = anychart.pie();
-
+  
       // set the apieChart title
       apieChart.title("What you've done today");
-
+  
       // add the data
-      apieChart.data(data);
-
-      var labels = apieChart.labels();
-
-      labels.fontColor("black");
-      labels.fontWeight(400);
-
+      apieChart.data(data2);
+  
+      var labels2 = apieChart.labels();
+  
+      labels2.fontColor("black");
+      labels2.fontWeight(400);
+  
       // display the apieChart in the container
-      apieChart.container("container");
+      apieChart.container("container2");
       apieChart.draw();
     });
-
+  
     let hasSVG = document.querySelector("svg") != null;
     if (hasSVG) {
       body.querySelector("svg").remove();
     }
   }
+  
 
   /*
     svg.addEventListener("onmouseenter",e=>{
