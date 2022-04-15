@@ -1,15 +1,25 @@
-let abnormalRoutineBoolean=false;
+let flexibleRoutineBoolean=false;
 let something2;
 
-abnormalRoutine.addEventListener("click", () => {
-  document.title="Abnormal Routine"
+window.addEventListener('beforeunload', function (e) {
+  if(consistentRoutineBoolean){
+    // Cancel the event
+    e.preventDefault();
+    // Chrome requires returnValue to be set
+    e.returnValue = 'nani';
+  }
+
+});
+
+flexibleRoutine.addEventListener("click", () => {
+  document.title="Flexible Routine"
 
   let text = "Do you want to clear your current data?"
-  if(normalRoutineBoolean){
+  if(consistentRoutineBoolean){
+    
     if(confirm(text)== true){
-      abnormalRoutineBoolean=false
-      normalRoutineBoolean=false
-
+      flexibleRoutineBoolean=false
+      consistentRoutineBoolean=false
     }else {
       pomodoroTimerButton.textContent="continue"
       console.log("whut")
@@ -18,8 +28,8 @@ abnormalRoutine.addEventListener("click", () => {
   }
 
 
-  abnormalRoutine.disabled = true;
-  normalRoutine.disabled = false;
+  flexibleRoutine.disabled = true;
+  consistentRoutine.disabled = false;
   const nodeList = document.body.childNodes;
   let number = nodeList.length;
   /*
@@ -247,6 +257,8 @@ abnormalRoutine.addEventListener("click", () => {
   const pomodoroTimerButton = document.createElement("button");
   pomodoroTimerButton.textContent="start pomodoro"
 
+  const pomodoroList = document.createElement("pre");
+
   body.appendChild(pomodoroTimerDiv)
   pomodoroTimerDiv.appendChild(pomodoroDefaultCount)
   pomodoroTimerDiv.appendChild(pomodoroTimerButton0)
@@ -256,6 +268,7 @@ abnormalRoutine.addEventListener("click", () => {
   pomodoroTimerDiv.appendChild(labelSeconds2)
   pomodoroTimerDiv.appendChild(pomodoroTimer);
   pomodoroTimerDiv.appendChild(pomodoroTimerButton);
+  pomodoroTimerDiv.appendChild(pomodoroList)
 
   pomodoroTimerButton0.addEventListener("click",()=>{
     clearInterval(something2)
@@ -350,6 +363,19 @@ abnormalRoutine.addEventListener("click", () => {
 
     secondsLabel.innerHTML = pad(totalSeconds % 60);
     minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+    switch(which){
+      case "Important":     
+        document.title=`${minutesLabel.innerHTML}:${secondsLabel.innerHTML} - Important`;
+        break;
+      case "Semi-Important":     
+        document.title=`${minutesLabel.innerHTML}:${secondsLabel.innerHTML} - Semi-Important`
+        break;
+      case "Free":     
+        document.title=`${minutesLabel.innerHTML}:${secondsLabel.innerHTML} - Free`
+        break;
+      default:
+        document.title="Flexible Routine"
+    }
   }
 
   function pad(val) {
@@ -378,6 +404,11 @@ abnormalRoutine.addEventListener("click", () => {
   function play() {
     var audio = new Audio('https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3');
     audio.play();
+    if(pomodoroCounted){
+      count+=1
+      pomodoroList.textContent=`You've done ${count} pomodoros. `
+    }
+    pomodoroCounted=false
   }
 
   function setTime2() {
@@ -389,6 +420,7 @@ abnormalRoutine.addEventListener("click", () => {
       pomodoroTimer.textContent="It's time to rest!"
       pomodoroTimerButton.textContent="Start over."
 
+
     }
     secondsLabel2.innerHTML = pad(totalSeconds2 % 60);
     minutesLabel2.innerHTML = pad(parseInt(totalSeconds2 / 60));
@@ -396,8 +428,11 @@ abnormalRoutine.addEventListener("click", () => {
 
   }
 
+  let which="";
   abutton1.addEventListener("click", () => {
-    abnormalRoutineBoolean=true
+    which="Important"
+
+    flexibleRoutineBoolean=true
     resetTime();
     something = setInterval(setTime, 1000);
 
@@ -435,7 +470,9 @@ abnormalRoutine.addEventListener("click", () => {
   });
 
   abutton2.addEventListener("click", () => {
-    abnormalRoutineBoolean=true
+    which="Semi-Important"
+
+    flexibleRoutineBoolean=true
 
     resetTime();
     something = setInterval(setTime, 1000);
@@ -474,7 +511,9 @@ abnormalRoutine.addEventListener("click", () => {
     console.log(`elapsed3: ${elapsed3}`);
   });
   abutton3.addEventListener("click", () => {
-    abnormalRoutineBoolean=true
+    which="Free"
+
+    flexibleRoutineBoolean=true
 
     resetTime();
     something = setInterval(setTime, 1000);
@@ -515,6 +554,7 @@ abnormalRoutine.addEventListener("click", () => {
   });
 
   abutton4.addEventListener("click", () => {
+    document.title="Flexible Routine"
     resetTime();
     something = setInterval(setTime, 1000);
 
@@ -626,8 +666,11 @@ abnormalRoutine.addEventListener("click", () => {
   //bug fix potential!!!!I may want to try body[1] to find SVG to delete!!!!
   //instruction
   let pausedSeconds=0
+  let count=0
   pomodoroTimerButton.addEventListener("click", ()=>{
-    abnormalRoutineBoolean=true
+    flexibleRoutineBoolean=true
+    pomodoroCounted=true;
+
 
     if(pomodoroTimerButton.textContent==="Start over."){
       pomodoroTimer.textContent="pomodoro timer"
@@ -646,7 +689,8 @@ abnormalRoutine.addEventListener("click", () => {
       resetTime2();
       something2 = setInterval(setTime2, 1000);
     }
-   
+
+
 
   })
 

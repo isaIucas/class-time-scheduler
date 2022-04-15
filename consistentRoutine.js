@@ -70,6 +70,17 @@ labelTime.textContent = "Select a time to sleep: ";
 let labelTimeActions = [];
 let labelTimedefaultAttr = ["type", "id", "name", "value"];
 let labelTimedefaultAttr2 = ["time", "appt", "appt", "00:00"];
+
+window.addEventListener('beforeunload', function (e) {
+  if(flexibleRoutineBoolean){
+    // Cancel the event
+    e.preventDefault();
+    // Chrome requires returnValue to be set
+    e.returnValue = 'nani';
+  }
+
+});
+
 for (let i = 0; i < 6; i++) {
   labelTimeActions.push(document.createAttribute(labelTimedefaultAttr[i]));
 }
@@ -82,23 +93,24 @@ for (let i = 0; i < 6; i++) {
 const pomodoroButton = document.createElement("button");
 pomodoroButton.textContent = "Submit";
 
-const normalRoutine = document.querySelector(".normal");
-const abnormalRoutine = document.querySelector(".abnormal");
-let normalRoutineBoolean = false
-normalRoutine.addEventListener("click", () => {
+const consistentRoutine = document.querySelector(".consistent");
+const flexibleRoutine = document.querySelector(".flexible");
+let consistentRoutineBoolean = false
+
+consistentRoutine.addEventListener("click", () => {
   clearInterval(something2)
-  document.title="Normal Routine"
+  document.title="Consistent Routine"
   let text = "Do you want to clear your current data?"
-  if(abnormalRoutineBoolean){
+  if(flexibleRoutineBoolean){
     if(confirm(text)== true){
-      abnormalRoutineBoolean=false
-      normalRoutineBoolean=false
+      flexibleRoutineBoolean=false
+      consistentRoutineBoolean=false
     }else{
       return;
     }
   }
-  normalRoutine.disabled = true;
-  abnormalRoutine.disabled = false;
+  consistentRoutine.disabled = true;
+  flexibleRoutine.disabled = false;
   const nodeList = document.body.childNodes;
   let number = nodeList.length;
   console.log(number);
@@ -515,14 +527,14 @@ const description7 = document.createElement("div");
 
 //setting colors to table
 /*
-{x: "Study/Code", value: customHrArr[0], normal: {fill:"PaleGreen"}},
-{x: "Cook & eat", value: customHrArr[0], normal: {fill:"LightCyan"}},
-{x: "walk", value: customHrArr[0], normal: {fill:"LightGoldenrodYellow"}},
-{x: "Play", value: customHrArr[1], normal: {fill:"PaleTurquoise"}},
-{x: "Research/Important", value: customHrArr[2], normal: {fill:"MistyRose	"}},
-{x: "dishes", value: customHrArr[0], normal: {fill:"Lavender"}},
-{x: "play", value: customHrArr[0], normal: {fill:"PaleTurquoise"}},
-{x: "Offline/Linux", value: customHrArr[3], normal: {fill:"Honeydew	"}},
+{x: "Study/Code", value: customHrArr[0], consistent: {fill:"PaleGreen"}},
+{x: "Cook & eat", value: customHrArr[0], consistent: {fill:"LightCyan"}},
+{x: "walk", value: customHrArr[0], consistent: {fill:"LightGoldenrodYellow"}},
+{x: "Play", value: customHrArr[1], consistent: {fill:"PaleTurquoise"}},
+{x: "Research/Important", value: customHrArr[2], consistent: {fill:"MistyRose	"}},
+{x: "dishes", value: customHrArr[0], consistent: {fill:"Lavender"}},
+{x: "play", value: customHrArr[0], consistent: {fill:"PaleTurquoise"}},
+{x: "Offline/Linux", value: customHrArr[3], consistent: {fill:"Honeydew	"}},
 */
 th3.style = "background-color:PaleGreen";
 td2.style = "background-color:PaleGreen";
@@ -896,17 +908,17 @@ function displayMinOrHr(min) {
     : `${min.toFixed(2)} minutes`;
 }
 
-function noOver100(score) {
+function noOver100(score, maxScore) {
   console.log(score);
   if (score === Infinity || score === -Infinity) {
     return 0;
   }
-  return score > 99 ? 100 : +score.toFixed(2);
+  return score > maxScore ? maxScore : +score.toFixed(2);
 }
 
 button1.addEventListener("click", (e) => {
 
-  normalRoutineBoolean=true
+  consistentRoutineBoolean=true
 
   console.log("cook pressed.");
   date1 = new Date();
@@ -918,7 +930,7 @@ button1.addEventListener("click", (e) => {
   console.log(`date1: ${date1}`);
 
   scoreRecorded.push(
-    noOver100(+((dateCalMin / mandatoryMinArr[0]) * 25).toFixed(2))
+    noOver100(+((dateCalMin / mandatoryMinArr[0]) * 25).toFixed(2),25)
   );
   timeRecorded.push(displayMinOrHr(dateCalMin)); //main issue
   console.log(scoreRecorded);
@@ -935,7 +947,7 @@ button1.addEventListener("click", (e) => {
 
 button1_1.addEventListener("click", (e) => {
 
-  normalRoutineBoolean=true
+  consistentRoutineBoolean=true
 
   console.log("cook done pressed.");
   date1 = new Date();
@@ -943,7 +955,7 @@ button1_1.addEventListener("click", (e) => {
   dateCalMin = Math.abs(dateRecorded[0] - date1) / 60000;
   dateCalHr = dateCalMin / 60;
 
-  scoreRecorded.push(noOver100(25));
+  scoreRecorded.push(25);
   timeRecorded.push(displayMinOrHr(mandatoryMinArr[0]));
   console.log(scoreRecorded);
   description1.textContent = `Already done with total of ${timeRecorded[1]} = ${scoreRecorded[1]}/25 pts`;
@@ -956,13 +968,13 @@ button1_1.addEventListener("click", (e) => {
 });
 
 button1_2.addEventListener("click", (e) => {
-    normalRoutineBoolean=true
+    consistentRoutineBoolean=true
 
   console.log("cook skip pressed.");
   date1 = new Date();
   dateRecorded.push(date1);
 
-  scoreRecorded.push(noOver100(0));
+  scoreRecorded.push(0);
   timeRecorded.push(displayMinOrHr(0));
   console.log(scoreRecorded);
   description1.textContent = `Skipped with total of ${timeRecorded[1]} = ${scoreRecorded[1]}/25 pts`;
@@ -976,7 +988,7 @@ button1_2.addEventListener("click", (e) => {
 
 button2.addEventListener("click", (e) => {
 
-  normalRoutineBoolean=true
+  consistentRoutineBoolean=true
 
   console.log("walk pressed.");
 
@@ -1003,7 +1015,7 @@ button2.addEventListener("click", (e) => {
 });
 
 button2_1.addEventListener("click", (e) => {
-    normalRoutineBoolean=true
+    consistentRoutineBoolean=true
 
   console.log("walk pressed.");
 
@@ -1028,7 +1040,7 @@ button2_1.addEventListener("click", (e) => {
 });
 
 button2_2.addEventListener("click", (e) => {
-    normalRoutineBoolean=true
+    consistentRoutineBoolean=true
 
   console.log("walk pressed.");
 
@@ -1053,7 +1065,7 @@ button2_2.addEventListener("click", (e) => {
 });
 
 button3.addEventListener("click", (e) => {
-  normalRoutineBoolean=true
+  consistentRoutineBoolean=true
 
   console.log("play pressed.");
 
@@ -1066,7 +1078,7 @@ button3.addEventListener("click", (e) => {
   console.log(`date3: ${date3}`);
 
   scoreRecorded.push(
-    noOver100(+((dateCalMin / (customMinArr[1] / 2)) * 50).toFixed(2))
+    noOver100(+((dateCalMin / (customMinArr[1] / 2)) * 50).toFixed(2),50)
   );
   timeRecorded.push(displayMinOrHr(dateCalMin));
 
@@ -1082,7 +1094,7 @@ button3.addEventListener("click", (e) => {
   button4_2.disabled = false;
 });
 button3_1.addEventListener("click", (e) => {
-    normalRoutineBoolean=true
+    consistentRoutineBoolean=true
 
   console.log("play pressed.");
 
@@ -1107,7 +1119,7 @@ button3_1.addEventListener("click", (e) => {
   button4_2.disabled = false;
 });
 button3_2.addEventListener("click", (e) => {
-    normalRoutineBoolean=true
+    consistentRoutineBoolean=true
 
   console.log("play pressed.");
 
@@ -1133,7 +1145,7 @@ button3_2.addEventListener("click", (e) => {
 });
 
 button4.addEventListener("click", (e) => {
-  normalRoutineBoolean=true
+  consistentRoutineBoolean=true
 
   console.log("research pressed.");
 
@@ -1175,7 +1187,7 @@ button4.addEventListener("click", (e) => {
 });
 
 button4_1.addEventListener("click", (e) => {
-    normalRoutineBoolean=true
+    consistentRoutineBoolean=true
 
   console.log("research pressed.");
 
@@ -1199,7 +1211,7 @@ button4_1.addEventListener("click", (e) => {
 });
 
 button4_2.addEventListener("click", (e) => {
-    normalRoutineBoolean=true
+    consistentRoutineBoolean=true
 
   console.log("research pressed.");
 
@@ -1223,7 +1235,7 @@ button4_2.addEventListener("click", (e) => {
 });
 
 button5.addEventListener("click", (e) => {
-  normalRoutineBoolean=true
+  consistentRoutineBoolean=true
 
   console.log("dishes pressed.");
 
@@ -1253,7 +1265,7 @@ button5.addEventListener("click", (e) => {
 });
 
 button5_1.addEventListener("click", (e) => {
-    normalRoutineBoolean=true
+    consistentRoutineBoolean=true
 
   console.log("dishes pressed.");
 
@@ -1278,7 +1290,7 @@ button5_1.addEventListener("click", (e) => {
 });
 
 button5_2.addEventListener("click", (e) => {
-    normalRoutineBoolean=true
+    consistentRoutineBoolean=true
 
   console.log("dishes pressed.");
 
@@ -1303,7 +1315,7 @@ button5_2.addEventListener("click", (e) => {
 });
 
 button6.addEventListener("click", (e) => {
-  normalRoutineBoolean=true
+  consistentRoutineBoolean=true
 
   console.log("play pressed.");
 
@@ -1316,7 +1328,7 @@ button6.addEventListener("click", (e) => {
   console.log(`date6: ${date6}`);
 
   scoreRecorded.push(
-    noOver100(+((dateCalMin / (customMinArr[1] / 2)) * 50).toFixed(2))
+    noOver100(+((dateCalMin / (customMinArr[1] / 2)) * 50).toFixed(2),50)
   );
   timeRecorded.push(displayMinOrHr(dateCalMin));
 
@@ -1334,7 +1346,7 @@ button6.addEventListener("click", (e) => {
 });
 
 button6_1.addEventListener("click", (e) => {
-    normalRoutineBoolean=true
+    consistentRoutineBoolean=true
 
   console.log("play pressed.");
 
@@ -1361,7 +1373,7 @@ button6_1.addEventListener("click", (e) => {
 });
 
 button6_2.addEventListener("click", (e) => {
-    normalRoutineBoolean=true
+    consistentRoutineBoolean=true
 
   console.log("play pressed.");
 
@@ -1388,7 +1400,7 @@ button6_2.addEventListener("click", (e) => {
 });
 
 button7.addEventListener("click", (e) => {
-  normalRoutineBoolean=true
+  consistentRoutineBoolean=true
 
   console.log("offline pressed.");
 
@@ -1401,7 +1413,7 @@ button7.addEventListener("click", (e) => {
   console.log(`date7: ${date7}`);
 
   scoreRecorded.push(
-    noOver100(+((dateCalMin / customMinArr[3]) * 100).toFixed(2))
+    noOver100(+((dateCalMin / customMinArr[3]) * 100).toFixed(2),100)
   );
   timeRecorded.push(displayMinOrHr(dateCalMin));
 
@@ -1419,7 +1431,7 @@ button7.addEventListener("click", (e) => {
 });
 
 button7_1.addEventListener("click", (e) => {
-    normalRoutineBoolean=true
+    consistentRoutineBoolean=true
 
   console.log("offline pressed.");
 
@@ -1446,7 +1458,7 @@ button7_1.addEventListener("click", (e) => {
 });
 
 button7_2.addEventListener("click", (e) => {
-    normalRoutineBoolean=true
+    consistentRoutineBoolean=true
 
   console.log("offline pressed.");
 
@@ -1472,6 +1484,10 @@ button7_2.addEventListener("click", (e) => {
   //modal jump?
 });
 
+function whatever(arr){
+  return (arr[1]==="minutes") ? +arr[0] : +arr[0]*60
+}
+
 function displayScore() {
   console.log(`scoreRecorded: ${scoreRecorded}`);
 
@@ -1479,12 +1495,9 @@ function displayScore() {
   console.log(`sum1: ${sum1}`);
 
   let totalTimeRecorded = 0;
-  someNum = timeRecorded[1].split(" ");
-  totalTimeRecorded += +someNum[0];
-  someNum = timeRecorded[2].split(" ");
-  totalTimeRecorded += +someNum[0];
-  someNum = timeRecorded[5].split(" ");
-  totalTimeRecorded += +someNum[0];
+  totalTimeRecorded += whatever(timeRecorded[1].split(" "))
+  totalTimeRecorded += whatever(timeRecorded[2].split(" "))
+  totalTimeRecorded += whatever(timeRecorded[5].split(" "))
 
   discordTextOutput2.textContent =
     "+-----------------{Your Total Score}-------------------+\n" +
@@ -1494,13 +1507,11 @@ function displayScore() {
     "\n" +
     `cook & eat/walk/dishes(x${mandatoryRatio[0]}/x${mandatoryRatio[1]}/x${
       mandatoryRatio[2]
-    }): ${(scoreRecorded[1] + scoreRecorded[2] + scoreRecorded[5]).toFixed(
-      2
-    )} points with ${displayMinOrHr(totalTimeRecorded)}` +
+    }): ${(scoreRecorded[1] + scoreRecorded[2] +scoreRecorded[5])} points with ${displayMinOrHr(totalTimeRecorded)}` +
     "\n" +
     `Play Time(x${customRatio[0]}): ${
       scoreRecorded[3] + scoreRecorded[6]
-    } points with ${timeRecorded[3] + timeRecorded[6]}` +
+    } points with ${displayMinOrHr(whatever(timeRecorded[3].split(" ")) + whatever(timeRecorded[6].split(" ")))} ` +
     "\n" +
     `Research/Important(x${customRatio[1]}): ${scoreRecorded[4]} points with ${timeRecorded[4]}` +
     "\n" +
@@ -1531,6 +1542,9 @@ function formatAMPM(date) {
 
 function display() {
   button1.disabled = false;
+  button1_1.disabled = false;
+  button1_2.disabled = false;
+
   discordTextOutput2.textContent = "";
 
   dateNow = new Date();
