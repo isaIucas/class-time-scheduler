@@ -1,14 +1,20 @@
 let abnormalRoutineBoolean=false;
+let something2;
+
 abnormalRoutine.addEventListener("click", () => {
+  document.title="Abnormal Routine"
+
   let text = "Do you want to clear your current data?"
   if(normalRoutineBoolean){
     if(confirm(text)== true){
       abnormalRoutineBoolean=false
       normalRoutineBoolean=false
 
-    }else{
-      return;
+    }else {
+      pomodoroTimerButton.textContent="continue"
+      console.log("whut")
     }
+    
   }
 
 
@@ -26,7 +32,7 @@ abnormalRoutine.addEventListener("click", () => {
   while (nodeList.length > 5) {
     body.removeChild(body.lastChild);
   }
-
+  //regular timer
   const labelMin = document.createElement("label");
   const labelMinId = document.createAttribute("id");
   labelMinId.value = "minutes";
@@ -40,6 +46,22 @@ abnormalRoutine.addEventListener("click", () => {
   labelSecondsId.value = "seconds";
   labelSeconds.setAttributeNode(labelSecondsId);
   labelSeconds.textContent = "00";
+
+  //pomodoro Timer
+  const labelMin2 = document.createElement("label");
+  const labelMinId2 = document.createAttribute("id");
+  labelMinId2.value = "nani";
+  labelMin2.setAttributeNode(labelMinId2);
+  labelMin2.textContent = "25";
+  const inbetweenLabel2 = document.createElement("span");
+  inbetweenLabel2.textContent = ":";
+
+  const labelSeconds2 = document.createElement("label");
+  const labelSecondsId2 = document.createAttribute("id");
+  labelSecondsId2.value = "nandesuka";
+  labelSeconds2.setAttributeNode(labelSecondsId2);
+  labelSeconds2.textContent = "00";
+ 
 
   const abutton1 = document.createElement("button");
   const abutton2 = document.createElement("button");
@@ -194,6 +216,56 @@ abnormalRoutine.addEventListener("click", () => {
   resultDiv.appendChild(result)
   resultDiv.appendChild(chartDiv)
 
+  const div10 = document.createElement("pre");
+  div10.textContent =
+    "Important (priority 1): e.g. studying, coding, working, learning \nSemi-important (priority 2): e.g. chores, walk, social \nFree (priority 3): play games, surf web, omega chill";
+  const divclass = document.createAttribute("class");
+  divclass.value = "fixed";
+  div10.setAttributeNode(divclass);
+  body.appendChild(div10);
+
+  const pomodoroTimer = document.createElement("pre");
+  pomodoroTimer.textContent =
+    "pomodor Timer";
+
+  const pomodoroDefaultCount= document.createElement("input")
+  const pomodoroDefaultCountAtr=document.createAttribute("type")
+  pomodoroDefaultCountAtr.value="number"
+  pomodoroDefaultCount.setAttributeNode(pomodoroDefaultCountAtr)
+  const pomodoroDefaultCountAtr2=document.createAttribute("value")
+  pomodoroDefaultCountAtr2.value="25"
+  pomodoroDefaultCount.setAttributeNode(pomodoroDefaultCountAtr2)
+
+  const pomodoroTimerButton0 = document.createElement("button");
+  pomodoroTimerButton0.textContent="set pomodoro time"
+
+  const pomodoroTimerDiv = document.createElement("div");
+  const pomodoroTimerDivAtr = document.createAttribute("class");
+  pomodoroTimerDivAtr.value = "pomodoroFixed";
+  pomodoroTimerDiv.setAttributeNode(pomodoroTimerDivAtr);
+
+  const pomodoroTimerButton = document.createElement("button");
+  pomodoroTimerButton.textContent="start pomodoro"
+
+  body.appendChild(pomodoroTimerDiv)
+  pomodoroTimerDiv.appendChild(pomodoroDefaultCount)
+  pomodoroTimerDiv.appendChild(pomodoroTimerButton0)
+  pomodoroTimerDiv.appendChild(document.createElement("div"))
+  pomodoroTimerDiv.appendChild(labelMin2)
+  pomodoroTimerDiv.appendChild(inbetweenLabel2)
+  pomodoroTimerDiv.appendChild(labelSeconds2)
+  pomodoroTimerDiv.appendChild(pomodoroTimer);
+  pomodoroTimerDiv.appendChild(pomodoroTimerButton);
+
+  pomodoroTimerButton0.addEventListener("click",()=>{
+    clearInterval(something2)
+    labelMin2.textContent = `${pomodoroDefaultCount.value}`;
+    labelSeconds2.textContent = `00`
+    pomodoroTimerButton.textContent="Start Over."
+    document.title=`${minutesLabel2.innerHTML}:${secondsLabel2.innerHTML} - Time to focus!`
+
+  })
+
   /*
   const container = document.createElement("div");
   const attr1 = document.createAttribute("class");
@@ -259,6 +331,8 @@ abnormalRoutine.addEventListener("click", () => {
   var secondsLabel = document.getElementById("seconds");
   var totalSeconds = 0;
   let something;
+  console.log(secondsLabel)
+
 
   function resetTime() {
     clearInterval(something);
@@ -269,6 +343,11 @@ abnormalRoutine.addEventListener("click", () => {
 
   function setTime() {
     ++totalSeconds;
+        console.log(secondsLabel)
+
+    console.log(secondsLabel.innerHTML)
+    console.log(pad(totalSeconds % 60))
+
     secondsLabel.innerHTML = pad(totalSeconds % 60);
     minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
   }
@@ -280,6 +359,41 @@ abnormalRoutine.addEventListener("click", () => {
     } else {
       return valString;
     }
+  }
+
+  var minutesLabel2 = document.getElementById("nani");
+  var secondsLabel2 = document.getElementById("nandesuka");
+  var totalSeconds2 = 0;
+
+  console.log(secondsLabel2)
+
+
+  function resetTime2() {
+    clearInterval(something2);
+    document.getElementById("nani").innerHTML = `${pomodoroDefaultCount.value}`;
+    document.getElementById("nandesuka").innerHTML = `00`;
+    totalSeconds2 =60*pomodoroDefaultCount.value ;
+  }
+
+  function play() {
+    var audio = new Audio('https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3');
+    audio.play();
+  }
+
+  function setTime2() {
+    --totalSeconds2;
+    console.log(secondsLabel2.innerHTML)
+    if(minutesLabel2.innerHTML =="00" && secondsLabel2.innerHTML=="01"){
+      clearInterval(something2)
+      play()
+      pomodoroTimer.textContent="It's time to rest!"
+      pomodoroTimerButton.textContent="Start over."
+
+    }
+    secondsLabel2.innerHTML = pad(totalSeconds2 % 60);
+    minutesLabel2.innerHTML = pad(parseInt(totalSeconds2 / 60));
+    document.title=`${minutesLabel2.innerHTML}:${secondsLabel2.innerHTML} - Time to focus!`
+
   }
 
   abutton1.addEventListener("click", () => {
@@ -511,11 +625,29 @@ abnormalRoutine.addEventListener("click", () => {
   */
   //bug fix potential!!!!I may want to try body[1] to find SVG to delete!!!!
   //instruction
-  const div10 = document.createElement("pre");
-  div10.textContent =
-    "Important (priority 1): e.g. studying, coding, working, learning \nSemi-important (priority 2): e.g. chores, walk, social \nFree (priority 3): play games, surf web, omega chill";
-  const divclass = document.createAttribute("class");
-  divclass.value = "fixed";
-  div10.setAttributeNode(divclass);
-  body.appendChild(div10);
+  let pausedSeconds=0
+  pomodoroTimerButton.addEventListener("click", ()=>{
+    abnormalRoutineBoolean=true
+
+    if(pomodoroTimerButton.textContent==="Start over."){
+      pomodoroTimer.textContent="pomodoro timer"
+    }
+    if(pomodoroTimerButton.textContent=="continue"){
+      pomodoroTimerButton.textContent="pause"
+      totalSeconds=pausedSeconds
+      something2 = setInterval(setTime2, 1000);
+    } else if (pomodoroTimerButton.textContent=="pause"){
+      pausedSeconds=totalSeconds
+      clearInterval(something2)
+      pomodoroTimerButton.textContent="continue"
+    }else{
+      pomodoroTimerButton.textContent="pause"
+      console.log("pomodoroTimerButton")
+      resetTime2();
+      something2 = setInterval(setTime2, 1000);
+    }
+   
+
+  })
+
 });

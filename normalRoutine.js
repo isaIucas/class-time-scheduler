@@ -86,6 +86,8 @@ const normalRoutine = document.querySelector(".normal");
 const abnormalRoutine = document.querySelector(".abnormal");
 let normalRoutineBoolean = false
 normalRoutine.addEventListener("click", () => {
+  clearInterval(something2)
+  document.title="Normal Routine"
   let text = "Do you want to clear your current data?"
   if(abnormalRoutineBoolean){
     if(confirm(text)== true){
@@ -916,13 +918,13 @@ button1.addEventListener("click", (e) => {
   console.log(`date1: ${date1}`);
 
   scoreRecorded.push(
-    noOver100(+((dateCalMin / mandatoryMinArr[0]) * 100).toFixed(2))
+    noOver100(+((dateCalMin / mandatoryMinArr[0]) * 25).toFixed(2))
   );
   timeRecorded.push(displayMinOrHr(dateCalMin)); //main issue
   console.log(scoreRecorded);
   description1.textContent = `Finished at ${formatAMPM(date1)} with total of ${
     timeRecorded[1]
-  } = ${scoreRecorded[1]}/100 pts`;
+  } = ${scoreRecorded[1]}/25 pts`;
   button1.disabled = true;
   button1_1.disabled = true;
   button1_2.disabled = true;
@@ -941,10 +943,10 @@ button1_1.addEventListener("click", (e) => {
   dateCalMin = Math.abs(dateRecorded[0] - date1) / 60000;
   dateCalHr = dateCalMin / 60;
 
-  scoreRecorded.push(noOver100(100));
+  scoreRecorded.push(noOver100(25));
   timeRecorded.push(displayMinOrHr(mandatoryMinArr[0]));
   console.log(scoreRecorded);
-  description1.textContent = `Already done with total of ${timeRecorded[1]} = ${scoreRecorded[1]}/100 pts`;
+  description1.textContent = `Already done with total of ${timeRecorded[1]} = ${scoreRecorded[1]}/25 pts`;
   button1.disabled = true;
   button1_1.disabled = true;
   button1_2.disabled = true;
@@ -963,7 +965,7 @@ button1_2.addEventListener("click", (e) => {
   scoreRecorded.push(noOver100(0));
   timeRecorded.push(displayMinOrHr(0));
   console.log(scoreRecorded);
-  description1.textContent = `Skipped with total of ${timeRecorded[1]} = ${scoreRecorded[1]}/100 pts`;
+  description1.textContent = `Skipped with total of ${timeRecorded[1]} = ${scoreRecorded[1]}/25 pts`;
   button1.disabled = true;
   button1_1.disabled = true;
   button1_2.disabled = true;
@@ -986,12 +988,12 @@ button2.addEventListener("click", (e) => {
   console.log(`dateRecorded[1]: ${dateRecorded[1]}`);
   console.log(`date2: ${date2}`);
 
-  scoreRecorded.push(+((dateCalMin / mandatoryMinArr[1]) * 100).toFixed(2));
+  scoreRecorded.push(+((dateCalMin / mandatoryMinArr[1]) * 50).toFixed(2));
   timeRecorded.push(displayMinOrHr(dateCalMin));
 
   description2.textContent = `Finished at ${formatAMPM(date2)} with total of ${
     timeRecorded[2]
-  } = ${scoreRecorded[2]}/100 pts`;
+  } = ${scoreRecorded[2]}/50 pts`;
   button2.disabled = true;
   button2_1.disabled = true;
   button2_2.disabled = true;
@@ -1013,10 +1015,10 @@ button2_1.addEventListener("click", (e) => {
   console.log(`dateRecorded[1]: ${dateRecorded[1]}`);
   console.log(`date2: ${date2}`);
 
-  scoreRecorded.push(100);
+  scoreRecorded.push(50);
   timeRecorded.push(displayMinOrHr(mandatoryMinArr[1]));
 
-  description2.textContent = `Already done with total of ${timeRecorded[2]} = ${scoreRecorded[2]}/100 pts`;
+  description2.textContent = `Already done with total of ${timeRecorded[2]} = ${scoreRecorded[2]}/50 pts`;
   button2.disabled = true;
   button2_1.disabled = true;
   button2_2.disabled = true;
@@ -1041,7 +1043,7 @@ button2_2.addEventListener("click", (e) => {
   scoreRecorded.push(0);
   timeRecorded.push(displayMinOrHr(0));
 
-  description2.textContent = `Skipped with total of ${timeRecorded[2]} = ${scoreRecorded[2]}/100 pts`;
+  description2.textContent = `Skipped with total of ${timeRecorded[2]} = ${scoreRecorded[2]}/50 pts`;
   button2.disabled = true;
   button2_1.disabled = true;
   button2_2.disabled = true;
@@ -1064,13 +1066,13 @@ button3.addEventListener("click", (e) => {
   console.log(`date3: ${date3}`);
 
   scoreRecorded.push(
-    noOver100(+((dateCalMin / (customMinArr[1] / 2)) * 100).toFixed(2))
+    noOver100(+((dateCalMin / (customMinArr[1] / 2)) * 50).toFixed(2))
   );
   timeRecorded.push(displayMinOrHr(dateCalMin));
 
   description3.textContent = `Finished at ${formatAMPM(date3)} with total of ${
     timeRecorded[3]
-  } = ${scoreRecorded[3]}/100 pts`;
+  } = ${scoreRecorded[3]}/50 pts`;
   button3.disabled = true;
   button3_1.disabled = true;
   button3_2.disabled = true;
@@ -1092,10 +1094,10 @@ button3_1.addEventListener("click", (e) => {
   console.log(`dateRecorded[2]: ${dateRecorded[2]}`);
   console.log(`date3: ${date3}`);
 
-  scoreRecorded.push(100);
+  scoreRecorded.push(50);
   timeRecorded.push(displayMinOrHr(customMinArr[1] / 2));
 
-  description3.textContent = `Already done with total of ${timeRecorded[3]} = ${scoreRecorded[3]}/100 pts`;
+  description3.textContent = `Already done with total of ${timeRecorded[3]} = ${scoreRecorded[3]}/50 pts`;
   button3.disabled = true;
   button3_1.disabled = true;
   button3_2.disabled = true;
@@ -1120,7 +1122,7 @@ button3_2.addEventListener("click", (e) => {
   scoreRecorded.push(0);
   timeRecorded.push(displayMinOrHr(0));
 
-  description3.textContent = `Skipped with total of ${timeRecorded[3]} = ${scoreRecorded[3]}/100 pts`;
+  description3.textContent = `Skipped with total of ${timeRecorded[3]} = ${scoreRecorded[3]}/50 pts`;
   button3.disabled = true;
   button3_1.disabled = true;
   button3_2.disabled = true;
@@ -1233,12 +1235,12 @@ button5.addEventListener("click", (e) => {
   console.log(`dateRecorded[4]: ${dateRecorded[4]}`);
   console.log(`date5: ${date5}`);
 
-  scoreRecorded.push(+((dateCalMin / mandatoryMinArr[2]) * 100).toFixed(2));
+  scoreRecorded.push(+((dateCalMin / mandatoryMinArr[2]) * 25).toFixed(2));
   timeRecorded.push(displayMinOrHr(dateCalMin));
 
   description5.textContent = `Finished at ${formatAMPM(date5)} with total of ${
     timeRecorded[5]
-  } = ${scoreRecorded[5]}/100 pts`;
+  } = ${scoreRecorded[5]}/25 pts`;
   button5.disabled = true;
   button5_1.disabled = true;
 
@@ -1260,10 +1262,10 @@ button5_1.addEventListener("click", (e) => {
   dateCalMin = Math.abs(dateRecorded[4] - date5) / 60000;
   dateCalHr = dateCalMin / 60;
 
-  scoreRecorded.push(100);
+  scoreRecorded.push(25);
   timeRecorded.push(displayMinOrHr(mandatoryMinArr[2]));
 
-  description5.textContent = `Already done with total of ${timeRecorded[5]} = ${scoreRecorded[5]}/100 pts`;
+  description5.textContent = `Already done with total of ${timeRecorded[5]} = ${scoreRecorded[5]}/25 pts`;
   button5.disabled = true;
   button5_1.disabled = true;
 
@@ -1288,7 +1290,7 @@ button5_2.addEventListener("click", (e) => {
   scoreRecorded.push(0);
   timeRecorded.push(displayMinOrHr(0));
 
-  description5.textContent = `Skipped with total of ${timeRecorded[5]} = ${scoreRecorded[5]}/100 pts`;
+  description5.textContent = `Skipped with total of ${timeRecorded[5]} = ${scoreRecorded[5]}/25 pts`;
   button5.disabled = true;
   button5_1.disabled = true;
 
@@ -1314,13 +1316,13 @@ button6.addEventListener("click", (e) => {
   console.log(`date6: ${date6}`);
 
   scoreRecorded.push(
-    noOver100(+((dateCalMin / (customMinArr[1] / 2)) * 100).toFixed(2))
+    noOver100(+((dateCalMin / (customMinArr[1] / 2)) * 50).toFixed(2))
   );
   timeRecorded.push(displayMinOrHr(dateCalMin));
 
   description6.textContent = `Finished at ${formatAMPM(date6)} with total of ${
     timeRecorded[6]
-  } = ${scoreRecorded[6]}/100 pts`;
+  } = ${scoreRecorded[6]}/50 pts`;
   button6.disabled = true;
   button6_1.disabled = true;
   button6_2.disabled = true;
@@ -1344,10 +1346,10 @@ button6_1.addEventListener("click", (e) => {
   console.log(`dateRecorded[5]: ${dateRecorded[5]}`);
   console.log(`date6: ${date6}`);
 
-  scoreRecorded.push(100);
+  scoreRecorded.push(50);
   timeRecorded.push(displayMinOrHr(customMinArr[1] / 2));
 
-  description6.textContent = `Already done with total of ${timeRecorded[6]} = ${scoreRecorded[6]}/100 pts`;
+  description6.textContent = `Already done with total of ${timeRecorded[6]} = ${scoreRecorded[6]}/50 pts`;
   button6.disabled = true;
   button6_1.disabled = true;
   button6_2.disabled = true;
@@ -1374,7 +1376,7 @@ button6_2.addEventListener("click", (e) => {
   scoreRecorded.push(0);
   timeRecorded.push(displayMinOrHr(0));
 
-  description6.textContent = `Skipped with total of ${timeRecorded[6]} = ${scoreRecorded[6]}/100 pts`;
+  description6.textContent = `Skipped with total of ${timeRecorded[6]} = ${scoreRecorded[6]}/50 pts`;
   button6.disabled = true;
   button6_1.disabled = true;
   button6_2.disabled = true;
@@ -1847,4 +1849,12 @@ function display() {
   divclass.value = "fixed";
   div10.setAttributeNode(divclass);
   body.appendChild(div10);
+
+  const div11 = document.createElement("pre");
+  div11.textContent =
+    "default max points\nstudy 100+\ncook 25\nwalk 50+\nplay time 50\n research 100+\ndishes 25+\nplay 50\noffline 100";
+  const divclass2 = document.createAttribute("class");
+  divclass2.value = "fixedRight";
+  div11.setAttributeNode(divclass2);
+  body.appendChild(div11);
 }

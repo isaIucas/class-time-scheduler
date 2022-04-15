@@ -84,6 +84,12 @@ input{
   left:5vh;
   top:5vh;
 }
+
+.fixedRight{
+  position:absolute;
+  right:5vh;
+  top:5vh;
+}
 .clickDemButtons{
   margin-top:158px;
   gap: 38px;
@@ -179,6 +185,16 @@ input{
 .resultDiv:first-child{
   display:flex;
   justify-content:flex-end
+}
+
+.pomodoroFixed{
+  position:absolute;
+  right: 10vh;
+  top:30vh;
+}
+
+title{
+  
 }
 
 /*
