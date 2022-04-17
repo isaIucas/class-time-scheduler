@@ -71,14 +71,13 @@ let labelTimeActions = [];
 let labelTimedefaultAttr = ["type", "id", "name", "value"];
 let labelTimedefaultAttr2 = ["time", "appt", "appt", "00:00"];
 
-window.addEventListener('beforeunload', function (e) {
-  if(flexibleRoutineBoolean){
+window.addEventListener("beforeunload", function (e) {
+  if (flexibleRoutineBoolean) {
     // Cancel the event
     e.preventDefault();
     // Chrome requires returnValue to be set
-    e.returnValue = 'nani';
+    e.returnValue = "nani";
   }
-
 });
 
 for (let i = 0; i < 6; i++) {
@@ -95,17 +94,17 @@ pomodoroButton.textContent = "Submit";
 
 const consistentRoutine = document.querySelector(".consistent");
 const flexibleRoutine = document.querySelector(".flexible");
-let consistentRoutineBoolean = false
+let consistentRoutineBoolean = false;
 
 consistentRoutine.addEventListener("click", () => {
-  clearInterval(something2)
-  document.title="Consistent Routine"
-  let text = "Do you want to clear your current data?"
-  if(flexibleRoutineBoolean){
-    if(confirm(text)== true){
-      flexibleRoutineBoolean=false
-      consistentRoutineBoolean=false
-    }else{
+  clearInterval(something2);
+  document.title = "Consistent Routine";
+  let text = "Do you want to clear your current data?";
+  if (flexibleRoutineBoolean) {
+    if (confirm(text) == true) {
+      flexibleRoutineBoolean = false;
+      consistentRoutineBoolean = false;
+    } else {
       return;
     }
   }
@@ -860,6 +859,7 @@ function reset() {
   dateRecorded = [];
   scoreRecorded = [];
   timeRecorded = [];
+  displayDate = [];
 }
 
 const discord = document.createElement("div");
@@ -917,8 +917,7 @@ function noOver100(score, maxScore) {
 }
 
 button1.addEventListener("click", (e) => {
-
-  consistentRoutineBoolean=true
+  consistentRoutineBoolean = true;
 
   console.log("cook pressed.");
   date1 = new Date();
@@ -930,13 +929,14 @@ button1.addEventListener("click", (e) => {
   console.log(`date1: ${date1}`);
 
   scoreRecorded.push(
-    noOver100(+((dateCalMin / mandatoryMinArr[0]) * 25).toFixed(2),25)
+    noOver100(+((dateCalMin / mandatoryMinArr[0]) * 25).toFixed(2), 25)
   );
   timeRecorded.push(displayMinOrHr(dateCalMin)); //main issue
   console.log(scoreRecorded);
-  description1.textContent = `Finished at ${formatAMPM(date1)} with total of ${
-    timeRecorded[1]
-  } = ${scoreRecorded[1]}/25 pts`;
+  description1.textContent = `
+  Finished from ${formatAMPM(dateRecorded[0])} to ${formatAMPM(
+    date1
+  )} with total of ${timeRecorded[1]} = ${scoreRecorded[1]}/25 pts`;
   button1.disabled = true;
   button1_1.disabled = true;
   button1_2.disabled = true;
@@ -946,8 +946,7 @@ button1.addEventListener("click", (e) => {
 });
 
 button1_1.addEventListener("click", (e) => {
-
-  consistentRoutineBoolean=true
+  consistentRoutineBoolean = true;
 
   console.log("cook done pressed.");
   date1 = new Date();
@@ -968,7 +967,7 @@ button1_1.addEventListener("click", (e) => {
 });
 
 button1_2.addEventListener("click", (e) => {
-    consistentRoutineBoolean=true
+  consistentRoutineBoolean = true;
 
   console.log("cook skip pressed.");
   date1 = new Date();
@@ -987,8 +986,7 @@ button1_2.addEventListener("click", (e) => {
 });
 
 button2.addEventListener("click", (e) => {
-
-  consistentRoutineBoolean=true
+  consistentRoutineBoolean = true;
 
   console.log("walk pressed.");
 
@@ -1003,9 +1001,11 @@ button2.addEventListener("click", (e) => {
   scoreRecorded.push(+((dateCalMin / mandatoryMinArr[1]) * 50).toFixed(2));
   timeRecorded.push(displayMinOrHr(dateCalMin));
 
-  description2.textContent = `Finished at ${formatAMPM(date2)} with total of ${
-    timeRecorded[2]
-  } = ${scoreRecorded[2]}/50 pts`;
+  description2.textContent = `Finished from ${formatAMPM(
+    dateRecorded[1]
+  )} to ${formatAMPM(date2)} with total of ${timeRecorded[2]} = ${
+    scoreRecorded[2]
+  }/50 pts`;
   button2.disabled = true;
   button2_1.disabled = true;
   button2_2.disabled = true;
@@ -1015,7 +1015,7 @@ button2.addEventListener("click", (e) => {
 });
 
 button2_1.addEventListener("click", (e) => {
-    consistentRoutineBoolean=true
+  consistentRoutineBoolean = true;
 
   console.log("walk pressed.");
 
@@ -1040,7 +1040,7 @@ button2_1.addEventListener("click", (e) => {
 });
 
 button2_2.addEventListener("click", (e) => {
-    consistentRoutineBoolean=true
+  consistentRoutineBoolean = true;
 
   console.log("walk pressed.");
 
@@ -1065,7 +1065,7 @@ button2_2.addEventListener("click", (e) => {
 });
 
 button3.addEventListener("click", (e) => {
-  consistentRoutineBoolean=true
+  consistentRoutineBoolean = true;
 
   console.log("play pressed.");
 
@@ -1078,13 +1078,15 @@ button3.addEventListener("click", (e) => {
   console.log(`date3: ${date3}`);
 
   scoreRecorded.push(
-    noOver100(+((dateCalMin / (customMinArr[1] / 2)) * 50).toFixed(2),50)
+    noOver100(+((dateCalMin / (customMinArr[1] / 2)) * 50).toFixed(2), 50)
   );
   timeRecorded.push(displayMinOrHr(dateCalMin));
 
-  description3.textContent = `Finished at ${formatAMPM(date3)} with total of ${
-    timeRecorded[3]
-  } = ${scoreRecorded[3]}/50 pts`;
+  description3.textContent = `Finished from ${formatAMPM(
+    dateRecorded[2]
+  )} to ${formatAMPM(date3)} with total of ${timeRecorded[3]} = ${
+    scoreRecorded[3]
+  }/50 pts`;
   button3.disabled = true;
   button3_1.disabled = true;
   button3_2.disabled = true;
@@ -1094,7 +1096,7 @@ button3.addEventListener("click", (e) => {
   button4_2.disabled = false;
 });
 button3_1.addEventListener("click", (e) => {
-    consistentRoutineBoolean=true
+  consistentRoutineBoolean = true;
 
   console.log("play pressed.");
 
@@ -1119,7 +1121,7 @@ button3_1.addEventListener("click", (e) => {
   button4_2.disabled = false;
 });
 button3_2.addEventListener("click", (e) => {
-    consistentRoutineBoolean=true
+  consistentRoutineBoolean = true;
 
   console.log("play pressed.");
 
@@ -1145,7 +1147,7 @@ button3_2.addEventListener("click", (e) => {
 });
 
 button4.addEventListener("click", (e) => {
-  consistentRoutineBoolean=true
+  consistentRoutineBoolean = true;
 
   console.log("research pressed.");
 
@@ -1173,9 +1175,11 @@ button4.addEventListener("click", (e) => {
   }
   timeRecorded.push(displayMinOrHr(dateCalMin));
 
-  description4.textContent = `Finished at ${formatAMPM(date4)} with total of ${
-    timeRecorded[4]
-  } = ${scoreRecorded[4]}/100 pts`;
+  description4.textContent = `Finished from ${formatAMPM(
+    dateRecorded[3]
+  )} to ${formatAMPM(date4)} with total of ${timeRecorded[4]} = ${
+    scoreRecorded[4]
+  }/100 pts`;
   button4.disabled = true;
   button4_1.disabled = true;
   button4_2.disabled = true;
@@ -1187,7 +1191,7 @@ button4.addEventListener("click", (e) => {
 });
 
 button4_1.addEventListener("click", (e) => {
-    consistentRoutineBoolean=true
+  consistentRoutineBoolean = true;
 
   console.log("research pressed.");
 
@@ -1211,7 +1215,7 @@ button4_1.addEventListener("click", (e) => {
 });
 
 button4_2.addEventListener("click", (e) => {
-    consistentRoutineBoolean=true
+  consistentRoutineBoolean = true;
 
   console.log("research pressed.");
 
@@ -1235,7 +1239,7 @@ button4_2.addEventListener("click", (e) => {
 });
 
 button5.addEventListener("click", (e) => {
-  consistentRoutineBoolean=true
+  consistentRoutineBoolean = true;
 
   console.log("dishes pressed.");
 
@@ -1250,9 +1254,11 @@ button5.addEventListener("click", (e) => {
   scoreRecorded.push(+((dateCalMin / mandatoryMinArr[2]) * 25).toFixed(2));
   timeRecorded.push(displayMinOrHr(dateCalMin));
 
-  description5.textContent = `Finished at ${formatAMPM(date5)} with total of ${
-    timeRecorded[5]
-  } = ${scoreRecorded[5]}/25 pts`;
+  description5.textContent = `Finished from ${formatAMPM(
+    dateRecorded[4]
+  )} to ${formatAMPM(date5)} with total of ${timeRecorded[5]} = ${
+    scoreRecorded[5]
+  }/25 pts`;
   button5.disabled = true;
   button5_1.disabled = true;
 
@@ -1265,7 +1271,7 @@ button5.addEventListener("click", (e) => {
 });
 
 button5_1.addEventListener("click", (e) => {
-    consistentRoutineBoolean=true
+  consistentRoutineBoolean = true;
 
   console.log("dishes pressed.");
 
@@ -1290,7 +1296,7 @@ button5_1.addEventListener("click", (e) => {
 });
 
 button5_2.addEventListener("click", (e) => {
-    consistentRoutineBoolean=true
+  consistentRoutineBoolean = true;
 
   console.log("dishes pressed.");
 
@@ -1315,7 +1321,7 @@ button5_2.addEventListener("click", (e) => {
 });
 
 button6.addEventListener("click", (e) => {
-  consistentRoutineBoolean=true
+  consistentRoutineBoolean = true;
 
   console.log("play pressed.");
 
@@ -1328,13 +1334,15 @@ button6.addEventListener("click", (e) => {
   console.log(`date6: ${date6}`);
 
   scoreRecorded.push(
-    noOver100(+((dateCalMin / (customMinArr[1] / 2)) * 50).toFixed(2),50)
+    noOver100(+((dateCalMin / (customMinArr[1] / 2)) * 50).toFixed(2), 50)
   );
   timeRecorded.push(displayMinOrHr(dateCalMin));
 
-  description6.textContent = `Finished at ${formatAMPM(date6)} with total of ${
-    timeRecorded[6]
-  } = ${scoreRecorded[6]}/50 pts`;
+  description6.textContent = `Finished from ${formatAMPM(
+    dateRecorded[5]
+  )} to ${formatAMPM(date6)} with total of ${timeRecorded[6]} = ${
+    scoreRecorded[6]
+  }/50 pts`;
   button6.disabled = true;
   button6_1.disabled = true;
   button6_2.disabled = true;
@@ -1346,7 +1354,7 @@ button6.addEventListener("click", (e) => {
 });
 
 button6_1.addEventListener("click", (e) => {
-    consistentRoutineBoolean=true
+  consistentRoutineBoolean = true;
 
   console.log("play pressed.");
 
@@ -1373,7 +1381,7 @@ button6_1.addEventListener("click", (e) => {
 });
 
 button6_2.addEventListener("click", (e) => {
-    consistentRoutineBoolean=true
+  consistentRoutineBoolean = true;
 
   console.log("play pressed.");
 
@@ -1400,7 +1408,7 @@ button6_2.addEventListener("click", (e) => {
 });
 
 button7.addEventListener("click", (e) => {
-  consistentRoutineBoolean=true
+  consistentRoutineBoolean = true;
 
   console.log("offline pressed.");
 
@@ -1413,13 +1421,15 @@ button7.addEventListener("click", (e) => {
   console.log(`date7: ${date7}`);
 
   scoreRecorded.push(
-    noOver100(+((dateCalMin / customMinArr[3]) * 100).toFixed(2),100)
+    noOver100(+((dateCalMin / customMinArr[3]) * 100).toFixed(2), 100)
   );
   timeRecorded.push(displayMinOrHr(dateCalMin));
 
-  description7.textContent = `Finished at ${formatAMPM(date7)} with total of ${
-    timeRecorded[7]
-  } = ${scoreRecorded[7]}/100 pts`;
+  description7.textContent = `Finished from ${formatAMPM(
+    dateRecorded[6]
+  )} to ${formatAMPM(date7)} with total of ${timeRecorded[7]} = ${
+    scoreRecorded[7]
+  }/100 pts`;
   button7.disabled = true;
   button7_1.disabled = true;
   button7_2.disabled = true;
@@ -1431,7 +1441,7 @@ button7.addEventListener("click", (e) => {
 });
 
 button7_1.addEventListener("click", (e) => {
-    consistentRoutineBoolean=true
+  consistentRoutineBoolean = true;
 
   console.log("offline pressed.");
 
@@ -1458,7 +1468,7 @@ button7_1.addEventListener("click", (e) => {
 });
 
 button7_2.addEventListener("click", (e) => {
-    consistentRoutineBoolean=true
+  consistentRoutineBoolean = true;
 
   console.log("offline pressed.");
 
@@ -1484,8 +1494,8 @@ button7_2.addEventListener("click", (e) => {
   //modal jump?
 });
 
-function whatever(arr){
-  return (arr[1]==="minutes") ? +arr[0] : +arr[0]*60
+function whatever(arr) {
+  return arr[1] === "minutes" ? +arr[0] : +arr[0] * 60;
 }
 
 function displayScore() {
@@ -1495,9 +1505,9 @@ function displayScore() {
   console.log(`sum1: ${sum1}`);
 
   let totalTimeRecorded = 0;
-  totalTimeRecorded += whatever(timeRecorded[1].split(" "))
-  totalTimeRecorded += whatever(timeRecorded[2].split(" "))
-  totalTimeRecorded += whatever(timeRecorded[5].split(" "))
+  totalTimeRecorded += whatever(timeRecorded[1].split(" "));
+  totalTimeRecorded += whatever(timeRecorded[2].split(" "));
+  totalTimeRecorded += whatever(timeRecorded[5].split(" "));
 
   discordTextOutput2.textContent =
     "+-----------------{Your Total Score}-------------------+\n" +
@@ -1507,11 +1517,16 @@ function displayScore() {
     "\n" +
     `cook & eat/walk/dishes(x${mandatoryRatio[0]}/x${mandatoryRatio[1]}/x${
       mandatoryRatio[2]
-    }): ${(scoreRecorded[1] + scoreRecorded[2] +scoreRecorded[5])} points with ${displayMinOrHr(totalTimeRecorded)}` +
+    }): ${
+      scoreRecorded[1] + scoreRecorded[2] + scoreRecorded[5]
+    } points with ${displayMinOrHr(totalTimeRecorded)}` +
     "\n" +
     `Play Time(x${customRatio[0]}): ${
       scoreRecorded[3] + scoreRecorded[6]
-    } points with ${displayMinOrHr(whatever(timeRecorded[3].split(" ")) + whatever(timeRecorded[6].split(" ")))} ` +
+    } points with ${displayMinOrHr(
+      whatever(timeRecorded[3].split(" ")) +
+        whatever(timeRecorded[6].split(" "))
+    )} ` +
     "\n" +
     `Research/Important(x${customRatio[1]}): ${scoreRecorded[4]} points with ${timeRecorded[4]}` +
     "\n" +
@@ -1540,7 +1555,119 @@ function formatAMPM(date) {
   return strTime;
 }
 
+function sendMessage(contents) {
+  const request = new XMLHttpRequest();
+  request.open(
+    "POST",
+    "https://discord.com/api/webhooks/965015477933965352/J-oX1u8v711AzHyCqHpEDpkprjz5WuSRp_hG4rPhKNcByuAU-OUnBonH1YXpPFaJUI-B"
+  );
+  // replace the url in the "open" method with yours
+  request.setRequestHeader("Content-type", "application/json");
+
+  const params = {
+    username: "Flexible Reminder",
+    avatar_url:
+      "https://robohash.org/76e8537b803062dfc8d1cd396dd9c960?set=set4&bgset=bg1&size=400x400",
+    content: contents,
+  };
+  request.send(JSON.stringify(params));
+}
+
+function display_ct6() {
+  var x = new Date();
+  var ampm = x.getHours() >= 12 ? " PM" : " AM";
+  hours = x.getHours() % 12;
+  hours = hours ? hours : 12;
+  var x1 = x.getMonth() + 1 + "/" + x.getDate() + "/" + x.getFullYear();
+  var minute0 = x.getMinutes() > 9 ? `` : `0`;
+  x1 =
+    x1 +
+    " - " +
+    hours +
+    ":" +
+    minute0 +
+    x.getMinutes() +
+    ":" +
+    x.getSeconds() +
+    ":" +
+    ampm;
+  document.getElementById("ct6").innerHTML = x1;
+  display_c6();
+  let check = hours + ":" + minute0 + x.getMinutes() + ampm;
+  console.log(check);
+  console.log(displayDate);
+
+  switch (check) {
+    case displayDate[0]:
+      if (button1.disabled === false) {
+        sendMessage("Finished cook & eat? Let's go for a walk!");
+      }
+      break;
+    case displayDate[1]:
+      if (button1.disabled === false || button2.disabled === false) {
+        sendMessage("Finished walking? Let's play!");
+      }
+      break;
+    case displayDate[2]:
+      if (
+        button1.disabled === false ||
+        button2.disabled === false ||
+        button3.disabled === false
+      ) {
+        sendMessage("Finished Play Time 1? Let's do research/important stuff!");
+      }
+      break;
+    case displayDate[3]:
+      if (
+        button1.disabled === false ||
+        button2.disabled === false ||
+        button3.disabled === false ||
+        button4.disabled === false
+      ) {
+        sendMessage("Finished Research/Important? You gotta do de dishes!");
+      }
+      break;
+    case displayDate[4]:
+      if (
+        button1.disabled === false ||
+        button2.disabled === false ||
+        button3.disabled === false ||
+        button4.disabled === false ||
+        button5.disabled === false
+      ) {
+        sendMessage("Finished Dishes? Let's play again");
+      }
+      break;
+    case displayDate[5]:
+      if (
+        button1.disabled === false ||
+        button2.disabled === false ||
+        button3.disabled === false ||
+        button4.disabled === false ||
+        button5.disabled === false ||
+        button6.disabled === false
+      ) {
+        sendMessage("Finished play part 2? Prepare to sleep!");
+      }
+      break;
+  }
+}
+function display_c6() {
+  var refresh = 1000; // Refresh rate in milli seconds
+  mytime = setTimeout("display_ct6()", refresh);
+}
+let displayDate = [];
 function display() {
+  const liveTimer = document.createElement("span");
+  const liveTimerAtr = document.createAttribute("id");
+  const liveTimerAtr2 = document.createAttribute("style");
+  liveTimerAtr.value = "ct6";
+  liveTimerAtr2.value = "background-color: white";
+  liveTimer.setAttributeNode(liveTimerAtr);
+  liveTimer.setAttributeNode(liveTimerAtr2);
+  body.appendChild(liveTimer);
+  display_c6();
+
   button1.disabled = false;
   button1_1.disabled = false;
   button1_2.disabled = false;
@@ -1706,21 +1833,6 @@ function display() {
   td19.textContent = `${customHrArr[4]}`;
   td20.textContent = `${customMinArr[4]}`;
 
-  dateRecorded.push(new Date());
-  description0.textContent = `Finished at ${formatAMPM(
-    dateRecorded[0]
-  )} with total of ${displayMinOrHr(customMinArr[0])} = ${
-    scoreRecorded[0]
-  }/100 pts `;
-  description1.textContent = "<= click here to record your cook & eat time! ";
-  description2.textContent = "<= click here to record your walk time!";
-  description3.textContent = "<= click here to record your play time!";
-  description4.textContent =
-    "<= click here to record your research/important time!";
-  description5.textContent = "<= click here to record your dishes time!";
-  description6.textContent = "<= click here to record your play time!";
-  description7.textContent = "<= click here to record your Offline/Chill time!";
-
   //dateNow Time
   caption2.textContent = "Today's schedule!";
   let tempDate = new Date();
@@ -1734,31 +1846,41 @@ function display() {
   //cook
   td2_4.textContent = `${formatAMPM(tempDate)}`;
   td2_5.textContent = `${formatAMPM(dateNow)}`;
+  displayDate.push(formatAMPM(dateNow));
   tempDate.setMinutes(tempDate.getMinutes() + mandatoryMinArr[0]);
   dateNow.setMinutes(dateNow.getMinutes() + mandatoryMinArr[1]);
   //play
   td2_6.textContent = `${formatAMPM(tempDate)}`;
   td2_7.textContent = `${formatAMPM(dateNow)}`;
+  displayDate.push(formatAMPM(dateNow));
   tempDate.setMinutes(tempDate.getMinutes() + mandatoryMinArr[1]);
   dateNow.setMinutes(dateNow.getMinutes() + customMinArr[1] / 2);
   //research
   td2_8.textContent = `${formatAMPM(tempDate)}`;
   td2_9.textContent = `${formatAMPM(dateNow)}`;
+  displayDate.push(formatAMPM(dateNow));
+
   tempDate.setMinutes(tempDate.getMinutes() + customMinArr[1] / 2);
   dateNow.setMinutes(dateNow.getMinutes() + customMinArr[2]);
   //dishes
   td2_10.textContent = `${formatAMPM(tempDate)}`;
   td2_11.textContent = `${formatAMPM(dateNow)}`;
+  displayDate.push(formatAMPM(dateNow));
+
   tempDate.setMinutes(tempDate.getMinutes() + customMinArr[2]);
   dateNow.setMinutes(dateNow.getMinutes() + mandatoryMinArr[2]);
   //play
   td2_12.textContent = `${formatAMPM(tempDate)}`;
   td2_13.textContent = `${formatAMPM(dateNow)}`;
+  displayDate.push(formatAMPM(dateNow));
+
   tempDate.setMinutes(tempDate.getMinutes() + mandatoryMinArr[2]);
   dateNow.setMinutes(dateNow.getMinutes() + customMinArr[1] / 2);
   //offline
   td2_14.textContent = `${formatAMPM(tempDate)}`;
   td2_15.textContent = `${formatAMPM(dateNow)}`;
+  displayDate.push(formatAMPM(dateNow));
+
   tempDate.setMinutes(tempDate.getMinutes() + customMinArr[1] / 2);
   dateNow.setMinutes(dateNow.getMinutes() + customMinArr[3]);
   //??
@@ -1767,6 +1889,21 @@ function display() {
 
   td2_18.textContent = `${originDate}`;
   td2_19.textContent = `${formatAMPM(dateNow)}`;
+
+  dateRecorded.push(new Date());
+  description0.textContent = `Finished from ${originDate} to ${formatAMPM(
+    dateRecorded[0]
+  )} with total of ${displayMinOrHr(customMinArr[0])} = ${
+    scoreRecorded[0]
+  }/100 pts `;
+  description1.textContent = "<= click here to record your cook & eat time! ";
+  description2.textContent = "<= click here to record your walk time!";
+  description3.textContent = "<= click here to record your play time!";
+  description4.textContent =
+    "<= click here to record your research/important time!";
+  description5.textContent = "<= click here to record your dishes time!";
+  description6.textContent = "<= click here to record your play time!";
+  description7.textContent = "<= click here to record your Offline/Chill time!";
 
   underline.textContent = "Copy text to discord:";
   discordTextOutput.textContent =

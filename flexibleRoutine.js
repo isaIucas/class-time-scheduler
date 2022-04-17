@@ -1,32 +1,28 @@
-let flexibleRoutineBoolean=false;
+let flexibleRoutineBoolean = false;
 let something2;
 
-window.addEventListener('beforeunload', function (e) {
-  if(consistentRoutineBoolean){
+window.addEventListener("beforeunload", function (e) {
+  if (consistentRoutineBoolean) {
     // Cancel the event
     e.preventDefault();
     // Chrome requires returnValue to be set
-    e.returnValue = 'nani';
+    e.returnValue = "nani";
   }
-
 });
 
 flexibleRoutine.addEventListener("click", () => {
-  document.title="Flexible Routine"
+  document.title = "Flexible Routine";
 
-  let text = "Do you want to clear your current data?"
-  if(consistentRoutineBoolean){
-    
-    if(confirm(text)== true){
-      flexibleRoutineBoolean=false
-      consistentRoutineBoolean=false
-    }else {
-      pomodoroTimerButton.textContent="continue"
-      console.log("whut")
+  let text = "Do you want to clear your current data?";
+  if (consistentRoutineBoolean) {
+    if (confirm(text) == true) {
+      flexibleRoutineBoolean = false;
+      consistentRoutineBoolean = false;
+    } else {
+      pomodoroTimerButton.textContent = "continue";
+      console.log("whut");
     }
-    
   }
-
 
   flexibleRoutine.disabled = true;
   consistentRoutine.disabled = false;
@@ -71,7 +67,6 @@ flexibleRoutine.addEventListener("click", () => {
   labelSecondsId2.value = "nandesuka";
   labelSeconds2.setAttributeNode(labelSecondsId2);
   labelSeconds2.textContent = "00";
- 
 
   const abutton1 = document.createElement("button");
   const abutton2 = document.createElement("button");
@@ -107,8 +102,6 @@ flexibleRoutine.addEventListener("click", () => {
   resultclass.value = "resultabsolute";
   result.setAttributeNode(resultclass);
   body.appendChild(result);
-
-
 
   const generalDiv = document.createElement("div");
   const message = document.createElement("div");
@@ -151,7 +144,7 @@ flexibleRoutine.addEventListener("click", () => {
   const adiv3_1Attr = document.createAttribute("class");
   adiv3_1Attr.value = "adiv_1";
   adiv3_1.setAttributeNode(adiv3_1Attr);
-  
+
   const adiv1_2Attr = document.createAttribute("class");
   adiv1_2Attr.value = "adiv_2";
   adiv1_2.setAttributeNode(adiv1_2Attr);
@@ -216,15 +209,15 @@ flexibleRoutine.addEventListener("click", () => {
   adiv3_2.appendChild(adiv3_2_2);
   adiv3_2_2.appendChild(paragraph3); //column: min/hr
 
-  const resultDiv = document.createElement("div")
-  const resultDivAttr = document.createAttribute("class")
-  resultDivAttr.value="resultDiv"
-  resultDiv.setAttributeNode(resultDivAttr)
+  const resultDiv = document.createElement("div");
+  const resultDivAttr = document.createAttribute("class");
+  resultDivAttr.value = "resultDiv";
+  resultDiv.setAttributeNode(resultDivAttr);
 
   generalDiv.appendChild(abutton4); //finish button
   generalDiv.appendChild(resultDiv);
-  resultDiv.appendChild(result)
-  resultDiv.appendChild(chartDiv)
+  resultDiv.appendChild(result);
+  resultDiv.appendChild(chartDiv);
 
   const div10 = document.createElement("pre");
   div10.textContent =
@@ -235,19 +228,18 @@ flexibleRoutine.addEventListener("click", () => {
   body.appendChild(div10);
 
   const pomodoroTimer = document.createElement("pre");
-  pomodoroTimer.textContent =
-    "pomodor Timer";
+  pomodoroTimer.textContent = "pomodor Timer";
 
-  const pomodoroDefaultCount= document.createElement("input")
-  const pomodoroDefaultCountAtr=document.createAttribute("type")
-  pomodoroDefaultCountAtr.value="number"
-  pomodoroDefaultCount.setAttributeNode(pomodoroDefaultCountAtr)
-  const pomodoroDefaultCountAtr2=document.createAttribute("value")
-  pomodoroDefaultCountAtr2.value="25"
-  pomodoroDefaultCount.setAttributeNode(pomodoroDefaultCountAtr2)
+  const pomodoroDefaultCount = document.createElement("input");
+  const pomodoroDefaultCountAtr = document.createAttribute("type");
+  pomodoroDefaultCountAtr.value = "number";
+  pomodoroDefaultCount.setAttributeNode(pomodoroDefaultCountAtr);
+  const pomodoroDefaultCountAtr2 = document.createAttribute("value");
+  pomodoroDefaultCountAtr2.value = "25";
+  pomodoroDefaultCount.setAttributeNode(pomodoroDefaultCountAtr2);
 
   const pomodoroTimerButton0 = document.createElement("button");
-  pomodoroTimerButton0.textContent="set pomodoro time"
+  pomodoroTimerButton0.textContent = "set pomodoro time";
 
   const pomodoroTimerDiv = document.createElement("div");
   const pomodoroTimerDivAtr = document.createAttribute("class");
@@ -255,29 +247,28 @@ flexibleRoutine.addEventListener("click", () => {
   pomodoroTimerDiv.setAttributeNode(pomodoroTimerDivAtr);
 
   const pomodoroTimerButton = document.createElement("button");
-  pomodoroTimerButton.textContent="start pomodoro"
+  pomodoroTimerButton.textContent = "start pomodoro";
 
   const pomodoroList = document.createElement("pre");
 
-  body.appendChild(pomodoroTimerDiv)
-  pomodoroTimerDiv.appendChild(pomodoroDefaultCount)
-  pomodoroTimerDiv.appendChild(pomodoroTimerButton0)
-  pomodoroTimerDiv.appendChild(document.createElement("div"))
-  pomodoroTimerDiv.appendChild(labelMin2)
-  pomodoroTimerDiv.appendChild(inbetweenLabel2)
-  pomodoroTimerDiv.appendChild(labelSeconds2)
+  body.appendChild(pomodoroTimerDiv);
+  pomodoroTimerDiv.appendChild(pomodoroDefaultCount);
+  pomodoroTimerDiv.appendChild(pomodoroTimerButton0);
+  pomodoroTimerDiv.appendChild(document.createElement("div"));
+  pomodoroTimerDiv.appendChild(labelMin2);
+  pomodoroTimerDiv.appendChild(inbetweenLabel2);
+  pomodoroTimerDiv.appendChild(labelSeconds2);
   pomodoroTimerDiv.appendChild(pomodoroTimer);
   pomodoroTimerDiv.appendChild(pomodoroTimerButton);
-  pomodoroTimerDiv.appendChild(pomodoroList)
+  pomodoroTimerDiv.appendChild(pomodoroList);
 
-  pomodoroTimerButton0.addEventListener("click",()=>{
-    clearInterval(something2)
+  pomodoroTimerButton0.addEventListener("click", () => {
+    clearInterval(something2);
     labelMin2.textContent = `${pomodoroDefaultCount.value}`;
-    labelSeconds2.textContent = `00`
-    pomodoroTimerButton.textContent="Start Over."
-    document.title=`${minutesLabel2.innerHTML}:${secondsLabel2.innerHTML} - Time to focus!`
-
-  })
+    labelSeconds2.textContent = `00`;
+    pomodoroTimerButton.textContent = "Start Over.";
+    document.title = `${minutesLabel2.innerHTML}:${secondsLabel2.innerHTML} - Time to focus!`;
+  });
 
   /*
   const container = document.createElement("div");
@@ -344,8 +335,7 @@ flexibleRoutine.addEventListener("click", () => {
   var secondsLabel = document.getElementById("seconds");
   var totalSeconds = 0;
   let something;
-  console.log(secondsLabel)
-
+  console.log(secondsLabel);
 
   function resetTime() {
     clearInterval(something);
@@ -356,25 +346,25 @@ flexibleRoutine.addEventListener("click", () => {
 
   function setTime() {
     ++totalSeconds;
-        console.log(secondsLabel)
+    console.log(secondsLabel);
 
-    console.log(secondsLabel.innerHTML)
-    console.log(pad(totalSeconds % 60))
+    console.log(secondsLabel.innerHTML);
+    console.log(pad(totalSeconds % 60));
 
     secondsLabel.innerHTML = pad(totalSeconds % 60);
     minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
-    switch(which){
-      case "Important":     
-        document.title=`${minutesLabel.innerHTML}:${secondsLabel.innerHTML} - Important`;
+    switch (which) {
+      case "Important":
+        document.title = `${minutesLabel.innerHTML}:${secondsLabel.innerHTML} - Important`;
         break;
-      case "Semi-Important":     
-        document.title=`${minutesLabel.innerHTML}:${secondsLabel.innerHTML} - Semi-Important`
+      case "Semi-Important":
+        document.title = `${minutesLabel.innerHTML}:${secondsLabel.innerHTML} - Semi-Important`;
         break;
-      case "Free":     
-        document.title=`${minutesLabel.innerHTML}:${secondsLabel.innerHTML} - Free`
+      case "Free":
+        document.title = `${minutesLabel.innerHTML}:${secondsLabel.innerHTML} - Free`;
         break;
       default:
-        document.title="Flexible Routine"
+        document.title = "Flexible Routine";
     }
   }
 
@@ -391,48 +381,46 @@ flexibleRoutine.addEventListener("click", () => {
   var secondsLabel2 = document.getElementById("nandesuka");
   var totalSeconds2 = 0;
 
-  console.log(secondsLabel2)
-
+  console.log(secondsLabel2);
 
   function resetTime2() {
     clearInterval(something2);
     document.getElementById("nani").innerHTML = `${pomodoroDefaultCount.value}`;
     document.getElementById("nandesuka").innerHTML = `00`;
-    totalSeconds2 =60*pomodoroDefaultCount.value ;
+    totalSeconds2 = 60 * pomodoroDefaultCount.value;
   }
 
   function play() {
-    var audio = new Audio('https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3');
+    var audio = new Audio(
+      "https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3"
+    );
     audio.play();
-    if(pomodoroCounted){
-      count+=1
-      pomodoroList.textContent=`You've done ${count} pomodoros. `
+    if (pomodoroCounted) {
+      count += 1;
+      pomodoroList.textContent = `You've done ${count} pomodoros. `;
     }
-    pomodoroCounted=false
+    pomodoroCounted = false;
   }
 
   function setTime2() {
     --totalSeconds2;
-    console.log(secondsLabel2.innerHTML)
-    if(minutesLabel2.innerHTML =="00" && secondsLabel2.innerHTML=="01"){
-      clearInterval(something2)
-      play()
-      pomodoroTimer.textContent="It's time to rest!"
-      pomodoroTimerButton.textContent="Start over."
-
-
+    console.log(secondsLabel2.innerHTML);
+    if (minutesLabel2.innerHTML == "00" && secondsLabel2.innerHTML == "01") {
+      clearInterval(something2);
+      play();
+      pomodoroTimer.textContent = "It's time to rest!";
+      pomodoroTimerButton.textContent = "Start over.";
     }
     secondsLabel2.innerHTML = pad(totalSeconds2 % 60);
     minutesLabel2.innerHTML = pad(parseInt(totalSeconds2 / 60));
-    document.title=`${minutesLabel2.innerHTML}:${secondsLabel2.innerHTML} - Time to focus!`
-
+    document.title = `${minutesLabel2.innerHTML}:${secondsLabel2.innerHTML} - Time to focus!`;
   }
 
-  let which="";
+  let which = "";
   abutton1.addEventListener("click", () => {
-    which="Important"
+    which = "Important";
 
-    flexibleRoutineBoolean=true
+    flexibleRoutineBoolean = true;
     resetTime();
     something = setInterval(setTime, 1000);
 
@@ -470,9 +458,9 @@ flexibleRoutine.addEventListener("click", () => {
   });
 
   abutton2.addEventListener("click", () => {
-    which="Semi-Important"
+    which = "Semi-Important";
 
-    flexibleRoutineBoolean=true
+    flexibleRoutineBoolean = true;
 
     resetTime();
     something = setInterval(setTime, 1000);
@@ -511,9 +499,9 @@ flexibleRoutine.addEventListener("click", () => {
     console.log(`elapsed3: ${elapsed3}`);
   });
   abutton3.addEventListener("click", () => {
-    which="Free"
+    which = "Free";
 
-    flexibleRoutineBoolean=true
+    flexibleRoutineBoolean = true;
 
     resetTime();
     something = setInterval(setTime, 1000);
@@ -554,7 +542,7 @@ flexibleRoutine.addEventListener("click", () => {
   });
 
   abutton4.addEventListener("click", () => {
-    document.title="Flexible Routine"
+    document.title = "Flexible Routine";
     resetTime();
     something = setInterval(setTime, 1000);
 
@@ -587,8 +575,6 @@ flexibleRoutine.addEventListener("click", () => {
     abutton4.disabled = true;
     RecordingNow = "";
     displayResult();
-
-    
   });
   function displayResult() {
     resetTime();
@@ -610,12 +596,14 @@ flexibleRoutine.addEventListener("click", () => {
       totalNum3 += timeDuration3[i];
     }
     information.textContent = `[Recording Now: ${recordingNow}]\n Previous Record: ${previousRecording}`;
-    result.textContent = `!Total Result!\n Important: ${displayMinOrHr(
+    result.textContent = `+~~~~{Flexible Routine Result}~~~~~+\nImportant: ${displayMinOrHr(
       totalNum1
     )} \n Semi-Important: ${displayMinOrHr(
       totalNum2
-    )} \n Free: ${displayMinOrHr(totalNum3)}`;
-    
+    )} \n Free: ${displayMinOrHr(
+      totalNum3
+    )}\n+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+`;
+
     anychart.onDocumentReady(function () {
       // set the data
       let data2 = [
@@ -631,32 +619,31 @@ flexibleRoutine.addEventListener("click", () => {
           normal: { fill: "LightGoldenrodYellow" },
         },
       ];
-  
+
       // create the apieChart
       let apieChart = anychart.pie();
-  
+
       // set the apieChart title
       apieChart.title("What you've done today");
-  
+
       // add the data
       apieChart.data(data2);
-  
+
       var labels2 = apieChart.labels();
-  
+
       labels2.fontColor("black");
       labels2.fontWeight(400);
-  
+
       // display the apieChart in the container
       apieChart.container("container2");
       apieChart.draw();
     });
-  
+
     let hasSVG = document.querySelector("svg") != null;
     if (hasSVG) {
       body.querySelector("svg").remove();
     }
   }
-  
 
   /*
     svg.addEventListener("onmouseenter",e=>{
@@ -665,33 +652,28 @@ flexibleRoutine.addEventListener("click", () => {
   */
   //bug fix potential!!!!I may want to try body[1] to find SVG to delete!!!!
   //instruction
-  let pausedSeconds=0
-  let count=0
-  pomodoroTimerButton.addEventListener("click", ()=>{
-    flexibleRoutineBoolean=true
-    pomodoroCounted=true;
+  let pausedSeconds = 0;
+  let count = 0;
+  pomodoroTimerButton.addEventListener("click", () => {
+    flexibleRoutineBoolean = true;
+    pomodoroCounted = true;
 
-
-    if(pomodoroTimerButton.textContent==="Start over."){
-      pomodoroTimer.textContent="pomodoro timer"
+    if (pomodoroTimerButton.textContent === "Start over.") {
+      pomodoroTimer.textContent = "pomodoro timer";
     }
-    if(pomodoroTimerButton.textContent=="continue"){
-      pomodoroTimerButton.textContent="pause"
-      totalSeconds=pausedSeconds
+    if (pomodoroTimerButton.textContent == "continue") {
+      pomodoroTimerButton.textContent = "pause";
+      totalSeconds = pausedSeconds;
       something2 = setInterval(setTime2, 1000);
-    } else if (pomodoroTimerButton.textContent=="pause"){
-      pausedSeconds=totalSeconds
-      clearInterval(something2)
-      pomodoroTimerButton.textContent="continue"
-    }else{
-      pomodoroTimerButton.textContent="pause"
-      console.log("pomodoroTimerButton")
+    } else if (pomodoroTimerButton.textContent == "pause") {
+      pausedSeconds = totalSeconds;
+      clearInterval(something2);
+      pomodoroTimerButton.textContent = "continue";
+    } else {
+      pomodoroTimerButton.textContent = "pause";
+      console.log("pomodoroTimerButton");
       resetTime2();
       something2 = setInterval(setTime2, 1000);
     }
-
-
-
-  })
-
+  });
 });
